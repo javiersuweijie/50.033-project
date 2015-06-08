@@ -22,6 +22,7 @@ obj/
 # ============ #
 # OS generated #
 # ============ #
+.swp
 .DS_Store
 .DS_Store?
 ._*
