@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
 public class LevelParser : MonoBehaviour {
 
+	public GameObject button;
 	public TextAsset level_data;
 	private string[] line_delimiters = {"\r\n","\n"};
 	private char[] token_delimiters = {'='};
@@ -12,13 +14,30 @@ public class LevelParser : MonoBehaviour {
 	int levels,difficulty,current_level;
 	string name;
 	Level[] level_tree;
+
 	// Use this for initialization
 	void Start () {
+		Transform panel = transform.Find("Panel");
 		string raw_data = level_data.ToString();
 		string[] lines = raw_data.Split(line_delimiters,System.StringSplitOptions.RemoveEmptyEntries);
 		foreach (string line in lines) {
-			Debug.Log(line);
 			parse(line);
+		}
+		createButtons(level_tree[0],panel);
+	}
+
+	void createButtons(Level level, Transform parent) {
+		Queue<Level> queue = new Queue<Level>();
+		queue.Enqueue(level);
+		int height = 0;
+		while (queue.Count != 0) {
+			Level current_level = queue.Dequeue();
+			GameObject level_button = Instantiate(button, new Vector2(0,-96+96*height), Quaternion.Euler(Vector3.zero)) as GameObject;
+			level_button.transform.SetParent(parent, false);
+			foreach (int index in current_level.getChildrenIndex()) {
+				queue.Enqueue(level_tree[index]);
+			}
+			height++;
 		}
 	}
 
@@ -64,6 +83,10 @@ public class Level {
 
 	public void addChildren(int index) {
 		children.Add(index);
+	}
+
+	public ArrayList getChildrenIndex() {
+		return children;
 	}
 
 }
