@@ -7,6 +7,7 @@ class DefaultPlayerUnit : PlayerUnit{
 	protected float jumpTime = 0.0f;
 	protected float jumpHeight = 0.0f;
 	protected float yPos;
+	public Transform uitxt;
 
 	void Start(){
 		Debug.Log ("Instantiated");
@@ -20,6 +21,8 @@ class DefaultPlayerUnit : PlayerUnit{
 			lastAtkTime = Time.time;
 			target.DecreaseHealth(atkPower);
 			jump = true;
+
+			//float dmg
 		}
 		Jump ();
 	}

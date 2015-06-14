@@ -16,4 +16,6 @@ interface Unit {
 	int GetMaxHealth();
 
 	int GetCurrentHealth();
+
+	Vector3 GetPosition ();
 }

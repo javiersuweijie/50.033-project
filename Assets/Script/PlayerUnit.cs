@@ -13,8 +13,10 @@ abstract class PlayerUnit : MonoBehaviour, Unit {
 	protected bool dead;
 	protected bool atkMode;
 	protected bool defMode;
+	protected Transform uitxt;
 	
 	public void Init (float creationTime) {
+		uitxt = (Transform)Resources.Load ("Prefabs/FloatDmgText", typeof(Transform));
 		lastAtkTime = creationTime;
 		this.defaultAtkDelay = 1.0f;
 		this.defaultAtkPower = 5;
@@ -28,6 +30,7 @@ abstract class PlayerUnit : MonoBehaviour, Unit {
 	}
 
 	public void Init (float creationTime, float defaultAtkDelay, int defaultAtkPower, int maxHealth) {
+		uitxt = (Transform)Resources.Load ("Prefabs/FloatDmgText", typeof(Transform));
 		lastAtkTime = creationTime;
 		this.defaultAtkDelay = defaultAtkDelay;
 		this.defaultAtkPower = defaultAtkPower;
@@ -52,6 +55,14 @@ abstract class PlayerUnit : MonoBehaviour, Unit {
 	}
 	
 	public void DecreaseHealth(int value){
+		Vector3 textLocation = Camera.main.WorldToScreenPoint(transform.position);
+		textLocation.x /= Screen.width;
+		textLocation.x += Random.Range(-0.05f,0.02f);
+		textLocation.y /= Screen.height;
+		textLocation.y += Random.Range(0.05f,0.07f);
+		Transform tempFloatingDamage = (Transform)Instantiate(uitxt, textLocation, Quaternion.identity);
+		tempFloatingDamage.GetComponent<FloatDmgScript>().DisplayDamage("-" + atkPower.ToString());
+
 		currentHealth -= value;
 		if (currentHealth <= 0){
 			currentHealth = 0;
@@ -63,7 +74,12 @@ abstract class PlayerUnit : MonoBehaviour, Unit {
 	public bool IsDead(){
 		return dead;
 	}
-	
+
+	public Vector3 GetPosition()
+	{
+		return transform.position;
+	}
+
 	public int GetMaxHealth(){
 		return maxHealth;
 	}
