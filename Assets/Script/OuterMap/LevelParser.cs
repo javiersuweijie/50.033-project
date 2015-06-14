@@ -7,8 +7,10 @@ using System.IO;
 
 public class LevelParser : MonoBehaviour {
 
-	public GameObject button;
-	public GameObject arrow;
+	public GameObject button_prefab;
+	public GameObject arrow_prefab;
+	public GameObject level_info_prefab;
+
 	public TextAsset level_data;
 	public int level_width = 228;
 	public int button_width = 96;
@@ -66,7 +68,7 @@ public class LevelParser : MonoBehaviour {
 				if (grid == 'x' || grid == ' ' || grid == '\0') continue;
 				else {
 					Level level = level_tree[(int)(grid-'0')];
-					GameObject level_button = Instantiate(button) as GameObject;
+					GameObject level_button = Instantiate(button_prefab) as GameObject;
 					level.button = level_button;
 					level_button.transform.position = new Vector3(row * grid_width, (height-col) * grid_height,0);
 					level_button.transform.SetParent(parent,false);
@@ -85,6 +87,15 @@ public class LevelParser : MonoBehaviour {
 
 	void printTest(Level level) {
 		Debug.Log("clicked on level: "+level.level_id);
+		GameObject level_info = Instantiate(level_info_prefab) as GameObject;
+		Transform parent = transform.GetComponentsInChildren<Transform>().FirstOrDefault(t => t.name == "Panel");
+		Debug.Log(parent);
+		level_info.transform.SetParent(parent,false);
+		level_info.transform.FindChild("LevelTitle").GetComponent<Text>().text = "Level: " + level.level_id;
+		level_info.transform.FindChild("CloseButton").GetComponent<Button>().onClick.AddListener(
+			()=>{Destroy(level_info);}
+		);
+			
 	}
 	
 	void parse(string line) {
