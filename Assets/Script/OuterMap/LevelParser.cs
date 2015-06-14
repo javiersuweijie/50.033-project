@@ -28,32 +28,31 @@ public class LevelParser : MonoBehaviour {
 		foreach (string line in lines) {
 			parse(line);
 		}
-//		createButtons(level_tree[0],panel);
 		createLayout(panel);
 	}
 
-	void createButtons(Level level, Transform parent) {
-		Queue<Level> queue = new Queue<Level>();
-		queue.Enqueue(level);
-		List<int> nodes_per_level = new List<int> {1};
-		while (queue.Count != 0) {
-			Level current_level = queue.Dequeue();
-			int height = current_level.height;
-			GameObject level_button = Instantiate(button, new Vector2(0,-96+96*height), Quaternion.Euler(Vector3.zero)) as GameObject;
-			level_button.transform.SetParent(parent, false);
-			foreach (int index in current_level.getChildrenIndex()) {
-				GameObject level_arrow = Instantiate(arrow, new Vector2(0,-96+96*height), Quaternion.Euler(Vector3.zero)) as GameObject;
-				level_arrow.transform.SetParent(parent, false);
-				level_tree[index].height = current_level.height+1;
-				queue.Enqueue(level_tree[index]);
-			}
-			if (nodes_per_level.Count <= height+1)
-				nodes_per_level.Add(current_level.getChildrenIndex().Count);
-			else
-				nodes_per_level[height+1] += current_level.getChildrenIndex().Count;
-		}
-		foreach (int i in nodes_per_level) Debug.Log(i);
-	}
+//	void createButtons(Level level, Transform parent) {
+//		Queue<Level> queue = new Queue<Level>();
+//		queue.Enqueue(level);
+//		List<int> nodes_per_level = new List<int> {1};
+//		while (queue.Count != 0) {
+//			Level current_level = queue.Dequeue();
+//			int height = current_level.height;
+//			GameObject level_button = Instantiate(button, new Vector2(0,-96+96*height), Quaternion.Euler(Vector3.zero)) as GameObject;
+//			level_button.transform.SetParent(parent, false);
+//			foreach (int index in current_level.getChildrenIndex()) {
+//				GameObject level_arrow = Instantiate(arrow, new Vector2(0,-96+96*height), Quaternion.Euler(Vector3.zero)) as GameObject;
+//				level_arrow.transform.SetParent(parent, false);
+//				level_tree[index].height = current_level.height+1;
+//				queue.Enqueue(level_tree[index]);
+//			}
+//			if (nodes_per_level.Count <= height+1)
+//				nodes_per_level.Add(current_level.getChildrenIndex().Count);
+//			else
+//				nodes_per_level[height+1] += current_level.getChildrenIndex().Count;
+//		}
+//		foreach (int i in nodes_per_level) Debug.Log(i);
+//	}
 
 	void createLayout(Transform parent) {
 		int height = map_layout.Count;
@@ -66,10 +65,13 @@ public class LevelParser : MonoBehaviour {
 				char grid = map_layout[col][row];
 				if (grid == 'x' || grid == ' ' || grid == '\0') continue;
 				else {
-					Level current_level = level_tree[(int)(grid-'0')];
+					Level level = level_tree[(int)(grid-'0')];
 					GameObject level_button = Instantiate(button) as GameObject;
-					level_button.transform.position = new Vector3(row * grid_width, col * grid_height,0);
+					level.button = level_button;
+					level_button.transform.position = new Vector3(row * grid_width, (height-col) * grid_height,0);
 					level_button.transform.SetParent(parent,false);
+					level_button.GetComponentInChildren<Text>().text = "Level "+level.level_id;
+					level_button.GetComponent<Button>().onClick.AddListener(()=>{printTest(level);});
 				}
 			}
 		}
@@ -79,6 +81,10 @@ public class LevelParser : MonoBehaviour {
 //				level_arrow.transform.SetParent(parent, false);
 //			}
 //		}
+	}
+
+	void printTest(Level level) {
+		Debug.Log("clicked on level: "+level.level_id);
 	}
 	
 	void parse(string line) {
@@ -97,7 +103,7 @@ public class LevelParser : MonoBehaviour {
 		case "level":
 			int level = int.Parse(tokens[1]);
 			current_level = level;
-			level_tree[level] = new Level();
+			level_tree[level] = new Level(level);
 			break;
 		case "waves":
 			level_tree[current_level].waves = int.Parse(tokens[1]);
@@ -125,6 +131,11 @@ public class Level {
 	ArrayList children = new ArrayList();
 	public int height = 0;
 	public Vector3 button_position;
+	public GameObject button;
+
+	public Level(int level_id) {
+		this.level_id = level_id;
+	}
 
 	public void addChildren(int index) {
 		children.Add(index);
