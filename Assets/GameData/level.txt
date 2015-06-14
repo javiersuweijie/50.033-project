@@ -25,11 +25,11 @@ edge=2,4
 edge=3,4
 
 map=xxxxxxxxxx
-map=x   4    x
 map=x        x
-map=x  2   3 x
 map=x        x
-map=x    1   x
+map=x    3   x
+map=x        x
+map=x  1   2 x
 map=x        x
 map=x    0   x
 map=x        x
