@@ -80,6 +80,11 @@ abstract class PlayerUnit : MonoBehaviour, Unit {
 		return transform.position;
 	}
 
+	void OnTriggerEnter (Collider other) {
+		Destroy(other.gameObject);
+		DecreaseHealth (5);
+	}
+
 	public int GetMaxHealth(){
 		return maxHealth;
 	}

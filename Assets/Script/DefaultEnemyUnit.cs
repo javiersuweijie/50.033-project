@@ -7,6 +7,8 @@ class DefaultEnemyUnit : EnemyUnit {
 	protected float jumpTime = 0.0f;
 	protected float jumpHeight = 0.0f;
 	protected float yPos;
+
+	public GameObject bullet;
 	
 	void Start(){
 		Init(Time.time);
@@ -18,7 +20,10 @@ class DefaultEnemyUnit : EnemyUnit {
 		if(Time.time > ( lastAtkTime + atkDelay) )
 		{
 			lastAtkTime = Time.time;
-			target.DecreaseHealth(atkPower);
+			//target.DecreaseHealth(atkPower);
+			Vector3 vec3 = new Vector3(transform.position.x - 1, transform.position.y + 1);
+			int angle = Random.Range (35,55);
+			GameObject instbull = (GameObject)Instantiate(bullet, vec3,Quaternion.Euler (0,0,angle));
 			jump = true;
 		}
 		Jump ();
