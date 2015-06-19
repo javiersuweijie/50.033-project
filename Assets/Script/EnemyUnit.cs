@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-abstract class EnemyUnit : MonoBehaviour, Unit {
+public abstract class EnemyUnit : MonoBehaviour, Unit {
 
 	protected float lastAtkTime;
 	protected float defaultAtkDelay;
@@ -42,7 +42,7 @@ abstract class EnemyUnit : MonoBehaviour, Unit {
 		return transform.position;
 	}
 
-	public abstract void Attack(Unit target);
+	public abstract void Attack();
 
 	public abstract void UseSkill(Unit target);
 	

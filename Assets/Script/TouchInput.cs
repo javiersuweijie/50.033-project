@@ -5,11 +5,17 @@ using System.Collections;
 
 public class TouchInput : MonoBehaviour {
 	
-	UnitHandler unitHandler;
+	PlayerPartyController playerPartyController;
 	//public Player player = null;
 	// Use this for initialization
 	void Start () {
-		unitHandler = gameObject.GetComponent<UnitHandler>();
+		GameObject controller = GameObject.FindWithTag("Controller");
+		if (controller != null){
+			playerPartyController = controller.GetComponent<PlayerPartyController>();
+		}
+		else{
+			Debug.LogError("Cannot find controller object.");
+		}
 		//Debug.Log ("Screen Width: " + Screen.width);
 		//Debug.Log ("Screen Height: " + Screen.height);
 	}
@@ -26,21 +32,21 @@ public class TouchInput : MonoBehaviour {
 				//Do Defense
 				//Debug.Log ("Defending");
 				//player.DefenseMode();
-				unitHandler.PlayerInput(-1);
+				playerPartyController.ChangeModeTo(-1);
 
 			}
 			else{
 				//Do Offense
 				//Debug.Log ("Attacking");
 				//player.AttackMode();
-				unitHandler.PlayerInput(1);
+				playerPartyController.ChangeModeTo(1);
 			}
 		}
 		else{
 			//Do Normal
 			//Debug.Log ("Stoning");
 			//player.NormalMode();
-			unitHandler.PlayerInput(0);
+			playerPartyController.ChangeModeTo(0);
 		}
 		#endif
 		

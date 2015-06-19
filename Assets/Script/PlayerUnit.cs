@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-abstract class PlayerUnit : MonoBehaviour, Unit {
+public abstract class PlayerUnit : MonoBehaviour, Unit {
 
 	protected float lastAtkTime;
 	protected float defaultAtkDelay;
@@ -43,7 +43,7 @@ abstract class PlayerUnit : MonoBehaviour, Unit {
 		defMode = false;
 	}
 
-	public abstract void Attack(Unit target);
+	public abstract void Attack();
 
 	public abstract void UseSkill(Unit target);
 	

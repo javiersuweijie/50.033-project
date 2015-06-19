@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-interface Unit {
+public interface Unit {
 
-	void Attack(Unit target);
+	void Attack();
 
 	void UseSkill(Unit target);
 

@@ -1,22 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-class DefaultEnemyUnit : EnemyUnit {
+public class DefaultEnemyUnit : EnemyUnit {
 
 	protected bool jump = false;
 	protected float jumpTime = 0.0f;
 	protected float jumpHeight = 0.0f;
 	protected float yPos;
 
+	protected PlayerPartyController playerPartyController;
+
 	public GameObject bullet;
 	
 	void Start(){
 		Init(Time.time);
 		yPos = transform.position.y;
+		GameObject controller = GameObject.FindWithTag("Controller");
+		if (controller != null){
+			playerPartyController = controller.GetComponent<PlayerPartyController>();
+		}
+		else{
+			Debug.LogError("Cannot find controller object.");
+		}
 	}
 
 	
-	public override void Attack(Unit target){
+	public override void Attack(){
 		if(Time.time > ( lastAtkTime + atkDelay) )
 		{
 			lastAtkTime = Time.time;
