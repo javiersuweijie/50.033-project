@@ -28,7 +28,7 @@ class BattleController : MonoBehaviour{
 		for (int i = 0; i < 3; i++) {
 			if (!playerPartyController.IsDead(i)){
 				//Attack is handled by the units class attack function
-				playerPartyController.GetPlayerUnit(i).Attack();
+//				playerPartyController.GetPlayerUnit(i).Attack(playerPartyController, enemyPartyController);
 
 				//Backup code
 //				if (!enemyUnitList[0].IsDead()){
@@ -44,7 +44,7 @@ class BattleController : MonoBehaviour{
 
 			if (!enemyPartyController.IsDead(i)){
 				//Attack is handled by the units class attack function
-				enemyPartyController.GetEnemyUnit(i).Attack();
+//				enemyPartyController.GetEnemyUnit(i).Attack(enemyPartyController, playerPartyController);
 				
 				//Backup code
 //				if (!playerUnitList[0].IsDead()){

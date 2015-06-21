@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+public interface PartyController {
+	Unit GetBackTarget();
+	List<Unit> GetAllTargets();
+	Unit GetRandomTarget();
+}
+
 public class PlayerPartyController: MonoBehaviour {
 
 	private List<PlayerUnit> playerUnitList;
