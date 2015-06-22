@@ -5,13 +5,13 @@ using System.Collections;
 
 public class TouchInput : MonoBehaviour {
 	
-	PlayerPartyController playerPartyController;
+	BattleController battleController;
 	//public Player player = null;
 	// Use this for initialization
 	void Start () {
 		GameObject controller = GameObject.FindWithTag("Controller");
 		if (controller != null){
-			playerPartyController = controller.GetComponent<PlayerPartyController>();
+			battleController = controller.GetComponent<BattleController>();
 		}
 		else{
 			Debug.LogError("Cannot find controller object.");
@@ -32,21 +32,21 @@ public class TouchInput : MonoBehaviour {
 				//Do Defense
 				//Debug.Log ("Defending");
 				//player.DefenseMode();
-				playerPartyController.ChangeModeTo(-1);
+				battleController.ChangePlayerModeTo(-1);
 
 			}
 			else{
 				//Do Offense
 				//Debug.Log ("Attacking");
 				//player.AttackMode();
-				playerPartyController.ChangeModeTo(1);
+				battleController.ChangePlayerModeTo(-1);
 			}
 		}
 		else{
 			//Do Normal
 			//Debug.Log ("Stoning");
 			//player.NormalMode();
-			playerPartyController.ChangeModeTo(0);
+			battleController.ChangePlayerModeTo(-1);
 		}
 		#endif
 		

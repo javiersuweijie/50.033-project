@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11420498}
   m_Layer: 0
   m_Name: DefaultPlayerUnit
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,10 +82,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 195976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dffb4da5f377554786bc7737353c39a, type: 3}
+  m_Script: {fileID: 11500000, guid: 079c84b0f67a942d0a889299251e6141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uitxt: {fileID: 22438292, guid: 521b4e4cd8fb14c47927f2a2d3386397, type: 2}
+  max_health_growth: 0
+  attack_power_growth: 0
+  defence_power_growth: 0
+  attack_speed_growth: 0
+  critical_chance_growth: 0
+  critical_damage_growth: 0
+  experience: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

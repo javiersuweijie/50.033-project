@@ -15,7 +15,7 @@ public interface Equipment {
 	int GetHealthBonus(Unit unit);
 }
 
-public abstract class Unit {
+public abstract class Unit : MonoBehaviour {
 
 	//base stats
 	protected int max_health;
@@ -26,21 +26,23 @@ public abstract class Unit {
 	protected int critical_damage;
 
 	//growth stats
-	protected int max_health_growth;
-	protected int attack_power_growth;
-	protected int defence_power_growth;
-	protected int attack_speed_growth;
-	protected int critical_chance_growth;
-	protected int critical_damage_growth;
+	public int max_health_growth;
+	public int attack_power_growth;
+	public int defence_power_growth;
+	public int attack_speed_growth;
+	public int critical_chance_growth;
+	public int critical_damage_growth;
 
 	//stats that change
 	protected int current_health;
-	protected int experience;
+	public int experience;
 	protected FightingMode mode;
+	protected float next_attack_time;
 
 	//for rendering
 	protected string sprite_name;
 	protected string icon_name;
+	protected bool ally;
 
 	public abstract void Attack(PartyController allies, PartyController enemies);
 	public abstract void UseSkill(PartyController allies, PartyController enemies);
@@ -67,6 +69,14 @@ public abstract class Unit {
 		return current_health;
 	}
 
+	public float GetFractionalHealth() {
+		return current_health/(float)this.GetMaxHealth();
+	}
+
+	public int GetLevel() {
+		return (int) Mathf.Sqrt(experience);
+	}
+
 	public void NeutralMode() {
 		mode = FightingMode.Neutral;
 	}
@@ -75,5 +85,9 @@ public abstract class Unit {
 	}
 	public void DefensiveMode() {
 		mode = FightingMode.Defensive;
+	}	
+	public bool CanAttack() {
+		if (next_attack_time < Time.time) return true;
+		else return false;
 	}
 }

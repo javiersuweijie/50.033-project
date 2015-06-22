@@ -6,34 +6,57 @@ public abstract class PlayerUnit : Unit
 	//Equipables
 	protected Spell left_spell;
 	protected Spell right_spell;
-	protected Equipment weapon;
+	protected Equipment weapon = null;
 
 	//Unit states
-	protected long next_attack_time;
 	//current_health
 
 	public int GetAttackPower() {
-		return this.attack_power + weapon.GetAttackBonus(this);
+		if (weapon != null)
+			return this.attack_power + weapon.GetAttackBonus(this);
+		else
+			return this.attack_power;
 	}
 
 	public int GetDefencePower() {
-		return this.defence_power + weapon.GetDefenceBonus(this);
+		if (weapon != null)
+			return this.defence_power + weapon.GetDefenceBonus(this);
+		else
+			return this.defence_power;
 	}
 
 	public int GetCriticalChance() {
-		return this.critical_chance + weapon.GetCriticalChanceBonus(this);
+		if (weapon != null)
+			return this.critical_chance + weapon.GetCriticalChanceBonus(this);
+		else
+			return this.critical_chance;
 	}
 
 	public int GetCriticalDamage() {
-		return this.critical_chance + weapon.GetCriticalDamageBonus(this);
+		if (weapon != null)
+			return this.critical_chance + weapon.GetCriticalDamageBonus(this);
+		else
+			return this.critical_damage;
 	}
 
 	public override int GetMaxHealth() {
-		return this.max_health + weapon.GetHealthBonus(this);
+		if (weapon !=  null)
+			return this.max_health + weapon.GetHealthBonus(this);
+		else
+			return this.max_health;
 	}
 
 	override public void Attack(PartyController allies, PartyController enemies) {
-		enemies.GetRandomTarget().TakeDamage(this.GetAttackPower());
+		//default attack is to hit random enemies
+		if (this.CanAttack()) {
+			enemies.GetRandomTarget().TakeDamage(this.GetAttackPower());
+			next_attack_time = Time.time + attack_speed/100f;
+		}
+		else return;
+	}
+
+	override public void UseSkill(PartyController allies, PartyController enemies) {
+		return;
 	}
 
 }

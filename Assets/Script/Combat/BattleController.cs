@@ -8,27 +8,26 @@ class BattleController : MonoBehaviour{
 
 	private GameObject[] playerObjects = new GameObject[3];
 	private GameObject[] enemyObjects = new GameObject[3];
-	private PlayerPartyController playerPartyController = null;
-	private EnemyPartyController enemyPartyController = null;
+	private PartyController playerPartyController = new PartyController();
+	private PartyController enemyPartyController = new PartyController();
 	private GUIStyle currentStyle;
 
 	void Start(){
-		playerPartyController = GetComponent<PlayerPartyController>();
-		enemyPartyController = GetComponent<EnemyPartyController>();
 		for (int i = 0; i < 3; i++){
 			playerObjects[i] = Instantiate(player, new Vector3(-(i * 2.0f + 4.0f), -(1.0f), 0), Quaternion.identity) as GameObject;
-			playerPartyController.AddPlayerUnit(playerObjects[i].GetComponent<PlayerUnit>());
+			playerPartyController.AddUnit(playerObjects[i].GetComponent<Unit>());
 			enemyObjects[i] = Instantiate(enemy, new Vector3(i * 2.0f + 4.0f, -(1.0f), 0), Quaternion.identity) as GameObject;
-			enemyPartyController.AddEnemyUnit(enemyObjects[i].GetComponent<EnemyUnit>());
+			enemyPartyController.AddUnit(enemyObjects[i].GetComponent<Unit>());
 		//GameObject arrow = Instantiate(projectile, transform.position + transform.TransformDirection(new Vector3(1,0,0)), transform.rotation) as GameObject;
 		}
+		Debug.Log(enemyPartyController.GetAllTargets().Count);
 	}
 
 	void Update(){
 		for (int i = 0; i < 3; i++) {
 			if (!playerPartyController.IsDead(i)){
 				//Attack is handled by the units class attack function
-//				playerPartyController.GetPlayerUnit(i).Attack(playerPartyController, enemyPartyController);
+				playerPartyController.GetUnit(i).Attack(playerPartyController, enemyPartyController);
 
 				//Backup code
 //				if (!enemyUnitList[0].IsDead()){
@@ -45,7 +44,7 @@ class BattleController : MonoBehaviour{
 			if (!enemyPartyController.IsDead(i)){
 				//Attack is handled by the units class attack function
 //				enemyPartyController.GetEnemyUnit(i).Attack(enemyPartyController, playerPartyController);
-				
+				enemyPartyController.GetUnit(i).Attack(enemyPartyController, playerPartyController);
 				//Backup code
 //				if (!playerUnitList[0].IsDead()){
 //					enemyUnitList[i].Attack(playerUnitList[0]);
@@ -73,14 +72,18 @@ class BattleController : MonoBehaviour{
 		SetHPFillStyle();
 		for (int i = 0; i < 3; i ++){
 			if (!playerPartyController.IsDead(i)){
-				float barLength = (float)playerPartyController.GetPlayerUnit(i).GetCurrentHealth()/playerPartyController.GetPlayerUnit(i).GetMaxHealth() * 200;
+				float barLength = (float)playerPartyController.GetUnit(i).GetFractionalHealth() * 200;
 				GUI.Box(new Rect(10, Screen.height-80+i*20, barLength, 10), "", currentStyle);
 			}
 			if (!enemyPartyController.IsDead(i)){
-				float barLength = (float)enemyPartyController.GetEnemyUnit(i).GetCurrentHealth()/enemyPartyController.GetEnemyUnit(i).GetMaxHealth() * 200;
+				float barLength = (float)enemyPartyController.GetUnit(i).GetFractionalHealth() * 200;
 				GUI.Box(new Rect(Screen.width - 10 - barLength, Screen.height-80+i*20, barLength , 10), "", currentStyle);
 			}
 		}
+	}
+
+	public void ChangePlayerModeTo(int mode) {
+		playerPartyController.ChangeModeTo(mode);
 	}
 
 	private void SetHPContainerStyle()
