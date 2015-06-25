@@ -23,7 +23,7 @@ public class FloatDmgScript : MonoBehaviour {
 		myGUItext.material.color = color;
 	}
 
-	IEnumerator GuiDisplayTimer()
+	protected IEnumerator GuiDisplayTimer()
 	{
 		// Waits an amount of time
 		yield return new WaitForSeconds(guiTime);
