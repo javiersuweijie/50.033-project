@@ -4,8 +4,8 @@ using System.Collections;
 public abstract class PlayerUnit : Unit
 {
 	//Equipables
-	protected Spell left_spell;
-	protected Spell right_spell;
+	protected Skill left_spell;
+	protected Skill right_spell;
 	protected Equipment weapon = null;
 
 	//Unit states
@@ -56,7 +56,13 @@ public abstract class PlayerUnit : Unit
 	}
 
 	override public void UseSkill(PartyController allies, PartyController enemies) {
-		return;
+		if (mode == FightingMode.Defensive) {
+			left_spell.Execute(allies, enemies);
+		}
+		else if (mode == FightingMode.Offensive) {
+			right_spell.Execute(allies, enemies);
+		}
+		else return;
 	}
 
 }

@@ -6,7 +6,6 @@ public enum FightingMode {
 }
 
 //placeholders
-public interface Spell {}
 public interface Equipment {
 	int GetAttackBonus(Unit unit);
 	int GetCriticalChanceBonus(Unit unit);
