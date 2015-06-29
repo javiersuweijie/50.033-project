@@ -11,7 +11,7 @@ public class LightningSlash : Skill {
 
 	void Start(){
 		potency = 3.0f;
-		probability = 0.7f;
+		probability = 0.5f;
 		name = "Lightning Slash";
 		cdtime = 2.5f;
 		cooldown = true;
@@ -22,8 +22,11 @@ public class LightningSlash : Skill {
 	}
 
 	override public void Execute(PartyController friendly, PartyController enemy){
-		if (cooldown == true) {
-			Vector3 animLoc = new Vector3 (x, y);
+
+		float chance = Random.Range (0.0f, 1.0f);
+
+		if (cooldown == true && chance < probability) {
+			Vector3 animLoc = new Vector3 (x, y, -1);
 			Transform skillAnim = (Transform)Instantiate (anim, animLoc, Quaternion.identity);
 
 			foreach (Unit targets in enemy.GetAllTargets()) {

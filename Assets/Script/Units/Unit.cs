@@ -16,7 +16,10 @@ public interface Equipment {
 
 public abstract class Unit : MonoBehaviour {
 
+	protected Transform uitxt = (Transform)Resources.Load ("Prefabs/FloatDmgText", typeof(Transform));
+
 	//base stats
+
 	protected int max_health;
 	protected int attack_power;
 	protected int defence_power;
@@ -44,10 +47,21 @@ public abstract class Unit : MonoBehaviour {
 	protected bool ally;
 
 	public abstract void Attack(PartyController allies, PartyController enemies);
-	public abstract void UseSkill(PartyController allies, PartyController enemies);
+	public abstract IEnumerator UseSkill(PartyController allies, PartyController enemies);
 
 	public void TakeDamage(int value) {
-		current_health -= (value * (1 - defence_power/1000)); // Assuming defence from 0 - 1000 where 1000 = takes no damage
+
+		float dmg = (value * (1 - defence_power/1000)); 
+
+		Vector3 textLocation = Camera.main.WorldToScreenPoint(transform.position);
+		textLocation.x /= Screen.width;
+		textLocation.x += Random.Range(-0.02f,0.02f);
+		textLocation.y /= Screen.height;
+		textLocation.y += Random.Range(0.03f,0.05f);
+		Transform tempFloatingDamage = (Transform)Instantiate(uitxt, textLocation, Quaternion.identity);
+		tempFloatingDamage.GetComponent<FloatDmgScript>().DisplayDamage("-" + dmg.ToString());
+
+		current_health -= (int)(dmg); // Assuming defence from 0 - 1000 where 1000 = takes no damage
 		if (current_health < 0) current_health = 0;
 	}
 

@@ -37,16 +37,16 @@ public class TouchInput : MonoBehaviour {
 			}
 			else{
 				//Do Offense
-				//Debug.Log ("Attacking");
+				Debug.Log ("Attacking");
 				//player.AttackMode();
-				battleController.ChangePlayerModeTo(-1);
+				battleController.ChangePlayerModeTo(1);
 			}
 		}
 		else{
 			//Do Normal
 			//Debug.Log ("Stoning");
 			//player.NormalMode();
-			battleController.ChangePlayerModeTo(-1);
+			battleController.ChangePlayerModeTo(0);
 		}
 		#endif
 		

@@ -14,11 +14,12 @@ public class Paladin : PlayerUnit
 		attack_speed_growth = 0;
 		critical_chance_growth = 1;
 		critical_damage_growth = 0;
+		right_spell = gameObject.GetComponent("LightningSlash") as Skill;
 
 		//base stats
 
 		max_health = 1000 + GetLevel() * max_health_growth;
-		attack_power = 200 + GetLevel() * attack_power_growth;
+		attack_power = 100 + GetLevel() * attack_power_growth;
 		defence_power = 200 + GetLevel() * defence_power_growth;
 		attack_speed = 100 + GetLevel() * attack_speed_growth;
 		critical_chance = 10 + GetLevel() * critical_chance_growth;
@@ -38,7 +39,7 @@ public class Paladin : PlayerUnit
 			enemy.TakeDamage(this.GetAttackPower());
 			Debug.Log(enemy.GetCurrentHealth());
 			next_attack_time = Time.time + attack_speed/100f;
-
+			StartCoroutine (UseSkill(allies, enemies));
 		}
 		else return;
 	}

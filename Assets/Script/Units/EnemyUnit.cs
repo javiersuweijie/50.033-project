@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyUnit : Unit
 {
-	override public void UseSkill(PartyController allies, PartyController enemy){}
+	override public IEnumerator UseSkill(PartyController allies, PartyController enemy){ yield break;}
 	override public void Attack(PartyController allies, PartyController enemies) {
 		if (this.CanAttack()) {
 			enemies.GetRandomTarget().TakeDamage(attack_power);
@@ -25,7 +25,7 @@ public class EnemyUnit : Unit
 		
 		//base stats
 		
-		max_health = 4000 + GetLevel() * max_health_growth;
+		max_health = 40000 + GetLevel() * max_health_growth;
 		attack_power = 200 + GetLevel() * attack_power_growth;
 		defence_power = 200 + GetLevel() * defence_power_growth;
 		attack_speed = 100 + GetLevel() * attack_speed_growth;
