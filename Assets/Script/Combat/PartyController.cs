@@ -15,7 +15,6 @@ public class PartyController {
 		unitList.Add(unit);
 	}
 
-	// Update is called once per frame
 	public Unit GetFrontTarget () {
 		foreach (Unit unit in unitList) {
 			if (!unit.IsDead()){
@@ -57,7 +56,10 @@ public class PartyController {
 	}
 	
 	public Unit GetUnit (int i) {
-		return unitList[i];
+		if (i < unitList.Count){
+			return unitList[i];
+		}
+		return null;
 	}
 
 	public void ChangeModeTo (int mode){
@@ -80,6 +82,12 @@ public class PartyController {
 	}
 
 	public bool AllDead () {
-		return unitList[0].IsDead() && unitList[1].IsDead() && unitList[2].IsDead();
+		bool allDead = true;
+		foreach (Unit unit in unitList){
+			if (!unit.IsDead()){
+				return false;
+			}
+		}
+		return true;
 	}
 }

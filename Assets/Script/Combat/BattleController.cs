@@ -10,7 +10,9 @@ class BattleController : MonoBehaviour{
 	private GameObject[] enemyObjects = new GameObject[3];
 	private PartyController playerPartyController = new PartyController();
 	private PartyController enemyPartyController = new PartyController();
-	private GUIStyle currentStyle;
+	private CombatGraphicalFunction cgf;
+
+	private bool fighting, win, lose;
 
 	void Start(){
 		for (int i = 0; i < 3; i++){
@@ -20,65 +22,95 @@ class BattleController : MonoBehaviour{
 			enemyPartyController.AddUnit(enemyObjects[i].GetComponent<Unit>());
 		//GameObject arrow = Instantiate(projectile, transform.position + transform.TransformDirection(new Vector3(1,0,0)), transform.rotation) as GameObject;
 		}
+		cgf = new CombatGraphicalFunction();
+		fighting = true;
+		win = false;
+		lose = false;
 		Debug.Log(enemyPartyController.GetAllTargets().Count);
 	}
 
 	void Update(){
-		for (int i = 0; i < 3; i++) {
-			if (!playerPartyController.IsDead(i)){
-				//Attack is handled by the units class attack function
-				playerPartyController.GetUnit(i).Attack(playerPartyController, enemyPartyController);
+		if (fighting){
+			for (int i = 0; i < 3; i++) {
+				if (!playerPartyController.IsDead(i) && !enemyPartyController.AllDead()){
+					//Attack is handled by the units class attack function
+					Unit player = playerPartyController.GetUnit(i);
+					if (player != null){
+						player.Attack(playerPartyController, enemyPartyController);
+					}
 
-				//Backup code
-//				if (!enemyUnitList[0].IsDead()){
-//					playerUnitList[i].Attack(enemyUnitList[0]);
-//				}
-//				else if (!enemyUnitList[1].IsDead()){
-//					playerUnitList[i].Attack (enemyUnitList[1]);
-//				}
-//				else if (!enemyUnitList[2].IsDead()){
-//					playerUnitList[i].Attack (enemyUnitList[2]);
-//				}
-			}
+					//Backup code
+	//				if (!enemyUnitList[0].IsDead()){
+	//					playerUnitList[i].Attack(enemyUnitList[0]);
+	//				}
+	//				else if (!enemyUnitList[1].IsDead()){
+	//					playerUnitList[i].Attack (enemyUnitList[1]);
+	//				}
+	//				else if (!enemyUnitList[2].IsDead()){
+	//					playerUnitList[i].Attack (enemyUnitList[2]);
+	//				}
+				}
+				else if (playerPartyController.IsDead(i) && playerObjects[i] != null){
+					Destroy(playerObjects[i]);
+					playerObjects[i] = null;
+				}
+				else if (enemyPartyController.AllDead()){
+					ShowWinScreen();
+				}
 
-			if (!enemyPartyController.IsDead(i)){
-				//Attack is handled by the units class attack function
-//				enemyPartyController.GetEnemyUnit(i).Attack(enemyPartyController, playerPartyController);
-				enemyPartyController.GetUnit(i).Attack(enemyPartyController, playerPartyController);
-				//Backup code
-//				if (!playerUnitList[0].IsDead()){
-//					enemyUnitList[i].Attack(playerUnitList[0]);
-//				}
-//				else if (!playerUnitList[1].IsDead()){
-//					enemyUnitList[i].Attack (playerUnitList[1]);
-//				}
-//				else if (!playerUnitList[2].IsDead()){
-//					enemyUnitList[i].Attack (playerUnitList[2]);
-//				}
+				if (!enemyPartyController.IsDead(i) && !playerPartyController.AllDead()){
+					//Attack is handled by the units class attack function
+	//				enemyPartyController.GetEnemyUnit(i).Attack(enemyPartyController, playerPartyController);
+					Unit enemy = enemyPartyController.GetUnit(i);
+					if (enemy != null){
+						enemy.Attack(enemyPartyController, playerPartyController);
+					}
+					//Backup code
+	//				if (!playerUnitList[0].IsDead()){
+	//					enemyUnitList[i].Attack(playerUnitList[0]);
+	//				}
+	//				else if (!playerUnitList[1].IsDead()){
+	//					enemyUnitList[i].Attack (playerUnitList[1]);
+	//				}
+	//				else if (!playerUnitList[2].IsDead()){
+	//					enemyUnitList[i].Attack (playerUnitList[2]);
+	//				}
+				}
+				else if (enemyPartyController.IsDead(i) && enemyObjects[i] != null){
+					Destroy(enemyObjects[i]);
+					enemyObjects[i] = null;
+				}
+				else if (playerPartyController.AllDead()){
+					ShowLoseScreen();
+				}
 			}
+		}
+		else{
+			//Do some idle thing
 		}
 	}
 
+	//A really rudimentary way of doing health bar.
 	void OnGUI () {
-		SetHPContainerStyle();
-		for (int i = 0; i < 3; i ++){
+		for (int i = 0; i < 3; i++){
 			if (!playerPartyController.IsDead(i)){
-				GUI.Box(new Rect(10, Screen.height-80+i*20, 200 , 10), "", currentStyle);
+				float playerFractionalHealth = Mathf.Clamp (playerPartyController.GetUnit(i).GetFractionalHealth(), 0.0f , 1.0f);
+				cgf.DrawHealthBar(playerFractionalHealth, 10, 200, 10, Screen.height - 80 + i * 20);
 			}
 			if (!enemyPartyController.IsDead(i)){
-				GUI.Box(new Rect(Screen.width - 210, Screen.height-80+i*20, 200 , 10), "", currentStyle);
+				float enemyFractionalHealth = Mathf.Clamp (enemyPartyController.GetUnit(i).GetFractionalHealth(), 0.0f , 1.0f);
+				cgf.DrawReversedHealthBar(enemyFractionalHealth, 10, 200, Screen.width - 10, Screen.height - 80 + i * 20);
+				Debug.Log ("Enemy " + i + " has " + (enemyFractionalHealth * 100) + "% of HP left.");
 			}
+
 		}
-		SetHPFillStyle();
-		for (int i = 0; i < 3; i ++){
-			if (!playerPartyController.IsDead(i)){
-				float barLength = (float)playerPartyController.GetUnit(i).GetFractionalHealth() * 200;
-				GUI.Box(new Rect(10, Screen.height-80+i*20, barLength, 10), "", currentStyle);
-			}
-			if (!enemyPartyController.IsDead(i)){
-				float barLength = (float)enemyPartyController.GetUnit(i).GetFractionalHealth() * 200;
-				GUI.Box(new Rect(Screen.width - 10 - barLength, Screen.height-80+i*20, barLength , 10), "", currentStyle);
-			}
+
+		if (win){
+			cgf.ShowWin();
+		}
+
+		if (lose){
+			cgf.ShowLose();
 		}
 	}
 
@@ -86,29 +118,16 @@ class BattleController : MonoBehaviour{
 		playerPartyController.ChangeModeTo(mode);
 	}
 
-	private void SetHPContainerStyle()
-	{
-		currentStyle = new GUIStyle( GUI.skin.box );
-		currentStyle.normal.background = MakeTex(  1, 1, new Color( 0f, 0f, 0f, 1f ) );
+	private void ShowWinScreen(){
+		Debug.Log ("Win!");
+		win = true;
+		fighting = false;
 	}
 	
-	private void SetHPFillStyle()
-	{
-		currentStyle = new GUIStyle( GUI.skin.box );
-		currentStyle.normal.background = MakeTex( 1, 1, new Color( 255f, 0f, 0f, 1f ) );
-	}
-	
-	private Texture2D MakeTex( int width, int height, Color col )
-	{
-		Color[] pix = new Color[width * height];
-		for( int i = 0; i < pix.Length; ++i )
-		{
-			pix[ i ] = col;
-		}
-		Texture2D result = new Texture2D( width, height );
-		result.SetPixels( pix );
-		result.Apply();
-		return result;
+	private void ShowLoseScreen(){
+		Debug.Log ("Lose!");
+		lose = true;
+		fighting = false;
 	}
 
 }
