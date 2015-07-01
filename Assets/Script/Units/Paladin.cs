@@ -16,6 +16,12 @@ public class Paladin : PlayerUnit
 		critical_damage_growth = 0;
 		right_spell = gameObject.GetComponent("LightningSlash") as Skill;
 
+		anim = gameObject.GetComponent<Animator> ();
+		spr = gameObject.GetComponent<SpriteRenderer> ();
+
+		spr.sprite = (Sprite)Resources.Load ("Sprites/PalaSprite_3_2");
+		anim.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load ("Sprites/PaladinController");
+
 		//base stats
 
 		max_health = 1000 + GetLevel() * max_health_growth;
@@ -35,6 +41,7 @@ public class Paladin : PlayerUnit
 	{
 		//default attack is to hit random enemies
 		if (this.CanAttack()) {
+			anim.Play("PaladinAtk");
 			Unit enemy = enemies.GetRandomTarget();
 			enemy.TakeDamage(this.GetAttackPower());
 			Debug.Log(enemy.GetCurrentHealth());

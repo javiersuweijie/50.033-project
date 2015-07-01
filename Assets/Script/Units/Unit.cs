@@ -45,6 +45,8 @@ public abstract class Unit : MonoBehaviour {
 	protected string sprite_name;
 	protected string icon_name;
 	protected bool ally;
+	protected Animator anim;
+	protected SpriteRenderer spr;
 
 	public abstract void Attack(PartyController allies, PartyController enemies);
 	public abstract IEnumerator UseSkill(PartyController allies, PartyController enemies);
