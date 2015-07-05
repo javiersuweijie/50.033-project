@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11420232}
   - 212: {fileID: 21206228}
   - 95: {fileID: 9585810}
+  - 114: {fileID: 11412436}
   m_Layer: 0
   m_Name: DefaultPlayerUnit
   m_TagString: Player
@@ -61,6 +62,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11412436
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f747fa269e6484c96e49e17a034b02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpbarobj: {fileID: 166160, guid: 63725e26d4570b841a05d35dc282f255, type: 2}
+  shiftSpd: 1
 --- !u!114 &11420232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -122,7 +136,20 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: hpbar
+      value: 
+      objectReference: {fileID: 22403842, guid: 08047ec39de9e7342962f7c0395442e4,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: hpbarobj
+      value: 
+      objectReference: {fileID: 166160, guid: 63725e26d4570b841a05d35dc282f255, type: 2}
+    - target: {fileID: 0}
+      propertyPath: shiftSpd
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 195976}

@@ -189,6 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 195976, guid: b8a697d526acbe44f9c7483c20997c45, type: 2}
   enemy: {fileID: 156476, guid: abfb3ce634df5594d833542de581b0ec, type: 2}
+  hpbarobj: {fileID: 195382, guid: 1615197826e5c6b4a8ff91af42a0c5ba, type: 2}
 --- !u!4 &810569298
 Transform:
   m_ObjectHideFlags: 0
@@ -424,6 +425,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+  m_StereoMirrorMode: 0
 --- !u!4 &1583897228
 Transform:
   m_ObjectHideFlags: 0

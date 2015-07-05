@@ -12,13 +12,19 @@ class BattleController : MonoBehaviour{
 	private PartyController enemyPartyController = new PartyController();
 	private CombatGraphicalFunction cgf;
 
+	public GameObject hpbarobj = null;
+	private GameObject[] playerhpbars = new GameObject[3];
+	private GameObject[] enemyhpbars = new GameObject[3];
+
 	private bool fighting, win, lose;
 
 	void Start(){
 		for (int i = 0; i < 3; i++){
 			playerObjects[i] = Instantiate(player, new Vector3(-(i * 2.0f + 4.0f), -(1.0f), 0), Quaternion.identity) as GameObject;
 			playerPartyController.AddUnit(playerObjects[i].GetComponent<Unit>());
+			playerhpbars[i] = Instantiate(hpbarobj,new Vector3(-6,- (2 + i * 1),-2), Quaternion.identity) as GameObject;
 			enemyObjects[i] = Instantiate(enemy, new Vector3(i * 2.0f + 4.0f, -(1.0f), 0), Quaternion.identity) as GameObject;
+			enemyhpbars[i] = Instantiate(hpbarobj,new Vector3(6,- (2 + i * 1),-2), Quaternion.identity) as GameObject;
 			enemyPartyController.AddUnit(enemyObjects[i].GetComponent<Unit>());
 		//GameObject arrow = Instantiate(projectile, transform.position + transform.TransformDirection(new Vector3(1,0,0)), transform.rotation) as GameObject;
 		}
@@ -51,7 +57,7 @@ class BattleController : MonoBehaviour{
 	//				}
 				}
 				else if (playerPartyController.IsDead(i) && playerObjects[i] != null){
-					Destroy(playerObjects[i]);
+					HandleUnitDestruction(playerObjects[i]);
 					playerObjects[i] = null;
 				}
 				else if (enemyPartyController.AllDead()){
@@ -77,7 +83,7 @@ class BattleController : MonoBehaviour{
 	//				}
 				}
 				else if (enemyPartyController.IsDead(i) && enemyObjects[i] != null){
-					Destroy(enemyObjects[i]);
+					HandleUnitDestruction(enemyObjects[i]);
 					enemyObjects[i] = null;
 				}
 				else if (playerPartyController.AllDead()){
@@ -88,22 +94,26 @@ class BattleController : MonoBehaviour{
 		else{
 			//Do some idle thing
 		}
+		for (int i = 0; i < 3; i++){
+			UpdateHealth(playerhpbars[i], playerPartyController.GetUnit(i));
+			UpdateHealth(enemyhpbars[i], enemyPartyController.GetUnit(i));
+		}
 	}
 
 	//A really rudimentary way of doing health bar.
 	void OnGUI () {
-		for (int i = 0; i < 3; i++){
-			if (!playerPartyController.IsDead(i)){
-				float playerFractionalHealth = Mathf.Clamp (playerPartyController.GetUnit(i).GetFractionalHealth(), 0.0f , 1.0f);
-				cgf.DrawHealthBar(playerFractionalHealth, 10, 200, 10, Screen.height - 80 + i * 20);
-			}
-			if (!enemyPartyController.IsDead(i)){
-				float enemyFractionalHealth = Mathf.Clamp (enemyPartyController.GetUnit(i).GetFractionalHealth(), 0.0f , 1.0f);
-				cgf.DrawReversedHealthBar(enemyFractionalHealth, 10, 200, Screen.width - 10, Screen.height - 80 + i * 20);
-				Debug.Log ("Enemy " + i + " has " + (enemyFractionalHealth * 100) + "% of HP left.");
-			}
-
-		}
+//		for (int i = 0; i < 3; i++){
+//			if (!playerPartyController.IsDead(i)){
+//				float playerFractionalHealth = Mathf.Clamp (playerPartyController.GetUnit(i).GetFractionalHealth(), 0.0f , 1.0f);
+//				cgf.DrawHealthBar(playerFractionalHealth, 10, 200, 10, Screen.height - 80 + i * 20);
+//			}
+//			if (!enemyPartyController.IsDead(i)){
+//				float enemyFractionalHealth = Mathf.Clamp (enemyPartyController.GetUnit(i).GetFractionalHealth(), 0.0f , 1.0f);
+//				cgf.DrawReversedHealthBar(enemyFractionalHealth, 10, 200, Screen.width - 10, Screen.height - 80 + i * 20);
+//				Debug.Log ("Enemy " + i + " has " + (enemyFractionalHealth * 100) + "% of HP left.");
+//			}
+//
+//		}
 
 		if (win){
 			cgf.ShowWin();
@@ -130,4 +140,33 @@ class BattleController : MonoBehaviour{
 		fighting = false;
 	}
 
+	private void HandleUnitDestruction(GameObject unitobj){
+		if (unitobj != null)
+		{
+			FloatingHealthBar hpbar = unitobj.GetComponent<FloatingHealthBar>();
+			if (hpbar != null){
+				hpbar.DestroyHPBar();
+			}
+			Destroy(unitobj);
+		}
+	}
+
+	private void UpdateHealth(GameObject hpbar, Unit unit)
+	{
+		if (hpbar != null)
+		{
+			if (unit.IsDead()){
+				Destroy(hpbar);
+			}
+			else{
+				RectTransform hpbg = (RectTransform) hpbar.GetComponent<Transform>().GetChild(0).GetChild(0).GetChild(0);
+				RectTransform hpfill = (RectTransform) hpbg.GetChild(0);float barLength = hpfill.rect.width;
+				float maxXVal = hpbg.position.x;
+				float minXVal = maxXVal - barLength;
+				float tgtXVal = minXVal + unit.GetFractionalHealth() * barLength;
+				tgtXVal = Mathf.Clamp(tgtXVal, minXVal, maxXVal);
+				hpfill.position = new Vector3(tgtXVal, hpfill.position.y, hpfill.position.z);
+			}
+		}
+	}
 }
