@@ -37,16 +37,16 @@ public class Paladin : PlayerUnit
 		current_health = max_health;
 	}
 
-	public override void Attack (PartyController allies, PartyController enemies)
+	public override void Attack (PartyController allies, PartyController enemies, StaminaBar stambar)
 	{
 		//default attack is to hit random enemies
 		if (this.CanAttack()) {
 			anim.Play("PaladinAtk");
 			Unit enemy = enemies.GetRandomTarget();
 			enemy.TakeDamage(this.GetAttackPower());
-			Debug.Log(enemy.GetCurrentHealth());
+			//Debug.Log(enemy.GetCurrentHealth());
 			next_attack_time = Time.time + attack_speed/100f;
-			StartCoroutine (UseSkill(allies, enemies));
+			StartCoroutine (UseSkill(allies, enemies, stambar));
 		}
 		else return;
 	}

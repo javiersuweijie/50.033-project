@@ -155,8 +155,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 377174497}
   m_LocalRotation: {x: .70710659, y: 0, z: 0, w: -.707106948}
-  m_LocalPosition: {x: 0, y: -4, z: -2}
-  m_LocalScale: {x: 3, y: 1, z: .5}
+  m_LocalPosition: {x: 0, y: -3.95000005, z: -2}
+  m_LocalScale: {x: 2, y: 1, z: .25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 195976, guid: b8a697d526acbe44f9c7483c20997c45, type: 2}
   enemy: {fileID: 156476, guid: abfb3ce634df5594d833542de581b0ec, type: 2}
-  hpbarobj: {fileID: 195382, guid: 1615197826e5c6b4a8ff91af42a0c5ba, type: 2}
+  stambarobj: {fileID: 156154, guid: 27b28208cf96dd3468cbf3188ef26d66, type: 2}
 --- !u!4 &810569298
 Transform:
   m_ObjectHideFlags: 0
@@ -272,7 +272,7 @@ Transform:
   m_GameObject: {fileID: 1111297955}
   m_LocalRotation: {x: .70710659, y: 0, z: 0, w: -.707106948}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 3, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5

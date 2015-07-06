@@ -3,8 +3,8 @@ using System.Collections;
 
 public class EnemyUnit : Unit
 {
-	override public IEnumerator UseSkill(PartyController allies, PartyController enemy){ yield break;}
-	override public void Attack(PartyController allies, PartyController enemies) {
+	override public IEnumerator UseSkill(PartyController allies, PartyController enemy, StaminaBar stambar){ yield break;}
+	override public void Attack(PartyController allies, PartyController enemies, StaminaBar stambar) {
 		if (this.CanAttack()) {
 			enemies.GetRandomTarget().TakeDamage(attack_power);
 			next_attack_time = Time.time + attack_speed/100f;

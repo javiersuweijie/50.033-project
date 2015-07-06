@@ -46,7 +46,7 @@ public abstract class PlayerUnit : Unit
 			return this.max_health;
 	}
 
-	override public void Attack(PartyController allies, PartyController enemies) {
+	override public void Attack(PartyController allies, PartyController enemies, StaminaBar stambar) {
 		//default attack is to hit random enemies
 		if (this.CanAttack()) {
 			enemies.GetRandomTarget().TakeDamage(this.GetAttackPower());
@@ -55,15 +55,15 @@ public abstract class PlayerUnit : Unit
 		else return;
 	}
 
-	override public IEnumerator UseSkill(PartyController allies, PartyController enemies) {
+	override public IEnumerator UseSkill(PartyController allies, PartyController enemies, StaminaBar stambar) {
 
 		yield return new WaitForSeconds(0.5f);
-		Debug.Log ("SkillUse");
-		if (mode == FightingMode.Defensive) {
-			left_spell.Execute(allies, enemies);
+		//Debug.Log ("SkillUse");
+		if (mode == FightingMode.Defensive && left_spell != null) {
+			left_spell.Execute(allies, enemies, stambar);
 		}
-		else if (mode == FightingMode.Offensive) {
-			right_spell.Execute(allies, enemies);
+		else if (mode == FightingMode.Offensive && right_spell != null) {
+			right_spell.Execute(allies, enemies, stambar);
 		}
 	}
 

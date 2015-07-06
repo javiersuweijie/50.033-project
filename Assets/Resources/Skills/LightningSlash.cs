@@ -15,17 +15,18 @@ public class LightningSlash : Skill {
 		name = "Lightning Slash";
 		cdtime = 2.5f;
 		cooldown = true;
+		cost = 20;
 		baseUnit = gameObject.GetComponent<PlayerUnit> ();
 
 		anim = (Transform)Resources.Load ("GFXAnim/LightningSlash/LSPrefab", typeof(Transform));
 
 	}
 
-	override public void Execute(PartyController friendly, PartyController enemy){
+	override public void Execute(PartyController friendly, PartyController enemy, StaminaBar stambar){
 
 		float chance = Random.Range (0.0f, 1.0f);
 
-		if (cooldown == true && chance < probability) {
+		if (cooldown == true && chance < probability && stambar.UseStamina(cost)) {
 			Vector3 animLoc = new Vector3 (x, y, -1);
 			Transform skillAnim = (Transform)Instantiate (anim, animLoc, Quaternion.identity);
 

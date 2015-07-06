@@ -8,7 +8,7 @@ public class FloatDmgScript : MonoBehaviour {
 	
 	public void DisplayDamage(string damageMessage)
 	{
-		Debug.Log("damage message should be " + damageMessage);
+		//Debug.Log("damage message should be " + damageMessage);
 		myGUItext.text = damageMessage;
 		
 		// destory after time is up

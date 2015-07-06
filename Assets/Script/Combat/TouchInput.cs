@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 
@@ -37,7 +37,7 @@ public class TouchInput : MonoBehaviour {
 			}
 			else{
 				//Do Offense
-				Debug.Log ("Attacking");
+				//Debug.Log ("Attacking");
 				//player.AttackMode();
 				battleController.ChangePlayerModeTo(1);
 			}
