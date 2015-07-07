@@ -1,41 +1,41 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &169942
+--- !u!1 &180266
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 224: {fileID: 22438292}
-  - 132: {fileID: 13280458}
-  - 114: {fileID: 11488656}
+  - 224: {fileID: 22419868}
+  - 132: {fileID: 13236922}
+  - 114: {fileID: 11478584}
   m_Layer: 0
-  m_Name: FloatDmgText
+  m_Name: FloatDmgTextOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &11488656
+--- !u!114 &11478584
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169942}
+  m_GameObject: {fileID: 180266}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af859eba2c56d4577a9e9d2fae2cd2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myGUItext: {fileID: 13280458}
-  guiTime: .800000012
---- !u!132 &13280458
+  myGUItext: {fileID: 13236922}
+  guiTime: .600000024
+--- !u!132 &13236922
 GUIText:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169942}
+  m_GameObject: {fileID: 180266}
   m_Enabled: 1
   serializedVersion: 3
   m_Text: 
@@ -50,15 +50,15 @@ GUIText:
   m_FontStyle: 0
   m_Color:
     serializedVersion: 2
-    rgba: 4282169855
+    rgba: 4278190080
   m_PixelCorrect: 1
   m_RichText: 1
---- !u!224 &22438292
+--- !u!224 &22419868
 RectTransform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169942}
+  m_GameObject: {fileID: 180266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -67,7 +67,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -5.19319725, y: -.394838691}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
@@ -79,5 +79,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 169942}
+  m_RootGameObject: {fileID: 180266}
   m_IsPrefabParent: 1

@@ -17,6 +17,7 @@ public interface Equipment {
 public abstract class Unit : MonoBehaviour {
 
 	protected Transform uitxt = (Transform)Resources.Load ("Prefabs/FloatDmgText", typeof(Transform));
+	protected Transform uitxto = (Transform)Resources.Load ("Prefabs/FloatDmgTextOutline", typeof(Transform));
 	public Transform skillflashO = (Transform)Resources.Load ("GFXAnim/SkillGlow/skill1", typeof(Transform));
 
 	//base stats
@@ -67,7 +68,7 @@ public abstract class Unit : MonoBehaviour {
 
 		Vector3 textLocation = Camera.main.WorldToScreenPoint(transform.position);
 		textLocation.x /= Screen.width;
-		textLocation.x += Random.Range(-0.06f,0.00f);
+		textLocation.x += Random.Range(-0.03f,0.03f);
 		textLocation.y /= Screen.height;
 		textLocation.y += yoffset;
 
@@ -78,6 +79,12 @@ public abstract class Unit : MonoBehaviour {
 
 		Transform tempFloatingDamage = (Transform)Instantiate(uitxt, textLocation, Quaternion.identity);
 		tempFloatingDamage.GetComponent<FloatDmgScript>().DisplayDamage(dmg.ToString());
+
+		textLocation.x += 0.003f;
+		textLocation.y -= 0.004f;
+
+		Transform tempFloatingDamageOutline = (Transform)Instantiate(uitxto, textLocation, Quaternion.identity);
+		tempFloatingDamageOutline.GetComponent<FloatDmgScript>().DisplayDamage(dmg.ToString());
 
 		current_health -= (int)(dmg); // Assuming defence from 0 - 1000 where 1000 = takes no damage
 		if (current_health < 0) current_health = 0;

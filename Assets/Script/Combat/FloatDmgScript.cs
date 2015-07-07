@@ -24,7 +24,7 @@ public class FloatDmgScript : MonoBehaviour {
 			transform.Translate (0, 0.15f * Time.deltaTime, 0);
 		else {
 			Color color = myGUItext.material.color;
-			color.a -= 1.25f * Time.deltaTime;
+			color.a -= 1.0f * Time.deltaTime;
 			myGUItext.material.color = color;
 		}
 	}
