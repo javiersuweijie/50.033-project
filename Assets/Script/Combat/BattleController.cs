@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,19 +12,21 @@ class BattleController : MonoBehaviour{
 	private PartyController enemyPartyController = new PartyController();
 	private CombatGraphicalFunction cgf;
 
-	public GameObject hpbarobj = null;
-	private GameObject[] playerhpbars = new GameObject[3];
-	private GameObject[] enemyhpbars = new GameObject[3];
+	public GameObject stambarobj = null;
+	private StaminaBar stambar = null;
+	//private GameObject[] playerhpbars = new GameObject[3];
+	//private GameObject[] enemyhpbars = new GameObject[3];
 
 	private bool fighting, win, lose;
 
 	void Start(){
+		stambar = (Instantiate (stambarobj, new Vector3(0, -4, -2), Quaternion.identity) as GameObject).GetComponent<StaminaBar>();
 		for (int i = 0; i < 3; i++){
-			playerObjects[i] = Instantiate(player, new Vector3(-(i * 2.0f + 4.0f), -(1.0f), 0), Quaternion.identity) as GameObject;
+			playerObjects[i] = Instantiate(player, new Vector3(-(i * 2.0f + 4.0f), -(2.2f), 0), Quaternion.identity) as GameObject;
 			playerPartyController.AddUnit(playerObjects[i].GetComponent<Unit>());
-			playerhpbars[i] = Instantiate(hpbarobj,new Vector3(-6,- (2 + i * 1),-2), Quaternion.identity) as GameObject;
-			enemyObjects[i] = Instantiate(enemy, new Vector3(i * 2.0f + 4.0f, -(1.0f), 0), Quaternion.identity) as GameObject;
-			enemyhpbars[i] = Instantiate(hpbarobj,new Vector3(6,- (2 + i * 1),-2), Quaternion.identity) as GameObject;
+			//playerhpbars[i] = Instantiate(hpbarobj,new Vector3(-6,- (2 + i * 1),-2), Quaternion.identity) as GameObject;
+			enemyObjects[i] = Instantiate(enemy, new Vector3(i * 2.0f + 4.0f, -(2.2f), 0), Quaternion.identity) as GameObject;
+			//enemyhpbars[i] = Instantiate(hpbarobj,new Vector3(6,- (2 + i * 1),-2), Quaternion.identity) as GameObject;
 			enemyPartyController.AddUnit(enemyObjects[i].GetComponent<Unit>());
 		//GameObject arrow = Instantiate(projectile, transform.position + transform.TransformDirection(new Vector3(1,0,0)), transform.rotation) as GameObject;
 		}
@@ -32,7 +34,7 @@ class BattleController : MonoBehaviour{
 		fighting = true;
 		win = false;
 		lose = false;
-		Debug.Log(enemyPartyController.GetAllTargets().Count);
+		//Debug.Log(enemyPartyController.GetAllTargets().Count);
 	}
 
 	void Update(){
@@ -42,7 +44,7 @@ class BattleController : MonoBehaviour{
 					//Attack is handled by the units class attack function
 					Unit player = playerPartyController.GetUnit(i);
 					if (player != null){
-						player.Attack(playerPartyController, enemyPartyController);
+						player.Attack(playerPartyController, enemyPartyController, stambar);
 					}
 
 					//Backup code
@@ -69,7 +71,7 @@ class BattleController : MonoBehaviour{
 	//				enemyPartyController.GetEnemyUnit(i).Attack(enemyPartyController, playerPartyController);
 					Unit enemy = enemyPartyController.GetUnit(i);
 					if (enemy != null){
-						enemy.Attack(enemyPartyController, playerPartyController);
+						enemy.Attack(enemyPartyController, playerPartyController, null);
 					}
 					//Backup code
 	//				if (!playerUnitList[0].IsDead()){
@@ -94,10 +96,10 @@ class BattleController : MonoBehaviour{
 		else{
 			//Do some idle thing
 		}
-		for (int i = 0; i < 3; i++){
-			UpdateHealth(playerhpbars[i], playerPartyController.GetUnit(i));
-			UpdateHealth(enemyhpbars[i], enemyPartyController.GetUnit(i));
-		}
+		//for (int i = 0; i < 3; i++){
+		//	UpdateHealth(playerhpbars[i], playerPartyController.GetUnit(i));
+		//	UpdateHealth(enemyhpbars[i], enemyPartyController.GetUnit(i));
+		//}
 	}
 
 	//A really rudimentary way of doing health bar.
@@ -129,13 +131,13 @@ class BattleController : MonoBehaviour{
 	}
 
 	private void ShowWinScreen(){
-		Debug.Log ("Win!");
+		//Debug.Log ("Win!");
 		win = true;
 		fighting = false;
 	}
 	
 	private void ShowLoseScreen(){
-		Debug.Log ("Lose!");
+		//Debug.Log ("Lose!");
 		lose = true;
 		fighting = false;
 	}
@@ -151,22 +153,22 @@ class BattleController : MonoBehaviour{
 		}
 	}
 
-	private void UpdateHealth(GameObject hpbar, Unit unit)
-	{
-		if (hpbar != null)
-		{
-			if (unit.IsDead()){
-				Destroy(hpbar);
-			}
-			else{
-				RectTransform hpbg = (RectTransform) hpbar.GetComponent<Transform>().GetChild(0).GetChild(0).GetChild(0);
-				RectTransform hpfill = (RectTransform) hpbg.GetChild(0);float barLength = hpfill.rect.width;
-				float maxXVal = hpbg.position.x;
-				float minXVal = maxXVal - barLength;
-				float tgtXVal = minXVal + unit.GetFractionalHealth() * barLength;
-				tgtXVal = Mathf.Clamp(tgtXVal, minXVal, maxXVal);
-				hpfill.position = new Vector3(tgtXVal, hpfill.position.y, hpfill.position.z);
-			}
-		}
-	}
+//	private void UpdateHealth(GameObject hpbar, Unit unit)
+//	{
+//		if (hpbar != null)
+//		{
+//			if (unit.IsDead()){
+//				Destroy(hpbar);
+//			}
+//			else{
+//				RectTransform hpbg = (RectTransform) hpbar.GetComponent<Transform>().GetChild(0).GetChild(0).GetChild(0);
+//				RectTransform hpfill = (RectTransform) hpbg.GetChild(0);float barLength = hpfill.rect.width;
+//				float maxXVal = hpbg.position.x;
+//				float minXVal = maxXVal - barLength;
+//				float tgtXVal = minXVal + unit.GetFractionalHealth() * barLength;
+//				tgtXVal = Mathf.Clamp(tgtXVal, minXVal, maxXVal);
+//				hpfill.position = new Vector3(tgtXVal, hpfill.position.y, hpfill.position.z);
+//			}
+//		}
+//	}
 }

@@ -13,8 +13,11 @@ public abstract class Skill : MonoBehaviour {
 	protected Type type;
 	protected bool cooldown = false;
 	protected float cdtime;
+	protected int cost;
 
-	public abstract void Execute(PartyController friendly, PartyController enemy);
+	public abstract void Execute(PartyController friendly, PartyController enemy, StaminaBar stambar);
+
+	public int GetStamCost(){return cost;}
 
 	protected IEnumerator SkillCooldown()
 	{
