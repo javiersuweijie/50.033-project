@@ -17,6 +17,7 @@ public interface Equipment {
 public abstract class Unit : MonoBehaviour {
 
 	protected Transform uitxt = (Transform)Resources.Load ("Prefabs/FloatDmgText", typeof(Transform));
+	public Transform skillflashO = (Transform)Resources.Load ("GFXAnim/SkillGlow/skill1", typeof(Transform));
 
 	//base stats
 

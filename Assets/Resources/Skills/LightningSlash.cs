@@ -26,6 +26,8 @@ public class LightningSlash : Skill {
 		float chance = Random.Range (0.0f, 1.0f);
 
 		if (cooldown == true && chance < probability) {
+
+			//Transform skillGlow = (Transform)Instantiate (baseUnit.skillflashO, 
 			Vector3 animLoc = new Vector3 (x, y, -1);
 			Transform skillAnim = (Transform)Instantiate (anim, animLoc, Quaternion.identity);
 

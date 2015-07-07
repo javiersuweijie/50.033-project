@@ -44,7 +44,7 @@ public class Paladin : PlayerUnit
 			anim.Play("PaladinAtk");
 			Unit enemy = enemies.GetRandomTarget();
 			enemy.TakeDamage(this.GetAttackPower());
-			Debug.Log(enemy.GetCurrentHealth());
+			//Debug.Log(enemy.GetCurrentHealth());
 			next_attack_time = Time.time + attack_speed/100f;
 			StartCoroutine (UseSkill(allies, enemies));
 		}

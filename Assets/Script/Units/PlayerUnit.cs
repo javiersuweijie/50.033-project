@@ -58,7 +58,7 @@ public abstract class PlayerUnit : Unit
 	override public IEnumerator UseSkill(PartyController allies, PartyController enemies) {
 
 		yield return new WaitForSeconds(0.5f);
-		Debug.Log ("SkillUse");
+		//Debug.Log ("SkillUse");
 		if (mode == FightingMode.Defensive) {
 			left_spell.Execute(allies, enemies);
 		}

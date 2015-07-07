@@ -6,8 +6,12 @@ using System.Collections;
 public class TouchInput : MonoBehaviour {
 	
 	BattleController battleController;
-	//public Player player = null;
-	// Use this for initialization
+	GameObject offenseEdge;
+	GameObject defenseEdge;
+
+	public GameObject oePrefab;
+	public GameObject dePrefab;
+
 	void Start () {
 		GameObject controller = GameObject.FindWithTag("Controller");
 		if (controller != null){
@@ -32,20 +36,53 @@ public class TouchInput : MonoBehaviour {
 				//Do Defense
 				//Debug.Log ("Defending");
 				//player.DefenseMode();
+				if (offenseEdge != null);
+				{
+					Destroy(offenseEdge);
+					offenseEdge = null;
+				}
+
+				if (defenseEdge == null)
+				{
+					Vector3 spLocation = new Vector3(4.19f, 3.06f);
+					defenseEdge = (GameObject)Instantiate(dePrefab, spLocation, Quaternion.identity);
+				}
+
 				battleController.ChangePlayerModeTo(-1);
 
 			}
 			else{
 				//Do Offense
-				Debug.Log ("Attacking");
+				//Debug.Log ("Attacking");
 				//player.AttackMode();
+				if (defenseEdge != null);
+				{
+					Destroy(defenseEdge);
+					defenseEdge = null;
+				}
+
+
+				if (offenseEdge == null)
+				{
+					Vector3 spLocation = new Vector3(4.19f, 3.06f);
+					offenseEdge = (GameObject)Instantiate(oePrefab, spLocation, Quaternion.identity);
+				}
 				battleController.ChangePlayerModeTo(1);
 			}
 		}
 		else{
-			//Do Normal
-			//Debug.Log ("Stoning");
-			//player.NormalMode();
+			if (offenseEdge != null);
+			{
+				Destroy(offenseEdge);
+				offenseEdge = null;
+			}
+
+			if (defenseEdge != null);
+			{
+				Destroy(defenseEdge);
+				defenseEdge = null;
+			}
+
 			battleController.ChangePlayerModeTo(0);
 		}
 		#endif
