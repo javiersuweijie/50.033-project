@@ -12,6 +12,8 @@ public class TouchInput : MonoBehaviour {
 	public GameObject oePrefab;
 	public GameObject dePrefab;
 
+	bool drain;
+
 	void Start () {
 		GameObject controller = GameObject.FindWithTag("Controller");
 		if (controller != null){
@@ -22,6 +24,7 @@ public class TouchInput : MonoBehaviour {
 		}
 		//Debug.Log ("Screen Width: " + Screen.width);
 		//Debug.Log ("Screen Height: " + Screen.height);
+		drain = false;
 	}
 	
 	// Update is called once per frame
@@ -31,12 +34,14 @@ public class TouchInput : MonoBehaviour {
 		
 		#if UNITY_EDITOR
 		if (Input.GetMouseButton(0)){
+
+			drain = true;
 			touchPos = Input.mousePosition;
 			if (touchPos.x < Screen.width/2.0){
 				//Do Defense
 				//Debug.Log ("Defending");
 				//player.DefenseMode();
-				if (offenseEdge != null);
+				if (offenseEdge != null)
 				{
 					Destroy(offenseEdge);
 					offenseEdge = null;
@@ -55,7 +60,7 @@ public class TouchInput : MonoBehaviour {
 				//Do Offense
 				//Debug.Log ("Attacking");
 				//player.AttackMode();
-				if (defenseEdge != null);
+				if (defenseEdge != null)
 				{
 					Destroy(defenseEdge);
 					defenseEdge = null;
@@ -71,19 +76,22 @@ public class TouchInput : MonoBehaviour {
 			}
 		}
 		else{
-			if (offenseEdge != null);
+
+			drain = false;
+			if (offenseEdge != null)
 			{
 				Destroy(offenseEdge);
 				offenseEdge = null;
 			}
 
-			if (defenseEdge != null);
+			if (defenseEdge != null)
 			{
 				Destroy(defenseEdge);
 				defenseEdge = null;
 			}
 
 			battleController.ChangePlayerModeTo(0);
+
 		}
 		#endif
 		
@@ -100,4 +108,13 @@ public class TouchInput : MonoBehaviour {
 			//Do Normal
 		}
 	}
+
+	void FixedUpdate(){
+		if (drain){
+			battleController.drainStam ();
+			} else
+			{ 
+				battleController.incStam();
+			}
+		}
 }

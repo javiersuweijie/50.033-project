@@ -153,6 +153,14 @@ class BattleController : MonoBehaviour{
 		}
 	}
 
+	public void drainStam(){
+		stambar.UseStamina (1);
+	}
+
+	public void incStam(){
+		stambar.RecoverStamina (1);
+	}
+
 //	private void UpdateHealth(GameObject hpbar, Unit unit)
 //	{
 //		if (hpbar != null)

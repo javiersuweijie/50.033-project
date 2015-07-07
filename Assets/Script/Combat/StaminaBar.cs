@@ -3,7 +3,7 @@ using System.Collections;
 
 public class StaminaBar : MonoBehaviour {
 
-	public float shiftSpd = 2;
+	public float shiftSpd = 15;
 
 	private RectTransform stamfill;
 	private float yVal, zVal, minXVal, maxXVal, tgtXVal, barLength, lengthvalueratio;

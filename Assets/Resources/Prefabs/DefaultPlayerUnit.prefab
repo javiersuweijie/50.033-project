@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079c84b0f67a942d0a889299251e6141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillflashO: {fileID: 403316, guid: 7e14989f836b5f541a5acf4984c2bd6f, type: 2}
   max_health_growth: 0
   attack_power_growth: 0
   defence_power_growth: 0
