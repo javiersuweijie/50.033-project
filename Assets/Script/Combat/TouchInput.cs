@@ -92,6 +92,15 @@ public class TouchInput : MonoBehaviour {
 
 			battleController.ChangePlayerModeTo(0);
 
+
+		}
+		
+		if (drain){
+			battleController.drainStam ();
+		} 
+		else
+		{ 
+			battleController.incStam();
 		}
 		#endif
 		
@@ -110,11 +119,5 @@ public class TouchInput : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		if (drain){
-			battleController.drainStam ();
-			} else
-			{ 
-				battleController.incStam();
-			}
-		}
+	}
 }
