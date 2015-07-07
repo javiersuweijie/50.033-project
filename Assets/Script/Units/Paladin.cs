@@ -5,6 +5,7 @@ public class Paladin : PlayerUnit
 {
 
 	void Start() {
+		base.Start ();
 
 		experience = 2500;
 		//growth stats
@@ -25,9 +26,9 @@ public class Paladin : PlayerUnit
 		//base stats
 
 		max_health = 1000 + GetLevel() * max_health_growth;
-		attack_power = 100 + GetLevel() * attack_power_growth;
+		attack_power = 40 + GetLevel() * attack_power_growth;
 		defence_power = 200 + GetLevel() * defence_power_growth;
-		attack_speed = 100 + GetLevel() * attack_speed_growth;
+		attack_speed = 200 + GetLevel() * attack_speed_growth;
 		critical_chance = 10 + GetLevel() * critical_chance_growth;
 		critical_damage = 50 + GetLevel() * critical_damage_growth;
 
@@ -45,7 +46,7 @@ public class Paladin : PlayerUnit
 			Unit enemy = enemies.GetRandomTarget();
 			enemy.TakeDamage(this.GetAttackPower());
 			//Debug.Log(enemy.GetCurrentHealth());
-			next_attack_time = Time.time + attack_speed/100f;
+			next_attack_time = Time.time + 100f/attack_speed;
 			StartCoroutine (UseSkill(allies, enemies, stambar));
 		}
 		else return;

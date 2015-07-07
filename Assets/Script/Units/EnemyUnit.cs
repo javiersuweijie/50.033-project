@@ -7,13 +7,14 @@ public class EnemyUnit : Unit
 	override public void Attack(PartyController allies, PartyController enemies, StaminaBar stambar) {
 		if (this.CanAttack()) {
 			enemies.GetRandomTarget().TakeDamage(attack_power);
-			next_attack_time = Time.time + attack_speed/100f;
+			next_attack_time = Time.time + 100f/attack_speed;
 		}
 		else return;
 	}
 
 	void Start() {
-		
+		base.Start ();
+
 		experience = 25;
 		//growth stats
 		max_health_growth = 200;

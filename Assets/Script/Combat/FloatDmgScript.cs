@@ -5,6 +5,8 @@ public class FloatDmgScript : MonoBehaviour {
 
 	public GUIText myGUItext;
 	public float guiTime = 0.5f;
+
+	private bool moveup = true;
 	
 	public void DisplayDamage(string damageMessage)
 	{
@@ -13,14 +15,18 @@ public class FloatDmgScript : MonoBehaviour {
 		
 		// destory after time is up
 		StartCoroutine(GuiDisplayTimer());
+		StartCoroutine(Stop ());
 	}
 
 	void Update()
 	{
-		transform.Translate (0, 0.3f * Time.deltaTime, 0);
-		Color color = myGUItext.material.color;
-		color.a -= 1.25f * Time.deltaTime;
-		myGUItext.material.color = color;
+		if (moveup)
+			transform.Translate (0, 0.15f * Time.deltaTime, 0);
+		else {
+			Color color = myGUItext.material.color;
+			color.a -= 1.25f * Time.deltaTime;
+			myGUItext.material.color = color;
+		}
 	}
 
 	protected IEnumerator GuiDisplayTimer()
@@ -30,5 +36,12 @@ public class FloatDmgScript : MonoBehaviour {
 		
 		// destory game object
 		Destroy(gameObject);
+	}
+
+	protected IEnumerator Stop()
+	{
+		// Waits an amount of time
+		yield return new WaitForSeconds(0.13f);
+		moveup = false;
 	}
 }

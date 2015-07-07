@@ -46,8 +46,8 @@ GUIText:
   m_TabSize: 4
   m_Font: {fileID: 12800000, guid: 164a6a6ddbabd1746a242be0253d0d85, type: 3}
   m_Material: {fileID: 2100000, guid: 164a6a6ddbabd1746a242be0253d0d85, type: 3}
-  m_FontSize: 35
-  m_FontStyle: 0
+  m_FontSize: 28
+  m_FontStyle: 1
   m_Color:
     serializedVersion: 2
     rgba: 4278256060

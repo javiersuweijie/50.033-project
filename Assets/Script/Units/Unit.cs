@@ -49,8 +49,17 @@ public abstract class Unit : MonoBehaviour {
 	protected Animator anim;
 	protected SpriteRenderer spr;
 
+	//for damage text
+	protected float yoffset = 0.05f;
+	protected int yoffsetr = 0;
+
 	public abstract void Attack(PartyController allies, PartyController enemies, StaminaBar stambar);
 	public abstract IEnumerator UseSkill(PartyController allies, PartyController enemies, StaminaBar stambar);
+
+	protected void Start(){
+		StartCoroutine (yoffsetReset ());
+		Debug.Log("Started!");
+	}
 
 	public void TakeDamage(int value) {
 
@@ -58,11 +67,17 @@ public abstract class Unit : MonoBehaviour {
 
 		Vector3 textLocation = Camera.main.WorldToScreenPoint(transform.position);
 		textLocation.x /= Screen.width;
-		textLocation.x += Random.Range(-0.02f,0.02f);
+		textLocation.x += Random.Range(-0.06f,0.00f);
 		textLocation.y /= Screen.height;
-		textLocation.y += Random.Range(0.03f,0.05f);
+		textLocation.y += yoffset;
+
+		yoffset += (0.03f);
+		yoffsetr = 0;
+
+		if (yoffset > 0.18f) yoffset = 0.04f;
+
 		Transform tempFloatingDamage = (Transform)Instantiate(uitxt, textLocation, Quaternion.identity);
-		tempFloatingDamage.GetComponent<FloatDmgScript>().DisplayDamage("-" + dmg.ToString());
+		tempFloatingDamage.GetComponent<FloatDmgScript>().DisplayDamage(dmg.ToString());
 
 		current_health -= (int)(dmg); // Assuming defence from 0 - 1000 where 1000 = takes no damage
 		if (current_health < 0) current_health = 0;
@@ -105,5 +120,15 @@ public abstract class Unit : MonoBehaviour {
 	public bool CanAttack() {
 		if (next_attack_time < Time.time) return true;
 		else return false;
+	}
+
+	private IEnumerator yoffsetReset()
+	{
+		while (true) {
+			yield return new WaitForSeconds(0.1f);
+			yoffsetr += 1;
+
+			if (yoffsetr >= 4) yoffset = 0.05f;
+		}
 	}
 }
