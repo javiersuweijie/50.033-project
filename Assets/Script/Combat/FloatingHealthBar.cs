@@ -34,10 +34,10 @@ public class FloatingHealthBar : MonoBehaviour {
 		yVal = hpfill.position.y;
 		zVal = hpfill.position.z;
 		maxXVal = hpfill.position.x;
-		minXVal = maxXVal - hpfill.rect.width;
+		barLength = hpfill.rect.width * hpbarinstance.transform.localScale.x;
+		minXVal = maxXVal - barLength;
 		maxHealth = maxHP;
 		currentHealth = currentHP;
-		barLength = hpfill.rect.width;
 	}
 
 	public void UpdateHealth()
