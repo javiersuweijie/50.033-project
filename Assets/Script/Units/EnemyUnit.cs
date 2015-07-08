@@ -4,13 +4,23 @@ using System.Collections;
 public class EnemyUnit : Unit
 {
 	override public IEnumerator UseSkill(PartyController allies, PartyController enemy, StaminaBar stambar){ yield break;}
+
+
 	override public void Attack(PartyController allies, PartyController enemies, StaminaBar stambar) {
 		if (this.CanAttack()) {
-			enemies.GetRandomTarget().TakeDamage(attack_power);
+			anim.Play("PRN_Attack");
+			StartCoroutine (animWait (enemies));
 			next_attack_time = Time.time + 100f/attack_speed;
 		}
 		else return;
 	}
+
+	IEnumerator animWait(PartyController e){
+
+		yield return new WaitForSeconds (0.65f);
+		e.GetRandomTarget().TakeDamage(attack_power);
+	}
+
 
 	void Start() {
 		base.Start ();
@@ -37,6 +47,9 @@ public class EnemyUnit : Unit
 		icon_name = "CREEP";
 		
 		current_health = max_health;
+
+
+		//render
 	}
 }
 

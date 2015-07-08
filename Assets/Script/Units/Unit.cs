@@ -19,6 +19,7 @@ public abstract class Unit : MonoBehaviour {
 	protected Transform uitxt = (Transform)Resources.Load ("Prefabs/FloatDmgText", typeof(Transform));
 	protected Transform uitxto = (Transform)Resources.Load ("Prefabs/FloatDmgTextOutline", typeof(Transform));
 	public Transform skillflashO = (Transform)Resources.Load ("GFXAnim/SkillGlow/skill1", typeof(Transform));
+	protected Transform attackprefab;
 
 	//base stats
 
@@ -59,6 +60,9 @@ public abstract class Unit : MonoBehaviour {
 	public abstract IEnumerator UseSkill(PartyController allies, PartyController enemies, StaminaBar stambar);
 
 	protected void Start(){
+		anim = this.GetComponent<Animator> ();
+		spr = this.GetComponent<SpriteRenderer> ();
+
 		StartCoroutine (yoffsetReset ());
 		Debug.Log("Started!");
 	}
@@ -89,9 +93,33 @@ public abstract class Unit : MonoBehaviour {
 
 		current_health -= (int)(dmg); // Assuming defence from 0 - 1000 where 1000 = takes no damage
 		if (current_health < 0) current_health = 0;
+
+		StartCoroutine (damageFlash ());
 	}
 
 	public void ReceiveHeal(int value) {
+
+		Vector3 textLocation = Camera.main.WorldToScreenPoint(transform.position);
+		textLocation.x /= Screen.width;
+		textLocation.x += Random.Range(-0.03f,0.03f);
+		textLocation.y /= Screen.height;
+		textLocation.y += yoffset;
+		
+		yoffset += (0.03f);
+		yoffsetr = 0;
+		
+		if (yoffset > 0.18f) yoffset = 0.04f;
+		
+		Transform tempFloatingDamage = (Transform)Instantiate(uitxt, textLocation, Quaternion.identity);
+		tempFloatingDamage.GetComponent<FloatDmgScript>().DisplayDamage(value.ToString());
+		tempFloatingDamage.GetComponent<GUIText> ().color = new Color (0.3f, 1f, 0.3f);
+		
+		textLocation.x += 0.003f;
+		textLocation.y -= 0.004f;
+		
+		Transform tempFloatingDamageOutline = (Transform)Instantiate(uitxto, textLocation, Quaternion.identity);
+		tempFloatingDamageOutline.GetComponent<FloatDmgScript>().DisplayDamage(value.ToString());
+
 		current_health += value;
 		if (current_health > this.GetMaxHealth()) current_health = this.GetMaxHealth();
 	}
@@ -138,5 +166,14 @@ public abstract class Unit : MonoBehaviour {
 
 			if (yoffsetr >= 4) yoffset = 0.05f;
 		}
+	}
+
+	private IEnumerator damageFlash()
+	{
+
+		spr.material.SetFloat ("_FlashAmount", 0.8f);
+		yield return new WaitForSeconds(0.1f);
+		spr.material.SetFloat ("_FlashAmount", 0.0f);
+
 	}
 }

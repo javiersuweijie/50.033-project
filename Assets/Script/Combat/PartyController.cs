@@ -62,6 +62,21 @@ public class PartyController {
 		return null;
 	}
 
+	public Unit GetMostHurtUnit(){
+		float minHP = 1.01f;
+		Unit mostHurtUnit = null;
+		foreach (Unit unit in unitList) {
+			if (!unit.IsDead()){
+				if (unit.GetFractionalHealth() < minHP) 
+				{
+					minHP = unit.GetFractionalHealth();
+					mostHurtUnit = unit;
+				}
+			}
+		}
+		return mostHurtUnit;
+	}
+
 	public void ChangeModeTo (int mode){
 		for (int i = 0; i < 3; i ++)
 		{

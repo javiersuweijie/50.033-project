@@ -49,7 +49,7 @@ public class TouchInput : MonoBehaviour {
 
 				if (defenseEdge == null)
 				{
-					Vector3 spLocation = new Vector3(4.19f, 3.06f);
+					Vector3 spLocation = new Vector3(3.9f, 3.06f);
 					defenseEdge = (GameObject)Instantiate(dePrefab, spLocation, Quaternion.identity);
 				}
 
@@ -69,7 +69,7 @@ public class TouchInput : MonoBehaviour {
 
 				if (offenseEdge == null)
 				{
-					Vector3 spLocation = new Vector3(4.19f, 3.06f);
+					Vector3 spLocation = new Vector3(3.9f, 3.06f);
 					offenseEdge = (GameObject)Instantiate(oePrefab, spLocation, Quaternion.identity);
 				}
 				battleController.ChangePlayerModeTo(1);
