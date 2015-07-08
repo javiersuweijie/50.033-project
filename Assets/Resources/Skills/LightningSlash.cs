@@ -37,7 +37,8 @@ public class LightningSlash : Skill {
 
 	IEnumerator dmgAnim(PartyController enemy)
 	{
-		yield return new WaitForSeconds(0.6f);
+		baseUnit.GetComponent<Animator> ().Play (baseUnit.skillanim);
+		yield return new WaitForSeconds(0.45f);
 		Vector3 animLoc = new Vector3 (x, y, -1);
 		Transform skillAnim = (Transform)Instantiate (anim, animLoc, Quaternion.identity);
 		

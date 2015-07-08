@@ -49,6 +49,7 @@ public abstract class Unit : MonoBehaviour {
 	protected bool ally;
 	protected Animator anim;
 	protected SpriteRenderer spr;
+	public string skillanim;
 
 	//for damage text
 	protected float yoffset = 0.05f;
