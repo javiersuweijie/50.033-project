@@ -14,6 +14,7 @@ public abstract class Skill : MonoBehaviour {
 	protected bool cooldown = false;
 	protected float cdtime;
 	protected int cost;
+	protected string skillbanner;
 
 	public abstract void Execute(PartyController friendly, PartyController enemy, StaminaBar stambar);
 

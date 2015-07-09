@@ -39,7 +39,7 @@ public class EnemyUnit : Unit
 		max_health = 40000 + GetLevel() * max_health_growth;
 		attack_power = 200 + GetLevel() * attack_power_growth;
 		defence_power = 200 + GetLevel() * defence_power_growth;
-		attack_speed = 1000 + GetLevel() * attack_speed_growth;
+		attack_speed = 100 + GetLevel() * attack_speed_growth;
 		critical_chance = 10 + GetLevel() * critical_chance_growth;
 		critical_damage = 50 + GetLevel() * critical_damage_growth;
 		

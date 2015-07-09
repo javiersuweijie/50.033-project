@@ -30,6 +30,8 @@ public abstract class Unit : MonoBehaviour {
 	protected int critical_chance;
 	protected int critical_damage;
 
+	protected BuffManager buffManager;
+
 	//growth stats
 	public int max_health_growth;
 	public int attack_power_growth;
@@ -38,11 +40,14 @@ public abstract class Unit : MonoBehaviour {
 	public int critical_chance_growth;
 	public int critical_damage_growth;
 
+
 	//stats that change
 	protected int current_health;
 	public int experience;
 	protected FightingMode mode;
 	protected float next_attack_time;
+	protected float OEMod = 1.0f;
+	protected float DEMod = 1.0f;
 
 	//for rendering
 	protected string sprite_name;
@@ -51,6 +56,8 @@ public abstract class Unit : MonoBehaviour {
 	protected Animator anim;
 	protected SpriteRenderer spr;
 	public string skillanim;
+
+	public SkillAnimController sac;
 
 	//for damage text
 	protected float yoffset = 0.05f;
@@ -62,14 +69,19 @@ public abstract class Unit : MonoBehaviour {
 	protected void Start(){
 		anim = this.GetComponent<Animator> ();
 		spr = this.GetComponent<SpriteRenderer> ();
+		buffManager = this.GetComponent<BuffManager> ();
 
 		StartCoroutine (yoffsetReset ());
 		Debug.Log("Started!");
 	}
 
+	public void InitializeSAC(SkillAnimController in_sac){
+		sac = in_sac;
+	}
+
 	public void TakeDamage(int value) {
 
-		float dmg = (value * (1 - defence_power/1000)); 
+		int dmg = (int)(value - Mathf.Pow (this.GetDEFValue(), 0.7f)); 
 
 		Vector3 textLocation = Camera.main.WorldToScreenPoint(transform.position);
 		textLocation.x /= Screen.width;
@@ -146,16 +158,41 @@ public abstract class Unit : MonoBehaviour {
 
 	public void NeutralMode() {
 		mode = FightingMode.Neutral;
+		OEMod = 1.0f;
+		DEMod = 1.0f;
 	}
 	public void OffensiveMode() {
 		mode = FightingMode.Offensive;
+		OEMod = 1.25f;
+		DEMod = 0.9f;
 	}
 	public void DefensiveMode() {
 		mode = FightingMode.Defensive;
-	}	
+		DEMod = 1.25f;
+		OEMod = 0.9f;
+	}
+
 	public bool CanAttack() {
 		if (next_attack_time < Time.time) return true;
 		else return false;
+	}
+
+	//Stats After Buffs/EDGES (Use These Only);
+
+	public int GetATKValue(){
+		return (int)(attack_power * OEMod * buffManager.GetATKMod ());
+	}
+
+	public int GetATKValueHeal(){
+		return (int)(attack_power * DEMod * buffManager.GetATKMod ());
+	}
+
+	public int GetDEFValue(){
+		return (int)(defence_power * DEMod * buffManager.GetDEFMod ());
+	}
+
+	public int GetAGIValue(){
+		return (int)(attack_speed * buffManager.GetAGIMod ());
 	}
 
 	private IEnumerator yoffsetReset()

@@ -2,24 +2,23 @@ using UnityEngine;
 using System.Collections;
 
 
-public class LightningSlash : Skill {
+public class HolyBarrier : Skill {
 
 	private Transform anim;
-	private float x = 5.0f;
-	private float y = -2.2f;
+
 	private PlayerUnit baseUnit;
 
 	void Start(){
-		potency = 3.0f;
-		probability = 0.5f;
-		name = "Lightning Slash";
-		cdtime = 2.5f;
+		potency = 1.0f;
+		probability = 0.25f;
+		name = "Holy Barrier";
+		cdtime = 5.5f;
 		cooldown = true;
-		cost = 60;
+		cost = 100;
 		baseUnit = gameObject.GetComponent<PlayerUnit> ();
 
-		anim = (Transform)Resources.Load ("GFXAnim/LightningSlash/LSPrefab", typeof(Transform));
-		skillbanner = "GFXAnim/LightningSlash/LSBannerPivot";
+		anim = (Transform)Resources.Load ("GFXAnim/HolyDef/HS6", typeof(Transform));
+		skillbanner = "GFXAnim/HolyDef/HGBannerPrefab";
 
 	}
 
@@ -34,20 +33,18 @@ public class LightningSlash : Skill {
 			cooldown = false;
 
 			StartCoroutine (SkillCooldown());
-			StartCoroutine(dmgAnim(enemy));
+			StartCoroutine(skillAnim(friendly));
 		}
 	}
 
-	IEnumerator dmgAnim(PartyController enemy)
+	IEnumerator skillAnim(PartyController friendly)
 	{
 		baseUnit.GetComponent<Animator> ().Play (baseUnit.skillanim);
 		yield return new WaitForSeconds(0.45f);
-		Vector3 animLoc = new Vector3 (x, y, -1);
-		Transform skillAnim = (Transform)Instantiate (anim, animLoc, Quaternion.identity);
-
-		yield return new WaitForSeconds(0.25f);
-		foreach (Unit targets in enemy.GetAllTargets()) {
-			targets.TakeDamage ((int)(potency * baseUnit.GetATKValue()));
+	
+		foreach (Unit targets in friendly.GetAllTargets()) {
+			targets.GetComponent<BuffManager>().ApplyBuff(1,potency);
+			Instantiate (anim, targets.transform.position, Quaternion.identity);
 		}
 	}
 }

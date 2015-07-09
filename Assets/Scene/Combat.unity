@@ -242,6 +242,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 810569298}
   - 114: {fileID: 810569297}
+  - 114: {fileID: 810569295}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Controller
@@ -249,6 +250,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &810569295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 810569294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6817742b4ce86340aaf7b6a19d10189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &810569297
 MonoBehaviour:
   m_ObjectHideFlags: 0

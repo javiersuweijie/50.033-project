@@ -17,9 +17,14 @@ class BattleController : MonoBehaviour{
 	//private GameObject[] playerhpbars = new GameObject[3];
 	//private GameObject[] enemyhpbars = new GameObject[3];
 
+	private SkillAnimController skillAnimController;
+
 	private bool fighting, win, lose;
 
 	void Start(){
+
+		skillAnimController = gameObject.GetComponent<SkillAnimController> ();
+
 		stambar = (Instantiate (stambarobj, new Vector3(0, -4, -2), Quaternion.identity) as GameObject).GetComponent<StaminaBar>();
 		for (int i = 0; i < 3; i++){
 			playerObjects[i] = Instantiate(player, new Vector3(-(i * 2.0f + 4.0f), -(2.2f), 0), Quaternion.identity) as GameObject;
@@ -30,7 +35,9 @@ class BattleController : MonoBehaviour{
 				playerObjects[i].AddComponent<Cleric>();
 			}
 			playerPartyController.AddUnit(playerObjects[i].GetComponent<Unit>());
+			playerObjects[i].GetComponent<Unit>().InitializeSAC(skillAnimController);
 			playerObjects[i].AddComponent<FloatingHealthBar>();
+			//playerObjects[i].AddComponent<BuffManager>();
 			//playerhpbars[i] = Instantiate(hpbarobj,new Vector3(-6,- (2 + i * 1),-2), Quaternion.identity) as GameObject;
 			enemyObjects[i] = Instantiate(enemy, new Vector3(i * 2.0f + 4.0f, -(2.2f), 0), Quaternion.identity) as GameObject;
 			//enemyhpbars[i] = Instantiate(hpbarobj,new Vector3(6,- (2 + i * 1),-2), Quaternion.identity) as GameObject;

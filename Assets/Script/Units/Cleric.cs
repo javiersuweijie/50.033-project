@@ -47,11 +47,11 @@ public class Cleric : PlayerUnit
 		if (this.CanAttack()) {
 			anim.SetInteger("animController", 1);
 			Unit healtarget = allies.GetMostHurtUnit();
-			healtarget.ReceiveHeal(this.GetAttackPower());
+			healtarget.ReceiveHeal((int)(this.GetATKValueHeal()* Random.Range (0.9f,1.1f)));
 			Transform healanim = (Transform)Instantiate(attackprefab, healtarget.transform.position, Quaternion.Euler (0,0,270));
 
 			//Debug.Log(enemy.GetCurrentHealth());
-			next_attack_time = Time.time + 100f/attack_speed;
+			next_attack_time = Time.time + 100f/GetAGIValue();
 			StartCoroutine (UseSkill(allies, enemies, stambar));
 		}
 		else return;

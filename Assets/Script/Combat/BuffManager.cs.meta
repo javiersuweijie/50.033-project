@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 15b2dd0b570bca643b595ba509dae9be
+timeCreated: 1436457215
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - atkU: {fileID: 101490, guid: 9619764a39effad4babe94025c468612, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -16,6 +16,7 @@ public class Paladin : PlayerUnit
 		critical_chance_growth = 1;
 		critical_damage_growth = 0;
 		right_spell = gameObject.GetComponent("LightningSlash") as Skill;
+		left_spell = gameObject.GetComponent("HolyBarrier") as Skill;
 
 
 	
@@ -45,9 +46,9 @@ public class Paladin : PlayerUnit
 		if (this.CanAttack()) {
 			anim.SetInteger("animController", 1);
 			Unit enemy = enemies.GetRandomTarget();
-			enemy.TakeDamage(this.GetAttackPower());
+			enemy.TakeDamage((int)(this.GetATKValue()*Random.Range (0.85f,1.15f)));
 			//Debug.Log(enemy.GetCurrentHealth());
-			next_attack_time = Time.time + 100f/attack_speed;
+			next_attack_time = Time.time + 100f/this.GetAGIValue();
 			StartCoroutine (UseSkill(allies, enemies, stambar));
 		}
 		else return;
