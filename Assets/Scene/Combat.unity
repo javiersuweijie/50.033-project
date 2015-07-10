@@ -171,9 +171,10 @@ GameObject:
   - 33: {fileID: 377174500}
   - 64: {fileID: 377174499}
   - 23: {fileID: 377174498}
+  - 54: {fileID: 377174502}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -228,11 +229,26 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 377174497}
   m_LocalRotation: {x: .70710659, y: 0, z: 0, w: -.707106948}
-  m_LocalPosition: {x: 0, y: -3.95000005, z: -2}
-  m_LocalScale: {x: 2, y: 1, z: .25}
+  m_LocalPosition: {x: .00999999978, y: -4.0999999, z: -0}
+  m_LocalScale: {x: 2.00258636, y: .999999762, z: .189576522}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!54 &377174502
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 377174497}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &810569294
 GameObject:
   m_ObjectHideFlags: 0

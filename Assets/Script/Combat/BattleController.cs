@@ -28,11 +28,14 @@ class BattleController : MonoBehaviour{
 		stambar = (Instantiate (stambarobj, new Vector3(0, -4, -2), Quaternion.identity) as GameObject).GetComponent<StaminaBar>();
 		for (int i = 0; i < 3; i++){
 			playerObjects[i] = Instantiate(player, new Vector3(-(i * 2.0f + 4.0f), -(2.2f), 0), Quaternion.identity) as GameObject;
-			if (i !=2){
+			if (i == 0){
 				playerObjects[i].AddComponent<Paladin>();
-			} else
+			} else if (i == 1)
 			{
 				playerObjects[i].AddComponent<Cleric>();
+			}else
+			{
+				playerObjects[i].AddComponent<Gunner>();
 			}
 			playerPartyController.AddUnit(playerObjects[i].GetComponent<Unit>());
 			playerObjects[i].GetComponent<Unit>().InitializeSAC(skillAnimController);
