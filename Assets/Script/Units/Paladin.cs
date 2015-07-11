@@ -18,7 +18,6 @@ public class Paladin : PlayerUnit
 		right_spell = gameObject.GetComponent("LightningSlash") as Skill;
 		left_spell = gameObject.GetComponent("HolyBarrier") as Skill;
 
-
 	
 		skillanim = "PLD_Skill";
 

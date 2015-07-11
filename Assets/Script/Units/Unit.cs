@@ -213,4 +213,5 @@ public abstract class Unit : MonoBehaviour {
 		spr.material.SetFloat ("_FlashAmount", 0.0f);
 
 	}
+	
 }
