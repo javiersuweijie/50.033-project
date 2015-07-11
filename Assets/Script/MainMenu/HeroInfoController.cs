@@ -71,8 +71,9 @@ public class HeroInfoController : MonoBehaviour
 		weapon = window.Find("Weapon").gameObject;
 		unit_stats = window.Find ("UnitStats").gameObject;
 		SampleHero unit = new SampleHero();
+
+		// this is called to setup the subject of the controller
 		renderPlayerUnit(unit);
-		gameObject.SetActive(true);
 
 		left_skill.GetComponent<Button>().onClick.AddListener(()=> {
 			renderSkills(LeftRight.Left);
@@ -94,6 +95,7 @@ public class HeroInfoController : MonoBehaviour
 		weapon.GetComponent<Image>().sprite = Resources.Load<Sprite>(unit.weapon.weapon_icon);
 
 		renderStats();
+		gameObject.SetActive(true);
 //		renderSkills(LeftRight.Left);
 	}
 
@@ -124,7 +126,9 @@ public class HeroInfoController : MonoBehaviour
 		int i = 1;
 		skill_selection.transform.Find("Close").GetComponent<Button>().onClick.AddListener(()=>{renderStats();});
 		GameObject skill_template = skill_selection.transform.Find("SkillTemplate").gameObject;
-		foreach (SampleSkill skill in SampleSkill.skill_list) {
+		// See comment below in render weapons
+		for (int x = 0; x<SampleSkill.skill_list.Length; x++) {
+			SampleSkill skill = SampleSkill.skill_list[x];
 			GameObject skill_button = Instantiate<GameObject>(skill_template);
 			skill_button.transform.SetParent(skill_selection.transform,false);
 			// TODO: Better way of arranging the skills. Might have to wait for finalised UI design
@@ -144,7 +148,10 @@ public class HeroInfoController : MonoBehaviour
 		int i = 1;
 		weapon_selection.transform.Find("Close").GetComponent<Button>().onClick.AddListener(()=>{renderStats();});
 		GameObject weapon_template = weapon_selection.transform.Find("WeaponTemplate").gameObject;
-		foreach (SampleWeapon weapon in SampleWeapon.weapons_list) {
+		// this is important. we cannot use foreach here as the variable in foreach is shared and the scope in the delegate function below will 
+		// share the same handle to weapon
+		for (int x=0; x < SampleWeapon.weapons_list.Length; x++) {
+			SampleWeapon weapon = SampleWeapon.weapons_list[x];
 			GameObject weapon_button = Instantiate<GameObject>(weapon_template);
 			weapon_button.transform.SetParent(weapon_selection.transform,false);
 			// TODO: Better way of arranging the weapons. Might have to wait for finalised UI design
@@ -178,6 +185,7 @@ public class HeroInfoController : MonoBehaviour
 
 	void changeWeapon(SampleWeapon weapon) {
 		selected_unit.weapon = weapon;
+		Debug.Log (weapon);
 		this.weapon.GetComponent<Image>().sprite = Resources.Load<Sprite>(weapon.weapon_icon);
 	}
 }
