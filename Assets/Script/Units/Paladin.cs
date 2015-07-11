@@ -16,7 +16,7 @@ public class Paladin : PlayerUnit
 		critical_chance_growth = 1;
 		critical_damage_growth = 0;
 		right_spell = gameObject.GetComponent("LightningSlash") as Skill;
-
+		icon_name = "Sprites/Icons/51325";
 
 	
 		skillanim = "PLD_Skill";
