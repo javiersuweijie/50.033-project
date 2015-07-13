@@ -1,0 +1,594 @@
+fileFormatVersion: 2
+guid: afb3ef5039de64bc28e5131c93ab4e58
+timeCreated: 1433851862
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ui_sheet_0
+    21300002: ui_sheet_1
+    21300004: ui_sheet_2
+    21300006: ui_sheet_3
+    21300008: ui_sheet_4
+    21300010: ui_sheet_5
+    21300012: ui_sheet_6
+    21300014: ui_sheet_7
+    21300016: ui_sheet_8
+    21300018: ui_sheet_9
+    21300020: ui_sheet_10
+    21300022: ui_sheet_11
+    21300024: ui_sheet_12
+    21300026: ui_sheet_13
+    21300028: ui_sheet_14
+    21300030: ui_sheet_15
+    21300032: ui_sheet_16
+    21300034: ui_sheet_17
+    21300036: ui_sheet_18
+    21300038: ui_sheet_19
+    21300040: ui_sheet_20
+    21300042: ui_sheet_21
+    21300044: ui_sheet_22
+    21300046: ui_sheet_23
+    21300048: ui_sheet_24
+    21300050: ui_sheet_25
+    21300052: ui_sheet_26
+    21300054: ui_sheet_27
+    21300056: ui_sheet_28
+    21300058: ui_sheet_29
+    21300060: ui_sheet_30
+    21300062: ui_sheet_31
+    21300064: ui_sheet_32
+    21300066: ui_sheet_33
+    21300068: ui_sheet_34
+    21300070: ui_sheet_35
+    21300072: ui_sheet_36
+    21300074: ui_sheet_37
+    21300076: ui_sheet_38
+    21300078: ui_sheet_39
+    21300080: ui_sheet_40
+    21300082: ui_sheet_41
+    21300084: ui_sheet_42
+    21300086: ui_sheet_43
+    21300088: ui_sheet_44
+    21300090: ui_sheet_45
+    21300092: ui_sheet_46
+    21300094: ui_sheet_47
+    21300096: ui_sheet_48
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: ui_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 184
+        width: 32
+        height: 72
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 184
+        width: 95
+        height: 72
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 184
+        width: 32
+        height: 72
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 227
+        width: 40
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 228
+        width: 32
+        height: 23
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 227
+        width: 41
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 224
+        width: 10
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 195
+        width: 41
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 196
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_11
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 195
+        width: 41
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_12
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 216
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_13
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 216
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_14
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 184
+        width: 10
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_15
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 192
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_16
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 192
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_17
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 144
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_18
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 144
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_19
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 144
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_20
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 163
+        width: 41
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_21
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 164
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_22
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 163
+        width: 41
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_23
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 138
+        width: 10
+        height: 38
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_24
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 161
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_25
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 131
+        width: 40
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_26
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 132
+        width: 32
+        height: 23
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_27
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 131
+        width: 41
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_28
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 145
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_29
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 104
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_30
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 104
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_31
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 104
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_32
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 73
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_33
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 73
+        width: 32
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_34
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 73
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_35
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 72
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_36
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 67
+        width: 40
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_37
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 67
+        width: 32
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_38
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 67
+        width: 41
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_39
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 48
+        width: 32
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_40
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 32
+        width: 5
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_41
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 32
+        width: 14
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_42
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 32
+        width: 15
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_43
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_44
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 25
+        width: 32
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_45
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 17
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_46
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 112
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_47
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 112
+        width: 30
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_sheet_48
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 112
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -158,6 +158,10 @@ public abstract class Unit : MonoBehaviour {
 		else return false;
 	}
 
+	public string getIconName() {
+		return icon_name;
+	}
+
 	private IEnumerator yoffsetReset()
 	{
 		while (true) {
@@ -176,4 +180,5 @@ public abstract class Unit : MonoBehaviour {
 		spr.material.SetFloat ("_FlashAmount", 0.0f);
 
 	}
+	
 }
