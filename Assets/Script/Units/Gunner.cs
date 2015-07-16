@@ -17,7 +17,7 @@ public class Gunner : PlayerUnit
 
 //		right_spell = gameObject.GetComponent("GrenadeBarrage") as Skill;
 		right_spell_type = typeof(GrenadeBarrage);
-		left_spell_type = typeof(LightningSlash);
+//		left_spell_type = typeof(LightningSlash);
 	
 		skillanim = "MCH_Skill";
 		sprite_name = "Sprites/CHR_MCH_Alpha_0";

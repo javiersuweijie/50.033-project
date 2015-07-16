@@ -32,9 +32,9 @@ class BattleController : MonoBehaviour{
 			if (i == 0){
 				unit_controller.AttachUnit(new Paladin());
 			} 
-//			else if (i == 1) {
-//				unit_controller.AttachUnit(new Cleric());
-//			}
+			else if (i == 1) {
+				unit_controller.AttachUnit(new Cleric());
+			}
 			else {
 				unit_controller.AttachUnit(new Gunner());
 			}
