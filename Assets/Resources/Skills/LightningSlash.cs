@@ -7,7 +7,7 @@ public class LightningSlash : Skill {
 	private Transform anim;
 	private float x = 5.0f;
 	private float y = -2.2f;
-	private PlayerUnit baseUnit;
+	private UnitController baseUnit;
 
 	void Start(){
 		potency = 3.0f;
@@ -16,20 +16,23 @@ public class LightningSlash : Skill {
 		cdtime = 2.5f;
 		cooldown = true;
 		cost = 60;
-		baseUnit = gameObject.GetComponent<PlayerUnit> ();
+		baseUnit = gameObject.GetComponent<UnitController> ();
 
 		anim = (Transform)Resources.Load ("GFXAnim/LightningSlash/LSPrefab", typeof(Transform));
+		skillbanner = "GFXAnim/LightningSlash/LSBannerPivot";
 
 	}
 
 	override public void Execute(PartyController friendly, PartyController enemy, StaminaBar stambar){
-
+		Debug.Log("Lightning skill");
 		float chance = Random.Range (0.0f, 1.0f);
 
 		if (cooldown == true && chance < probability && stambar.UseStamina(cost)) {
 			Vector3 skillflashLoc = gameObject.transform.position;
 			Instantiate (baseUnit.skillflashO, skillflashLoc, Quaternion.identity);
+			baseUnit.sac.DisplayPlayerSkill(skillbanner);
 			cooldown = false;
+
 			StartCoroutine (SkillCooldown());
 			StartCoroutine(dmgAnim(enemy));
 		}
@@ -43,8 +46,8 @@ public class LightningSlash : Skill {
 		Transform skillAnim = (Transform)Instantiate (anim, animLoc, Quaternion.identity);
 
 		yield return new WaitForSeconds(0.25f);
-		foreach (Unit targets in enemy.GetAllTargets()) {
-			targets.TakeDamage ((int)(potency * baseUnit.GetAttackPower ()));
+		foreach (UnitController targets in enemy.GetAllTargets()) {
+			targets.TakeDamage ((int)(potency * baseUnit.unit.GetATKValue()));
 		}
 	}
 }
