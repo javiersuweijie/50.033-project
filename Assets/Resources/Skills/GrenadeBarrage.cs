@@ -5,9 +5,7 @@ using System.Collections;
 public class GrenadeBarrage : Skill {
 
 	private GameObject anim;
-
-
-	private PlayerUnit baseUnit;
+	private UnitController baseUnit;
 
 	void Start(){
 		potency = 4.5f;
@@ -16,9 +14,9 @@ public class GrenadeBarrage : Skill {
 		cdtime = 4.5f;
 		cooldown = true;
 		cost = 70;
-		baseUnit = gameObject.GetComponent<PlayerUnit> ();
+		baseUnit = gameObject.GetComponent<UnitController> ();
 
-		anim = (GameObject)Resources.Load ("GFXAnim/GrenadeBarrage/GrenadeFab", typeof(GameObject));
+		anim = Resources.Load<GameObject>("GFXAnim/GrenadeBarrage/GrenadeFab");
 		skillbanner = "GFXAnim/GrenadeBarrage/GBBannerFab";
 
 	}
@@ -26,7 +24,7 @@ public class GrenadeBarrage : Skill {
 	override public void Execute(PartyController friendly, PartyController enemy, StaminaBar stambar){
 
 		float chance = Random.Range (0.0f, 1.0f);
-
+		Debug.Log ("grenade out!");
 		if (cooldown == true && chance < probability && stambar.UseStamina(cost)) {
 			Vector3 skillflashLoc = gameObject.transform.position;
 			Instantiate (baseUnit.skillflashO, skillflashLoc, Quaternion.identity);
@@ -51,7 +49,7 @@ public class GrenadeBarrage : Skill {
 			yield return new WaitForSeconds(0.15f);
 			Debug.Log ("grenade out!");
 			GameObject skillAnim = (GameObject)Instantiate (anim, pos, Quaternion.identity);
-			skillAnim.GetComponent<Grenade>().Initialize(animLoc, (int)(baseUnit.GetATKValue() * potency));
+			skillAnim.GetComponent<Grenade>().Initialize(animLoc, (int)(baseUnit.unit.GetATKValue() * potency));
 		}
 
 	}

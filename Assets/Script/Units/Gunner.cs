@@ -4,8 +4,7 @@ using System.Collections;
 public class Gunner : PlayerUnit
 {
 
-	void Start() {
-		base.Start ();
+	public Gunner() {
 
 		experience = 2500;
 		//growth stats
@@ -16,13 +15,15 @@ public class Gunner : PlayerUnit
 		critical_chance_growth = 1;
 		critical_damage_growth = 0;
 
-		right_spell = gameObject.GetComponent("GrenadeBarrage") as Skill;
-
+//		right_spell = gameObject.GetComponent("GrenadeBarrage") as Skill;
+		right_spell_type = typeof(GrenadeBarrage);
+		left_spell_type = typeof(LightningSlash);
 	
 		skillanim = "MCH_Skill";
-
-		spr.sprite = (Sprite)Resources.Load ("Sprites/CHR_MCH_Alpha_0");
-		anim.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load ("Sprites/MCH_CTR");
+		sprite_name = "Sprites/CHR_MCH_Alpha_0";
+		runTimeAnimatorController = "Sprites/MCH_CTR";
+//		spr.sprite = (Sprite)Resources.Load ("Sprites/CHR_MCH_Alpha_0");
+//		anim.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load ("Sprites/MCH_CTR");
 
 		//base stats
 
@@ -33,24 +34,22 @@ public class Gunner : PlayerUnit
 		critical_chance = 10 + GetLevel() * critical_chance_growth;
 		critical_damage = 50 + GetLevel() * critical_damage_growth;
 
-		sprite_name = "GUNNER";
 		icon_name = "GUNNER";
 
 		current_health = max_health;
 	}
 
-	public override void Attack (PartyController allies, PartyController enemies, StaminaBar stambar)
+	public override bool Attack (PartyController allies, PartyController enemies, StaminaBar stambar)
 	{
 		//default attack is to hit random enemies
 		if (this.CanAttack()) {
-			anim.SetInteger("animController", 1);
-			Unit enemy = enemies.GetRandomTarget();
+			UnitController enemy = enemies.GetRandomTarget();
 			enemy.TakeDamage((int)(this.GetATKValue()*Random.Range (0.85f,1.15f)));
 			//Debug.Log(enemy.GetCurrentHealth());
 			next_attack_time = Time.time + 100f/this.GetAGIValue();
-			StartCoroutine (UseSkill(allies, enemies, stambar));
+			return true;
 		}
-		else return;
+		else return false;
 	}
 }
 

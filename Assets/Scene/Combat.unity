@@ -288,8 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec6e90e394cd44f1b924463a8f41b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 195976, guid: b8a697d526acbe44f9c7483c20997c45, type: 2}
-  enemy: {fileID: 156476, guid: abfb3ce634df5594d833542de581b0ec, type: 2}
+  player: {fileID: 136954, guid: 468bc24a869be4106b73a2a31431482e, type: 2}
+  enemy: {fileID: 121518, guid: 6c49e98d2a06e47ddb3b18f39710089e, type: 2}
   stambarobj: {fileID: 173768, guid: 1d585677db2a7504194a95275d916e57, type: 2}
 --- !u!4 &810569298
 Transform:

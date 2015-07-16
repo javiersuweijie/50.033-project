@@ -4,49 +4,49 @@ using System.Collections.Generic;
 
 public class PartyController {
 
-	private List<Unit> unitList;
+	private List<UnitController> unitList;
 
 	// Use this for initialization
 	public PartyController () {
-		unitList = new List<Unit>();
+		unitList = new List<UnitController>();
 	}
 
-	public void AddUnit(Unit unit){
+	public void AddUnit(UnitController unit){
 		unitList.Add(unit);
 	}
 
-	public Unit GetFrontTarget () {
-		foreach (Unit unit in unitList) {
-			if (!unit.IsDead()){
+	public UnitController GetFrontTarget () {
+		foreach (UnitController unit in unitList) {
+			if (!unit.unit.IsDead()){
 				return unit;
 			}
 		}
 		return null;
 	}
 
-	public Unit GetBackTarget () {
+	public UnitController GetBackTarget () {
 		for (int i = unitList.Count - 1; i >= 0; i--) {
-			if (!unitList[i].IsDead()){
+			if (!unitList[i].unit.IsDead()){
 				return unitList[i];
 			}
 		}
 		return null;
 	}
 	
-	public List<Unit> GetAllTargets () {
-		List<Unit> aliveUnitList = new List<Unit>();
-		foreach (Unit unit in unitList) {
-			if (!unit.IsDead()){
+	public List<UnitController> GetAllTargets () {
+		List<UnitController> aliveUnitList = new List<UnitController>();
+		foreach (UnitController unit in unitList) {
+			if (!unit.unit.IsDead()){
 				aliveUnitList.Add(unit);
 			}
 		}
 		return aliveUnitList;
 	}
 	
-	public Unit GetRandomTarget () {
-		List<Unit> aliveUnitList = new List<Unit>();
-		foreach (Unit unit in unitList) {
-			if (!unit.IsDead()){
+	public UnitController GetRandomTarget () {
+		List<UnitController> aliveUnitList = new List<UnitController>();
+		foreach (UnitController unit in unitList) {
+			if (!unit.unit.IsDead()){
 				aliveUnitList.Add(unit);
 			}
 		}
@@ -55,21 +55,21 @@ public class PartyController {
 		return aliveUnitList[randNo];
 	}
 	
-	public Unit GetUnit (int i) {
+	public UnitController GetUnit (int i) {
 		if (i < unitList.Count){
 			return unitList[i];
 		}
 		return null;
 	}
 
-	public Unit GetMostHurtUnit(){
+	public UnitController GetMostHurtUnit(){
 		float minHP = 1.01f;
-		Unit mostHurtUnit = null;
-		foreach (Unit unit in unitList) {
-			if (!unit.IsDead()){
-				if (unit.GetFractionalHealth() < minHP) 
+		UnitController mostHurtUnit = null;
+		foreach (UnitController unit in unitList) {
+			if (!unit.unit.IsDead()){
+				if (unit.unit.GetFractionalHealth() < minHP) 
 				{
-					minHP = unit.GetFractionalHealth();
+					minHP = unit.unit.GetFractionalHealth();
 					mostHurtUnit = unit;
 				}
 			}
@@ -81,25 +81,25 @@ public class PartyController {
 		for (int i = 0; i < 3; i ++)
 		{
 			if (mode == 0){
-				unitList[i].NeutralMode();
+				unitList[i].unit.NeutralMode();
 			}
 			else if (mode == 1){
-				unitList[i].OffensiveMode();
+				unitList[i].unit.OffensiveMode();
 			}
 			else if (mode == -1){
-				unitList[i].DefensiveMode();
+				unitList[i].unit.DefensiveMode();
 			}
 		}
 	}
 
 	public bool IsDead (int position){
-		return unitList[position].IsDead();
+		return unitList[position].unit.IsDead();
 	}
 
 	public bool AllDead () {
 		bool allDead = true;
-		foreach (Unit unit in unitList){
-			if (!unit.IsDead()){
+		foreach (UnitController unit in unitList){
+			if (!unit.unit.IsDead()){
 				return false;
 			}
 		}
