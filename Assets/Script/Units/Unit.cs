@@ -136,7 +136,7 @@ public abstract class Unit {
 	public string getIconName() {
 		return icon_name;
 	//Stats After Buffs/EDGES (Use These Only);
-
+	}
 	public int GetATKValue(){
 		return (int)(attack_power * OEMod * buffManager.GetATKMod ());
 	}
