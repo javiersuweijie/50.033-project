@@ -16,7 +16,7 @@ public class Gunner : PlayerUnit
 		critical_chance_growth = 1;
 		critical_damage_growth = 0;
 
-		right_spell = gameObject.GetComponent("GrenadeBarrage") as Skill;
+		//right_spell = gameObject.GetComponent("GrenadeBarrage") as Skill;
 
 	
 		skillanim = "MCH_Skill";

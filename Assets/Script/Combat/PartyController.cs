@@ -97,7 +97,6 @@ public class PartyController {
 	}
 
 	public bool AllDead () {
-		bool allDead = true;
 		foreach (Unit unit in unitList){
 			if (!unit.IsDead()){
 				return false;

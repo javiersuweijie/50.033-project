@@ -11,6 +11,7 @@ class BattleController : MonoBehaviour{
 	private PartyController playerPartyController = new PartyController();
 	private PartyController enemyPartyController = new PartyController();
 	private CombatGraphicalFunction cgf;
+	private DataController dataController;
 
 	public GameObject stambarobj = null;
 	private StaminaBar stambar = null;
@@ -21,25 +22,49 @@ class BattleController : MonoBehaviour{
 
 	private bool fighting, win, lose;
 
+
 	void Start(){
+		dataController = GameObject.FindWithTag("Data").GetComponent<DataController>();
+
+		if (!dataController.IsLoaded()){
+			Application.LoadLevel("Main");
+		}
 
 		skillAnimController = gameObject.GetComponent<SkillAnimController> ();
 
 		stambar = (Instantiate (stambarobj, new Vector3(0, -4, -2), Quaternion.identity) as GameObject).GetComponent<StaminaBar>();
 		for (int i = 0; i < 3; i++){
-			playerObjects[i] = Instantiate(player, new Vector3(-(i * 2.0f + 4.0f), -(2.2f), 0), Quaternion.identity) as GameObject;
-			if (i == 0){
-				playerObjects[i].AddComponent<Paladin>();
-			} else if (i == 1)
-			{
-				playerObjects[i].AddComponent<Cleric>();
-			}else
-			{
-				playerObjects[i].AddComponent<Gunner>();
+//			if (i == 0){
+//				playerObjects[i].AddComponent<Paladin>();
+//			} else if (i == 1)
+//			{
+//				playerObjects[i].AddComponent<Cleric>();
+//			}else
+//			{
+//				playerObjects[i].AddComponent<Gunner>();
+//			}
+			if (dataController.activeUnitsIndex[i] != -1){
+				UnitInfo unitInfo = dataController.unitInfoList[dataController.activeUnitsIndex[i]];
+
+				playerObjects[i] = Instantiate(player, new Vector3(-(i * 2.0f + 4.0f), -(2.2f), 0), Quaternion.identity) as GameObject;
+				if (unitInfo.name == "Paladin"){
+					playerObjects[i].AddComponent<Paladin>();
+				} 
+				else if (unitInfo.name == "Cleric")	{
+					playerObjects[i].AddComponent<Cleric>();
+				}
+				else if (unitInfo.name == "Gunner")	{
+					playerObjects[i].AddComponent<Gunner>();
+				}
+
+				PlayerUnit unit = playerObjects[i].GetComponent<PlayerUnit>();
+				unit.SetOffSkill(unitInfo.offSkill);
+				unit.SetDefSkill(unitInfo.defSkill);
+				playerPartyController.AddUnit(unit);
+				
+				playerObjects[i].GetComponent<Unit>().InitializeSAC(skillAnimController);
+				playerObjects[i].AddComponent<FloatingHealthBar>();
 			}
-			playerPartyController.AddUnit(playerObjects[i].GetComponent<Unit>());
-			playerObjects[i].GetComponent<Unit>().InitializeSAC(skillAnimController);
-			playerObjects[i].AddComponent<FloatingHealthBar>();
 			//playerObjects[i].AddComponent<BuffManager>();
 			//playerhpbars[i] = Instantiate(hpbarobj,new Vector3(-6,- (2 + i * 1),-2), Quaternion.identity) as GameObject;
 			enemyObjects[i] = Instantiate(enemy, new Vector3(i * 2.0f + 4.0f, -(2.2f), 0), Quaternion.identity) as GameObject;

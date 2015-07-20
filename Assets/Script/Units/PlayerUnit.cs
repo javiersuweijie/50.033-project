@@ -71,4 +71,21 @@ public abstract class PlayerUnit : Unit
 		}
 	}
 
+	public void SetDefSkill(string skillName) {
+		if (skillName == ""){
+			left_spell = null;
+		}
+		else{
+			left_spell = gameObject.GetComponent(skillName) as Skill;
+		}
+	}
+
+	public void SetOffSkill(string skillName) {
+		if (skillName == ""){
+			right_spell = null;
+		}
+		else{
+			right_spell = gameObject.GetComponent(skillName) as Skill;
+		}
+	}
 }
