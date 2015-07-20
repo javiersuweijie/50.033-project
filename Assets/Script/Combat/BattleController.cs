@@ -31,8 +31,8 @@ class BattleController : MonoBehaviour{
 		}
 
 		skillAnimController = gameObject.GetComponent<SkillAnimController> ();
-
 		stambar = (Instantiate (stambarobj, new Vector3(0, -4, -2), Quaternion.identity) as GameObject).GetComponent<StaminaBar>();
+
 		for (int i = 0; i < 3; i++){
 //			if (i == 0){
 //				playerObjects[i].AddComponent<Paladin>();
@@ -45,32 +45,39 @@ class BattleController : MonoBehaviour{
 //			}
 			if (dataController.activeUnitsIndex[i] != -1){
 				UnitInfo unitInfo = dataController.unitInfoList[dataController.activeUnitsIndex[i]];
-
 				playerObjects[i] = Instantiate(player, new Vector3(-(i * 2.0f + 4.0f), -(2.2f), 0), Quaternion.identity) as GameObject;
+				UnitController unit_controller = playerObjects[i].GetComponent<UnitController>();
+
+				//TEMPORARY
+				PlayerUnit pu = null;
+
 				if (unitInfo.name == "Paladin"){
-					playerObjects[i].AddComponent<Paladin>();
+					pu = new Paladin();
 				} 
 				else if (unitInfo.name == "Cleric")	{
-					playerObjects[i].AddComponent<Cleric>();
+					pu = new Cleric();
 				}
 				else if (unitInfo.name == "Gunner")	{
-					playerObjects[i].AddComponent<Gunner>();
+					pu = new Gunner();
 				}
+				if (pu != null){
+					pu.SetDefSkill(unitInfo.defSkill);
+					pu.SetOffSkill(unitInfo.offSkill);
+				}
+				unit_controller.AttachUnit(pu);
 
-				PlayerUnit unit = playerObjects[i].GetComponent<PlayerUnit>();
-				unit.SetOffSkill(unitInfo.offSkill);
-				unit.SetDefSkill(unitInfo.defSkill);
-				playerPartyController.AddUnit(unit);
-				
-				playerObjects[i].GetComponent<Unit>().InitializeSAC(skillAnimController);
+				//END
+
+				playerPartyController.AddUnit(unit_controller);
+				unit_controller.InitializeSAC(skillAnimController);
 				playerObjects[i].AddComponent<FloatingHealthBar>();
 			}
 			//playerObjects[i].AddComponent<BuffManager>();
-			//playerhpbars[i] = Instantiate(hpbarobj,new Vector3(-6,- (2 + i * 1),-2), Quaternion.identity) as GameObject;
+                                                                                                                 			//playerhpbars[i] = Instantiate(hpbarobj,new Vector3(-6,- (2 + i * 1),-2), Quaternion.identity) as GameObject;
 			enemyObjects[i] = Instantiate(enemy, new Vector3(i * 2.0f + 4.0f, -(2.2f), 0), Quaternion.identity) as GameObject;
-			//enemyhpbars[i] = Instantiate(hpbarobj,new Vector3(6,- (2 + i * 1),-2), Quaternion.identity) as GameObject;
-			enemyPartyController.AddUnit(enemyObjects[i].GetComponent<Unit>());
-		//GameObject arrow = Instantiate(projectile, transform.position + transform.TransformDirection(new Vector3(1,0,0)), transform.rotation) as GameObject;
+			UnitController enemy_controller = enemyObjects[i].GetComponent<UnitController>();
+			enemy_controller.AttachUnit(new EnemyUnit());
+			enemyPartyController.AddUnit(enemy_controller);
 		}
 		cgf = new CombatGraphicalFunction();
 		fighting = true;
@@ -84,21 +91,10 @@ class BattleController : MonoBehaviour{
 			for (int i = 0; i < 3; i++) {
 				if (!playerPartyController.IsDead(i) && !enemyPartyController.AllDead()){
 					//Attack is handled by the units class attack function
-					Unit player = playerPartyController.GetUnit(i);
+					UnitController player = playerPartyController.GetUnit(i);
 					if (player != null){
 						player.Attack(playerPartyController, enemyPartyController, stambar);
 					}
-
-					//Backup code
-	//				if (!enemyUnitList[0].IsDead()){
-	//					playerUnitList[i].Attack(enemyUnitList[0]);
-	//				}
-	//				else if (!enemyUnitList[1].IsDead()){
-	//					playerUnitList[i].Attack (enemyUnitList[1]);
-	//				}
-	//				else if (!enemyUnitList[2].IsDead()){
-	//					playerUnitList[i].Attack (enemyUnitList[2]);
-	//				}
 				}
 				else if (playerPartyController.IsDead(i) && playerObjects[i] != null){
 					HandleUnitDestruction(playerObjects[i]);
@@ -110,21 +106,10 @@ class BattleController : MonoBehaviour{
 
 				if (!enemyPartyController.IsDead(i) && !playerPartyController.AllDead()){
 					//Attack is handled by the units class attack function
-	//				enemyPartyController.GetEnemyUnit(i).Attack(enemyPartyController, playerPartyController);
-					Unit enemy = enemyPartyController.GetUnit(i);
+					UnitController enemy = enemyPartyController.GetUnit(i);
 					if (enemy != null){
 						enemy.Attack(enemyPartyController, playerPartyController, null);
 					}
-					//Backup code
-	//				if (!playerUnitList[0].IsDead()){
-	//					enemyUnitList[i].Attack(playerUnitList[0]);
-	//				}
-	//				else if (!playerUnitList[1].IsDead()){
-	//					enemyUnitList[i].Attack (playerUnitList[1]);
-	//				}
-	//				else if (!playerUnitList[2].IsDead()){
-	//					enemyUnitList[i].Attack (playerUnitList[2]);
-	//				}
 				}
 				else if (enemyPartyController.IsDead(i) && enemyObjects[i] != null){
 					HandleUnitDestruction(enemyObjects[i]);
@@ -146,18 +131,6 @@ class BattleController : MonoBehaviour{
 
 	//A really rudimentary way of doing health bar.
 	void OnGUI () {
-//		for (int i = 0; i < 3; i++){
-//			if (!playerPartyController.IsDead(i)){
-//				float playerFractionalHealth = Mathf.Clamp (playerPartyController.GetUnit(i).GetFractionalHealth(), 0.0f , 1.0f);
-//				cgf.DrawHealthBar(playerFractionalHealth, 10, 200, 10, Screen.height - 80 + i * 20);
-//			}
-//			if (!enemyPartyController.IsDead(i)){
-//				float enemyFractionalHealth = Mathf.Clamp (enemyPartyController.GetUnit(i).GetFractionalHealth(), 0.0f , 1.0f);
-//				cgf.DrawReversedHealthBar(enemyFractionalHealth, 10, 200, Screen.width - 10, Screen.height - 80 + i * 20);
-//				Debug.Log ("Enemy " + i + " has " + (enemyFractionalHealth * 100) + "% of HP left.");
-//			}
-//
-//		}
 
 		if (win){
 			cgf.ShowWin();
