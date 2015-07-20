@@ -15,13 +15,14 @@ public class BuffManager : MonoBehaviour {
 	protected GameObject defD = (GameObject)Resources.Load ("Sprites/DEF_DownFab", typeof(GameObject));
 	protected GameObject agiU = (GameObject)Resources.Load ("Sprites/AGI_UpFab", typeof(GameObject));
 	protected GameObject agiD = (GameObject)Resources.Load ("Sprites/AGI_DownFab", typeof(GameObject));
+	public Dictionary<int,GameObject> dict;
 
-	public Dictionary<int,GameObject> dict = new Dictionary<int,GameObject>();
 	private List<int> ActivePBuffs = new List<int>();
 	private float[] PBuffArray = new float[3]{1.0f,1.0f,1.0f};
 	private List<GameObject> icons = new List<GameObject>();
 
 	void Start(){
+		dict = new Dictionary<int,GameObject>();
 		dict.Add (1, atkU);
 		dict.Add (2, defU);
 		dict.Add (3, agiU);
@@ -101,7 +102,7 @@ public class BuffManager : MonoBehaviour {
 			yield return new WaitForSeconds(5.0f);
 			for (int i =0; i < 3; i++)
 			{
-				PBuffArray[i] = 1.0f + (PBuffArray[i] - 1.0f )* 0.50f;
+					PBuffArray[i] = 1.0f + (PBuffArray[i] - 1.0f )* 0.50f;
 				if ( Mathf.Abs(PBuffArray[i] - 1.0f) < 0.04f)
 				{
 					PBuffArray[i] = 1.0f;

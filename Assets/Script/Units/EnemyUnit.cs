@@ -3,27 +3,23 @@ using System.Collections;
 
 public class EnemyUnit : Unit
 {
-	override public IEnumerator UseSkill(PartyController allies, PartyController enemy, StaminaBar stambar){ yield break;}
+	override public bool UseSkill(PartyController allies, PartyController enemy, StaminaBar stambar){ return false;}
 
 
-	override public void Attack(PartyController allies, PartyController enemies, StaminaBar stambar) {
+	override public bool Attack(PartyController allies, PartyController enemies, StaminaBar stambar) {
 		if (this.CanAttack()) {
-			anim.Play("PRN_Attack");
-			StartCoroutine (animWait (enemies));
+//			Debug.Log ("Poporing attack!");
+//			anim.Play("PRN_Attack");
 			next_attack_time = Time.time + 100f/attack_speed;
+			enemies.GetRandomTarget().TakeDamage(GetATKValue());
+			return true;
 		}
-		else return;
-	}
-
-	IEnumerator animWait(PartyController e){
-
-		yield return new WaitForSeconds (0.65f);
-		e.GetRandomTarget().TakeDamage(attack_power);
+		else return false;
 	}
 
 
-	void Start() {
-		base.Start ();
+	public EnemyUnit() {
+	
 
 		experience = 25;
 		//growth stats
@@ -43,7 +39,8 @@ public class EnemyUnit : Unit
 		critical_chance = 10 + GetLevel() * critical_chance_growth;
 		critical_damage = 50 + GetLevel() * critical_damage_growth;
 		
-		sprite_name = "CREEP";
+		sprite_name = "Sprites/Monster/Poporing_noBG";
+		runTimeAnimatorController = "Sprites/MOnster/Poporing_noBG_1";
 		icon_name = "CREEP";
 		
 		current_health = max_health;

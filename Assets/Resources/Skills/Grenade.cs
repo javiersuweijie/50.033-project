@@ -4,10 +4,11 @@ using System.Collections;
 public class Grenade : MonoBehaviour {
 
 	private int damage;
-	private GameObject explosion = (GameObject)Resources.Load ("GFXAnim/GrenadeBarrage/GExFab", typeof(GameObject));
+	private GameObject explosion;
 
 	// Use this for initialization
 	void Start () {
+		explosion = (GameObject)Resources.Load ("GFXAnim/GrenadeBarrage/GExFab", typeof(GameObject));
 	}
 	
 	// Update is called once per frame

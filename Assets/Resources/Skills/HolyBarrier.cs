@@ -6,7 +6,7 @@ public class HolyBarrier : Skill {
 
 	private Transform anim;
 
-	private PlayerUnit baseUnit;
+	private UnitController baseUnit;
 
 	void Start(){
 		potency = 1.0f;
@@ -15,7 +15,7 @@ public class HolyBarrier : Skill {
 		cdtime = 5.5f;
 		cooldown = true;
 		cost = 100;
-		baseUnit = gameObject.GetComponent<PlayerUnit> ();
+		baseUnit = gameObject.GetComponent<UnitController> ();
 
 		anim = (Transform)Resources.Load ("GFXAnim/HolyDef/HS6", typeof(Transform));
 		skillbanner = "GFXAnim/HolyDef/HGBannerPrefab";
@@ -42,7 +42,7 @@ public class HolyBarrier : Skill {
 		baseUnit.GetComponent<Animator> ().Play (baseUnit.skillanim);
 		yield return new WaitForSeconds(0.45f);
 	
-		foreach (Unit targets in friendly.GetAllTargets()) {
+		foreach (UnitController targets in friendly.GetAllTargets()) {
 			targets.GetComponent<BuffManager>().ApplyBuff(1,potency);
 			Instantiate (anim, targets.transform.position, Quaternion.identity);
 		}

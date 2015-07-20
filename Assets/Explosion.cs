@@ -20,6 +20,7 @@ public class Explosion : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		other.gameObject.GetComponent<Unit> ().TakeDamage (damage);
+		Debug.Log("Attackedddedededed");
+		other.gameObject.GetComponent<UnitController> ().TakeDamage (damage);
 	}
 }

@@ -18,7 +18,7 @@ public class FloatingHealthBar : MonoBehaviour {
 		hpbarinstance = Instantiate(hpbarobj);
 		hpbar = hpbarinstance.GetComponent<Transform>();
 		hpfill = (RectTransform) hpbar.GetChild(0).GetChild(0).GetChild(0).GetChild(0);
-		unit = this.gameObject.GetComponent<Unit>();
+		unit = this.gameObject.GetComponent<UnitController>().unit;
 		InitHPBar(unit.GetMaxHealth(), unit.GetCurrentHealth(), transform.position.x, transform.position.y + 1.1f);
 	}
 	

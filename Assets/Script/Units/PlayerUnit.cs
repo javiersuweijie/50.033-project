@@ -4,8 +4,6 @@ using System.Collections;
 public abstract class PlayerUnit : Unit
 {
 	//Equipables
-	protected Skill left_spell;
-	protected Skill right_spell;
 	protected Equipment weapon = null;
 
 	//Unit states
@@ -46,46 +44,45 @@ public abstract class PlayerUnit : Unit
 //			return this.max_health;
 //	}
 
-	override public void Attack(PartyController allies, PartyController enemies, StaminaBar stambar) {
+	override public bool Attack(PartyController allies, PartyController enemies, StaminaBar stambar) {
 		//default attack is to hit random enemies
 		if (this.CanAttack()) {
 			enemies.GetRandomTarget().TakeDamage(this.GetATKValue());
 			next_attack_time = Time.time + attack_speed/100f;
+			return true;
 		}
-		else return;
+		else return false;
 	}
 
-	override public IEnumerator UseSkill(PartyController allies, PartyController enemies, StaminaBar stambar) {
+	override public bool UseSkill(PartyController allies, PartyController enemies, StaminaBar stambar) {
 
-		yield return new WaitForSeconds (0.1f);
-
-		anim.SetInteger("animController", 0);
-
-		yield return new WaitForSeconds(0.4f);
-		//Debug.Log ("SkillUse");
+		Debug.Log ("SkillUse");
+		Debug.Log (left_spell);
+		Debug.Log (mode);
 		if (mode == FightingMode.Defensive && left_spell != null) {
 			left_spell.Execute(allies, enemies, stambar);
 		}
 		else if (mode == FightingMode.Offensive && right_spell != null) {
 			right_spell.Execute(allies, enemies, stambar);
 		}
+		return true;
 	}
-
+	
+	
+	
+	
 	public void SetDefSkill(string skillName) {
-		if (skillName == ""){
-			left_spell = null;
-		}
-		else{
-			left_spell = gameObject.GetComponent(skillName) as Skill;
+		if (skillName == "HolyBarrier"){
+			left_spell_type = typeof(HolyBarrier);
 		}
 	}
-
+	
 	public void SetOffSkill(string skillName) {
-		if (skillName == ""){
-			right_spell = null;
+		if (skillName == "GrenadeBarrage"){
+			right_spell_type = typeof(GrenadeBarrage);
 		}
-		else{
-			right_spell = gameObject.GetComponent(skillName) as Skill;
+		else if (skillName == "LightningSlash"){
+			right_spell_type = typeof(LightningSlash);
 		}
 	}
 }
