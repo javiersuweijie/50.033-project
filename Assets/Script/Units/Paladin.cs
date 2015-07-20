@@ -7,8 +7,8 @@ public class Paladin : PlayerUnit
 
 	public Paladin() {
 
-		right_spell_type = typeof(LightningSlash);
-		left_spell_type = typeof(HolyBarrier);
+		//right_spell_type = typeof(LightningSlash);
+		//left_spell_type = typeof(HolyBarrier);
 		experience = 2500;
 		//growth stats
 		max_health_growth = 200;

@@ -27,7 +27,7 @@ public class CombatGraphicalFunction {
 		GUI.Box(new Rect(Screen.width/2 - 100, Screen.height/2 - 100, 200, 100), "You Win!", currentStyle);
 		if (GUI.Button(new Rect(Screen.width / 2 - 75, Screen.height /2 + 10, 150, 25),"Continue Exploring!")) 
 		{
-			//Continue
+			Application.LoadLevel("Dungeon");
 		}
 	}
 	
@@ -36,7 +36,7 @@ public class CombatGraphicalFunction {
 		GUI.Box(new Rect(Screen.width/2 - 100, Screen.height/2 - 100, 200, 100), "Game Over!", currentStyle);
 		if (GUI.Button(new Rect(Screen.width / 2 - 75, Screen.height /2 + 10, 150, 25),"Return Home...")) 
 		{
-			//Exit
+			Application.LoadLevel("Main");
 		}
 	}
 

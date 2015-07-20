@@ -25,7 +25,7 @@ public class UnitController : MonoBehaviour {
 	}
 
 
-	public void TakeDamage(int value, string attack_particle = null) {
+	public void TakeDamage(int value, string attack_particle=null) {
 		int dmg = unit.TakeDamage(value);
 
 		Vector3 textLocation = Camera.main.WorldToScreenPoint(transform.position);
@@ -56,7 +56,7 @@ public class UnitController : MonoBehaviour {
 		}
 	}
 
-	public void ReceiveHeal(int value, string attack_particle = null) {
+	public void ReceiveHeal(int value, string attack_particle=null) {
 		int heal = unit.ReceiveHeal(value);
 		Vector3 textLocation = Camera.main.WorldToScreenPoint(transform.position);
 		textLocation.x /= Screen.width;

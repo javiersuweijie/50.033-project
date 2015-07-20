@@ -152,5 +152,4 @@ public abstract class Unit {
 	public int GetAGIValue(){
 		return (int)(attack_speed * buffManager.GetAGIMod ());
 	}
-
 }

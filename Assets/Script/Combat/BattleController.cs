@@ -11,6 +11,7 @@ class BattleController : MonoBehaviour{
 	private PartyController playerPartyController = new PartyController();
 	private PartyController enemyPartyController = new PartyController();
 	private CombatGraphicalFunction cgf;
+	private DataController dataController;
 
 	public GameObject stambarobj = null;
 	private StaminaBar stambar = null;
@@ -21,28 +22,58 @@ class BattleController : MonoBehaviour{
 
 	private bool fighting, win, lose;
 
+
 	void Start(){
+		dataController = GameObject.FindWithTag("Data").GetComponent<DataController>();
+
+		if (!dataController.IsLoaded()){
+			Application.LoadLevel("Main");
+		}
 
 		skillAnimController = gameObject.GetComponent<SkillAnimController> ();
 		stambar = (Instantiate (stambarobj, new Vector3(0, -4, -2), Quaternion.identity) as GameObject).GetComponent<StaminaBar>();
 
 		for (int i = 0; i < 3; i++){
-			playerObjects[i] = Instantiate(player, new Vector3(-(i * 2.0f + 4.0f), -(2.2f), 0), Quaternion.identity) as GameObject;
-			UnitController unit_controller = playerObjects[i].GetComponent<UnitController>();
-			if (i == 0){
-				unit_controller.AttachUnit(new Paladin());
-			} 
-			else if (i == 1) {
-				unit_controller.AttachUnit(new Cleric());
-			}
-			else {
-				unit_controller.AttachUnit(new Gunner());
-			}
+//			if (i == 0){
+//				playerObjects[i].AddComponent<Paladin>();
+//			} else if (i == 1)
+//			{
+//				playerObjects[i].AddComponent<Cleric>();
+//			}else
+//			{
+//				playerObjects[i].AddComponent<Gunner>();
+//			}
+			if (dataController.activeUnitsIndex[i] != -1){
+				UnitInfo unitInfo = dataController.unitInfoList[dataController.activeUnitsIndex[i]];
+				playerObjects[i] = Instantiate(player, new Vector3(-(i * 2.0f + 4.0f), -(2.2f), 0), Quaternion.identity) as GameObject;
+				UnitController unit_controller = playerObjects[i].GetComponent<UnitController>();
 
-			playerPartyController.AddUnit(unit_controller);
-			unit_controller.InitializeSAC(skillAnimController);
-			playerObjects[i].AddComponent<FloatingHealthBar>();
+				//TEMPORARY
+				PlayerUnit pu = null;
 
+				if (unitInfo.name == "Paladin"){
+					pu = new Paladin();
+				} 
+				else if (unitInfo.name == "Cleric")	{
+					pu = new Cleric();
+				}
+				else if (unitInfo.name == "Gunner")	{
+					pu = new Gunner();
+				}
+				if (pu != null){
+					pu.SetDefSkill(unitInfo.defSkill);
+					pu.SetOffSkill(unitInfo.offSkill);
+				}
+				unit_controller.AttachUnit(pu);
+
+				//END
+
+				playerPartyController.AddUnit(unit_controller);
+				unit_controller.InitializeSAC(skillAnimController);
+				playerObjects[i].AddComponent<FloatingHealthBar>();
+			}
+			//playerObjects[i].AddComponent<BuffManager>();
+                                                                                                                 			//playerhpbars[i] = Instantiate(hpbarobj,new Vector3(-6,- (2 + i * 1),-2), Quaternion.identity) as GameObject;
 			enemyObjects[i] = Instantiate(enemy, new Vector3(i * 2.0f + 4.0f, -(2.2f), 0), Quaternion.identity) as GameObject;
 			UnitController enemy_controller = enemyObjects[i].GetComponent<UnitController>();
 			enemy_controller.AttachUnit(new EnemyUnit());

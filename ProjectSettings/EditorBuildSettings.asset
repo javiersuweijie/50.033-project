@@ -6,4 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scene/OuterMap.unity
+    path: Assets/Scene/Combat.unity
+  - enabled: 1
+    path: Assets/Scene/Character.unity
+  - enabled: 0
+    path: Assets/Scene/Combat.unity
+  - enabled: 1
+    path: Assets/Scene/Dungeon.unity
+  - enabled: 1
+    path: Assets/Scene/Level.unity
+  - enabled: 1
+    path: Assets/Scene/Main.unity
+  - enabled: 1
+    path: Assets/Scene/main_scene.unity

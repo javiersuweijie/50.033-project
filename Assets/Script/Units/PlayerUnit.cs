@@ -67,5 +67,22 @@ public abstract class PlayerUnit : Unit
 		}
 		return true;
 	}
-
+	
+	
+	
+	
+	public void SetDefSkill(string skillName) {
+		if (skillName == "HolyBarrier"){
+			left_spell_type = typeof(HolyBarrier);
+		}
+	}
+	
+	public void SetOffSkill(string skillName) {
+		if (skillName == "GrenadeBarrage"){
+			right_spell_type = typeof(GrenadeBarrage);
+		}
+		else if (skillName == "LightningSlash"){
+			right_spell_type = typeof(LightningSlash);
+		}
+	}
 }

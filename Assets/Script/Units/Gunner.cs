@@ -5,7 +5,8 @@ public class Gunner : PlayerUnit
 {
 
 	public Gunner() {
-
+		
+		//right_spell_type = typeof(GrenadeBarrage);
 		experience = 2500;
 		//growth stats
 		max_health_growth = 200;
@@ -15,9 +16,6 @@ public class Gunner : PlayerUnit
 		critical_chance_growth = 1;
 		critical_damage_growth = 0;
 
-//		right_spell = gameObject.GetComponent("GrenadeBarrage") as Skill;
-		right_spell_type = typeof(GrenadeBarrage);
-//		left_spell_type = typeof(LightningSlash);
 	
 		skillanim = "MCH_Skill";
 		sprite_name = "Sprites/CHR_MCH_Alpha_0";
