@@ -9,65 +9,101 @@ public class SpawnButton : MonoBehaviour {
 	public RectTransform parent;
 	public GameObject buttonPrefab;
 	public GameObject trailPrefab;
-	public ArrayList vectors = new ArrayList ();
-	public ArrayList trails = new ArrayList ();
-	public float randomSeed = (float)0.1;
+	private ArrayList vectors = new ArrayList ();
+	private ArrayList trails = new ArrayList ();
+	private ArrayList node0 = new ArrayList ();
+	private ArrayList node1 = new ArrayList ();
+	private ArrayList node2 = new ArrayList ();
+	private ArrayList node3 = new ArrayList ();
 	private int radius = 8;
 	void Start () {
-		Vector2 start = new Vector2 (0, 0);
-		SequentialGenerator (start, 3);
+		Vector2 start = new Vector2 (-180, 0);
+		Vector2 end = new Vector2 (180, 0);
+		vectors.Add (start);
+		vectors.Add (end);
+		Queue level1 = GenerateLevels (-90);
+		Queue level2 = GenerateLevels (0);
+		Queue level3 = GenerateLevels (90);
+		GenerateTrailStart (start, level1);
+		GenerateTrailBetween (level1, level2);
+		GenerateTrailBetween (level2, level3);
+		GenerateTrailEnd (end, level3);
 		Populate ();
 	}
-	public void SequentialGenerator(Vector2 start, int number)
+	public void GenerateTrailStart(Vector2 a, Queue bN)
 	{
-		vectors.Add (start);
-		for (int i = 0; i<number; i++) 
+		Queue b = new Queue (bN);
+		while (b.Count!=0)
 		{
-			ArrayList tempTrails = new ArrayList ();
-			tempTrails.Add(start);
-			for(int j = 0; j < 10; j++)
-			{
-				Vector2 previous = (Vector2)tempTrails[tempTrails.Count-1];
-				int randomX = Random.Range (radius/2 + radius/4 ,radius);
-				float randomY = (float)Mathf.Sqrt((float)(radius * radius - randomX * randomX));
-				int prob = 0;
-				if (i==0)
-				{
-					prob = 1;
-				}
-				else if (i==1)
-				{
-					int upDown = Random.Range(1,100);
-					if (upDown<60)
-					{
-						prob = -1;
-					}
-					else
-					{
-						prob = 1;
-					}
-				}
-				else if (i==2)
-				{
-					prob = -1;
-				}
-				Vector2 new_trail = new Vector2(previous.x+randomX,previous.y+(randomY)*prob);
-				if (i==1){
-					if(j<4){
-						new_trail = new Vector2(previous.x+radius,previous.y);
-					}
-				}
-				if (j==9)
-				{
-					vectors.Add (new_trail);
-				}
-				else
-				{
-					trails.Add (new_trail);
-					tempTrails.Add (new_trail);
-				}
+			Vector2 temp = (Vector2)b.Dequeue();
+			GenerateTrail(temp,a);
+			Node node = new Node();
+			node.parent = a;
+			node.children.Add(temp);
+			node0.Add(node);
+		}
+	}
+	public void GenerateTrailEnd(Vector2 a, Queue bN)
+	{
+		Queue b = new Queue (bN);
+		while (b.Count!=0)
+		{
+			Vector2 temp = (Vector2)b.Dequeue();
+			GenerateTrail(temp,a);
+			Node node = new Node();
+			node.parent = temp;
+			node.children.Add (a);
+			node3.Add (node);
+		}
+	}
+	public void GenerateTrailBetween(Queue leftN, Queue rightN)
+	{
+		Queue left = new Queue (leftN);
+		Queue right = new Queue(rightN);
+		if (left.Count == right.Count) {
+			while (left.Count!=0) {
+				Vector2 l = (Vector2)left.Dequeue ();
+				Vector2 r = (Vector2)right.Dequeue ();
+				GenerateTrail (l, r);
+			}
+		} 
+		else if (left.Count > right.Count) {
+			Vector2 last = new Vector2();
+			while (right.Count!=0) {
+				Vector2 l = (Vector2)left.Dequeue ();
+				last = (Vector2)right.Dequeue ();
+				GenerateTrail (l, last);
+			}
+			while (left.Count!=0){
+				Vector2 l = (Vector2)left.Dequeue();
+				GenerateTrail(l,last);
+			}
+		} 
+		else {
+			Vector2 last = new Vector2();
+			while (left.Count!=0) {
+				Vector2 r = (Vector2)right.Dequeue ();
+				last = (Vector2)left.Dequeue ();
+				GenerateTrail (r, last);
+			}
+			while (right.Count!=0){
+				Vector2 r = (Vector2)right.Dequeue();
+				GenerateTrail(r,last);
 			}
 		}
+	}
+	public Queue GenerateLevels (int level)
+	{
+		Queue levelNodes = new Queue ();
+		int numberOfNodes = Random.Range (1, 4);
+		int interval = 180 / numberOfNodes;
+		for (int i = 0; i<numberOfNodes; i++)
+		{
+			Vector2 node = new Vector2(level, Random.Range (90-i*interval,90-i*interval-interval));
+			vectors.Add (node);
+			levelNodes.Enqueue (node);
+		}
+		return levelNodes;
 	}
 	public void GenerateTrail(Vector2 a, Vector2 b)
 	{
@@ -85,10 +121,6 @@ public class SpawnButton : MonoBehaviour {
 			int first_y = (int) first.y;
 			int second_x = (int) second.x;
 			int second_y = (int) second.y;
-//			Debug.Log (first_x);
-//			Debug.Log (first_y);
-//			Debug.Log (second_x);
-//			Debug.Log (second_y);
 			int third_x;
 			int third_y;
 
@@ -104,17 +136,12 @@ public class SpawnButton : MonoBehaviour {
 			if (first_y > second_y)
 			{
 				int val = (first_y - second_y)/2 + second_y;
-				float var = ((first_y - second_y)/2)*randomSeed;
-				third_y = Random.Range ((int)(val - var),(int)(val + var));
+				third_y = val;
 			}
 			else
 			{
 				int val = (second_y - first_y)/2 + first_y;
-				float var = ((second_y - first_y)/2)* randomSeed;
-//				Debug.Log (randomSeed);
-//				Debug.Log (((second_y-first_y)/2)*randomSeed);
-//				Debug.Log (var);
-				third_y = Random.Range ((int)(val - var),(int)(val + var));
+				third_y = val;
 			}
 			Vector2 third = new Vector2(third_x,third_y);
 			ArrayList pair1 = new ArrayList();
@@ -170,7 +197,6 @@ public class SpawnButton : MonoBehaviour {
 			FileStream file = File.Open (Application.persistentDataPath + "/mapData.dat", FileMode.Open);
 			MapData data = (MapData)bf.Deserialize(file);
 			file.Close ();
-
 			vectors = data.vectors;
 			trails = data.trails;
 		}
@@ -182,4 +208,16 @@ class MapData
 {
 	public ArrayList vectors;
 	public ArrayList trails;
+}
+
+class Node
+{
+	public Vector2 parent = new Vector2();
+	public ArrayList children = new ArrayList();
+	public Node()
+	{
+
+
+
+	}
 }
