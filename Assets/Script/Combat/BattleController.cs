@@ -20,7 +20,7 @@ class BattleController : MonoBehaviour{
 
 	private SkillAnimController skillAnimController;
 
-	private bool fighting, win, lose;
+	private bool fighting, win, lose, expAdded;
 
 
 	void Start(){
@@ -66,6 +66,7 @@ class BattleController : MonoBehaviour{
 					pu.SetDefSkill(unitInfo.defSkill);
 					pu.SetOffSkill(unitInfo.offSkill);
 					pu.SetHPtoFraction(dataController.hpRemaining[i]);
+					pu.experience = unitInfo.exp;
 				}
 
 				unit_controller.AttachUnit(pu);
@@ -87,6 +88,7 @@ class BattleController : MonoBehaviour{
 		fighting = true;
 		win = false;
 		lose = false;
+		expAdded = false;
 		//Debug.Log(enemyPartyController.GetAllTargets().Count);
 	}
 
@@ -149,12 +151,19 @@ class BattleController : MonoBehaviour{
 					totalExp += enemyPartyController.GetUnit(i).GetUnit().experience;
 				}
 			}
+			if (!expAdded){
+				for (int i = 0; i < 3; i ++){
+					playerPartyController.GetUnit(i).GetUnit().experience += totalExp;
+					dataController.unitInfoList[dataController.activeUnitsIndex[i]].exp += totalExp;	
+				}
+				expAdded = true;
+			}
 
-			cgf.ShowWin(dataController.lastStage, itemsList, playerPartyController, totalExp);
+			cgf.ShowWin(itemsList, playerPartyController, totalExp, dataController);
 		}
 
 		if (lose){
-			cgf.ShowLose();
+			cgf.ShowLose(dataController);
 		}
 	}
 

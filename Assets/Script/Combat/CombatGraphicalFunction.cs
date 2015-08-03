@@ -22,36 +22,39 @@ public class CombatGraphicalFunction {
 		GUI.Box(new Rect(barRight - remmainingHPFraction, barTop, remmainingHPFraction, barHeight), "", currentStyle);
 	}
 
-	public void ShowWin(bool lastStage, int[] itemsList, PartyController playerPartyController, int expGain){
+	public void ShowWin(int[] itemsList, PartyController playerPartyController, int expGain, DataController dc){
 		SetOverlayStyle();
-		string displayText = "You Win!\n";
+		string displayText = "You Win!\nEXP Gain : " + expGain + "\n";
+
 		for (int i = 0; i < 3; i++){
 			int level = playerPartyController.GetUnit(i).GetUnit().GetLevel();
 			int exp = playerPartyController.GetUnit(i).GetUnit().experience;
-			int expNeeded = ((level + 1) * (level + 1) - level * level) * 100;
-			int currentExp = (exp - level * level) * 100 + expGain;
-
+			int exptnl = (level + 1) * (level + 1) * 100 - exp;
+			displayText += playerPartyController.GetUnit(i).GetUnit().getIconName() + " (LVL" + level + ") EXP : " + exptnl + "TNL\n";
 		}
-		GUI.Box(new Rect(Screen.width/2 - 100, Screen.height/2 - 100, 200, 100), "You Win!", currentStyle);
-		if (lastStage){
+		GUI.Box(new Rect(Screen.width/2 - 150, Screen.height/2 - 100, 300, 100), displayText, currentStyle);
+		if (dc.lastStage){
 			if (GUI.Button(new Rect(Screen.width / 2 - 75, Screen.height /2 + 10, 150, 25),"Return Home!")) 
 			{
+				dc.Save();
 				Application.LoadLevel("Main");
 			}
 		}
 		else{
 			if (GUI.Button(new Rect(Screen.width / 2 - 75, Screen.height /2 + 10, 150, 25),"Continue Exploring!")) 
 			{
+				dc.Save();
 				Application.LoadLevel("Dungeon");
 			}
 		}
 	}
 	
-	public void ShowLose(){
+	public void ShowLose(DataController dc){
 		SetOverlayStyle();
 		GUI.Box(new Rect(Screen.width/2 - 100, Screen.height/2 - 100, 200, 100), "Game Over!", currentStyle);
 		if (GUI.Button(new Rect(Screen.width / 2 - 75, Screen.height /2 + 10, 150, 25),"Return Home...")) 
 		{
+			dc.Save();
 			Application.LoadLevel("Main");
 		}
 	}

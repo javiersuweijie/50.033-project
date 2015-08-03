@@ -113,7 +113,7 @@ public abstract class Unit {
 	}
 
 	public int GetLevel() {
-		return (int) Mathf.Sqrt(experience);
+		return (int) Mathf.Sqrt(experience/100.0f);
 	}
 
 	public void NeutralMode() {

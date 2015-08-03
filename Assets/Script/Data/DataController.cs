@@ -122,7 +122,7 @@ public class DataController : MonoBehaviour {
 					unitInfo.defSkill = "";
 					unitInfo.offSkill = "GrenadeBarrage";
 				}
-				unitInfo.exp = 0;
+				unitInfo.exp = 2500;
 				unitInfo.equip = "";
 				unitInfoList.Add(unitInfo);
 				activeUnitsIndex[i] = i;
