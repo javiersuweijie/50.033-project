@@ -183,4 +183,3 @@ class MapData
 	public ArrayList vectors;
 	public ArrayList trails;
 }
-
