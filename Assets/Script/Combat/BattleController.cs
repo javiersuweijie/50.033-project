@@ -33,6 +33,8 @@ class BattleController : MonoBehaviour{
 		skillAnimController = gameObject.GetComponent<SkillAnimController> ();
 		stambar = (Instantiate (stambarobj, new Vector3(0, -4, -2), Quaternion.identity) as GameObject).GetComponent<StaminaBar>();
 
+		stambar.Init(1000, dataController.stamRemaining);
+
 		for (int i = 0; i < 3; i++){
 //			if (i == 0){
 //				playerObjects[i].AddComponent<Paladin>();
@@ -63,7 +65,9 @@ class BattleController : MonoBehaviour{
 				if (pu != null){
 					pu.SetDefSkill(unitInfo.defSkill);
 					pu.SetOffSkill(unitInfo.offSkill);
+					pu.SetHPtoFraction(dataController.hpRemaining[i]);
 				}
+
 				unit_controller.AttachUnit(pu);
 
 				//END
@@ -76,7 +80,7 @@ class BattleController : MonoBehaviour{
                                                                                                                  			//playerhpbars[i] = Instantiate(hpbarobj,new Vector3(-6,- (2 + i * 1),-2), Quaternion.identity) as GameObject;
 			enemyObjects[i] = Instantiate(enemy, new Vector3(i * 2.0f + 4.0f, -(2.2f), 0), Quaternion.identity) as GameObject;
 			UnitController enemy_controller = enemyObjects[i].GetComponent<UnitController>();
-			enemy_controller.AttachUnit(new EnemyUnit());
+			enemy_controller.AttachUnit(new Poring());
 			enemyPartyController.AddUnit(enemy_controller);
 		}
 		cgf = new CombatGraphicalFunction();
@@ -129,11 +133,24 @@ class BattleController : MonoBehaviour{
 		//}
 	}
 
-	//A really rudimentary way of doing health bar.
 	void OnGUI () {
 
 		if (win){
-			cgf.ShowWin();
+			for (int i = 0; i < 3; i++){
+				dataController.hpRemaining[i] = playerPartyController.GetUnit(i).GetUnit().GetFractionalHealth();
+			}
+			dataController.stamRemaining = stambar.GetCurrentStamina();
+
+			int[] itemsList = new int[3];
+
+			int totalExp = 0;
+			for (int i = 0; i < 3; i ++){
+				if (enemyPartyController.IsDead(i)){
+					totalExp += enemyPartyController.GetUnit(i).GetUnit().experience;
+				}
+			}
+
+			cgf.ShowWin(dataController.lastStage, itemsList, playerPartyController, totalExp);
 		}
 
 		if (lose){
@@ -169,11 +186,15 @@ class BattleController : MonoBehaviour{
 	}
 
 	public void drainStam(){
-		stambar.UseStamina (1);
+		if (!win && !lose){
+			stambar.UseStamina (1);
+		}
 	}
 
 	public void incStam(){
-		stambar.RecoverStamina (1);
+		if (!win && !lose){
+			stambar.RecoverStamina (1);
+		}
 	}
 
 //	private void UpdateHealth(GameObject hpbar, Unit unit)

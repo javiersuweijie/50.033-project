@@ -11,7 +11,7 @@ public class StaminaBar : MonoBehaviour {
 	private int maxStam, currentStam;
 	// Use this for initialization
 	void Start () {
-		Init (1000, 500);
+		//Init (1000, 1000);
 	}
 	
 	// Update is called once per frame
@@ -35,6 +35,10 @@ public class StaminaBar : MonoBehaviour {
 		lengthvalueratio = barLength/maxStam;
 		tgtXVal = minXVal + currentStam * lengthvalueratio;
 		ShiftBar(tgtXVal - maxXVal);
+	}
+
+	public int GetCurrentStamina(){
+		return currentStam;
 	}
 	
 	public bool UseStamina(int value)

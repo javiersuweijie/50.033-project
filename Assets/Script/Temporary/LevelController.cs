@@ -12,8 +12,8 @@ public class LevelController : MonoBehaviour {
 		if (!dataController.IsLoaded()){
 			Application.LoadLevel("Main");
 		}
-		transform.GetChild(0).GetComponent<Button>().onClick.AddListener(()=>{ToMainScreen();});
-		transform.GetChild(1).GetComponent<Button>().onClick.AddListener(()=>{ToDungeonScreen();});
+		transform.GetChild(1).GetComponent<Button>().onClick.AddListener(()=>{ToMainScreen();});
+		transform.GetChild(2).GetComponent<Button>().onClick.AddListener(()=>{ToDungeonScreen();});
 		
 	}
 	
@@ -27,6 +27,12 @@ public class LevelController : MonoBehaviour {
 	}
 
 	private void ToDungeonScreen(){
+		dataController.hpRemaining = new float[3];
+		dataController.hpRemaining[0] = 1.0f;
+		dataController.hpRemaining[1] = 1.0f;
+		dataController.hpRemaining[2] = 1.0f;
+		dataController.stamRemaining = 1000;
+		dataController.lastStage = false;
 		Application.LoadLevel("Dungeon");
 	}
 }

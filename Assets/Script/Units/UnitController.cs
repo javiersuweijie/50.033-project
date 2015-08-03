@@ -141,6 +141,10 @@ public class UnitController : MonoBehaviour {
 		}
 	}
 
+	public Unit GetUnit(){
+		return unit;
+	}
+
 	// Use this for initialization
 	void Start () {
 

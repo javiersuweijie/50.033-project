@@ -11,8 +11,8 @@ public class MainController : MonoBehaviour {
 		if (!dataController.IsLoaded()){
 			dataController.Load();
 		}
-		transform.GetChild(0).GetComponent<Button>().onClick.AddListener(()=>{ToCharacterScreen();});
-		transform.GetChild(1).GetComponent<Button>().onClick.AddListener(()=>{ToLevelScreen();});
+		transform.GetChild(1).GetComponent<Button>().onClick.AddListener(()=>{ToCharacterScreen();});
+		transform.GetChild(2).GetComponent<Button>().onClick.AddListener(()=>{ToLevelScreen();});
 
 	}
 	

@@ -76,6 +76,10 @@ public abstract class Unit {
 //		sac = in_sac;
 //	}
 
+	public void SetHPtoFraction(float fraction){
+		current_health = (int) (fraction * max_health);
+	}
+
 	public int TakeDamage(int value) {
 
 		int dmg = (int)(value - Mathf.Pow (this.GetDEFValue(), 0.7f)); 

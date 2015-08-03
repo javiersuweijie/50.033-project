@@ -24,4 +24,8 @@ public class CharacterController : MonoBehaviour {
 	private void ToMainScreen(){
 		Application.LoadLevel("Main");
 	}
+
+	private void DisplayCharacters(){
+
+	}
 }

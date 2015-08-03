@@ -1,8 +1,11 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class EnemyUnit : Unit
+public class BossUnit : Unit
 {
+	Queue<int> skillQueue = new Queue<int>();
+
 	override public bool UseSkill(PartyController allies, PartyController enemy, StaminaBar stambar){ return false;}
 
 
@@ -10,15 +13,36 @@ public class EnemyUnit : Unit
 		if (this.CanAttack()) {
 //			Debug.Log ("Poporing attack!");
 //			anim.Play("PRN_Attack");
-			next_attack_time = Time.time + 100f/attack_speed;
-			enemies.GetRandomTarget().TakeDamage(GetATKValue());
+			if (skillQueue.Count == 0){
+				next_attack_time = Time.time + 100f/attack_speed;
+				enemies.GetRandomTarget().TakeDamage(GetATKValue());
+			}
+			else{
+				int atkPattern = skillQueue.Dequeue();
+				switch(atkPattern)
+				{
+				case 1:
+					foreach (UnitController uc in enemies.GetAllTargets()){
+						uc.TakeDamage((int) (attack_power * 1.5));
+					}
+					break;
+				case 2:
+					enemies.GetFrontTarget().TakeDamage(attack_power * 4);
+					break;
+				case 3:
+					enemies.GetRandomTarget().TakeDamage((int) (attack_power * 1.5));
+					break;
+				default:
+					break;
+				}
+			}
 			return true;
 		}
 		else return false;
 	}
 
 
-	public EnemyUnit() {
+	public BossUnit() {
 	
 
 		experience = 25;

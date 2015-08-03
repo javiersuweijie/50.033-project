@@ -11,6 +11,8 @@ public class DataController : MonoBehaviour {
 
 	public List<UnitInfo> unitInfoList;
 
+	//public List<ItemInfo> itemInfoList;
+
 	public int[] activeUnitsIndex;
 
 	public int openDungeons;
@@ -18,6 +20,16 @@ public class DataController : MonoBehaviour {
 	protected bool loaded = false;
 
 	protected bool saved = true;
+
+	public float[] hpRemaining;
+
+	public int stamRemaining;
+
+	public bool lastStage;
+	
+	//public List<Item> itemDropList;
+
+	//public int goldDrop;
 
 	void Awake () {
 		if (dataController == null){

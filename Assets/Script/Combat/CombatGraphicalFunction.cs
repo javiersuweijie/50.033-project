@@ -12,7 +12,7 @@ public class CombatGraphicalFunction {
 		SetHPFillStyle();
 		GUI.Box(new Rect(barLeft, barTop, barWidth * fractionalHealth, barHeight), "", currentStyle);
 	}
-	
+
 	public void DrawReversedHealthBar(float fractionalHealth, float barHeight, float barWidth, float barRight, float barTop){
 		SetHPContainerStyle();
 		GUI.Box(new Rect(barRight - barWidth, barTop, barWidth , barHeight), "", currentStyle);
@@ -22,12 +22,28 @@ public class CombatGraphicalFunction {
 		GUI.Box(new Rect(barRight - remmainingHPFraction, barTop, remmainingHPFraction, barHeight), "", currentStyle);
 	}
 
-	public void ShowWin(){
+	public void ShowWin(bool lastStage, int[] itemsList, PartyController playerPartyController, int expGain){
 		SetOverlayStyle();
+		string displayText = "You Win!\n";
+		for (int i = 0; i < 3; i++){
+			int level = playerPartyController.GetUnit(i).GetUnit().GetLevel();
+			int exp = playerPartyController.GetUnit(i).GetUnit().experience;
+			int expNeeded = ((level + 1) * (level + 1) - level * level) * 100;
+			int currentExp = (exp - level * level) * 100 + expGain;
+
+		}
 		GUI.Box(new Rect(Screen.width/2 - 100, Screen.height/2 - 100, 200, 100), "You Win!", currentStyle);
-		if (GUI.Button(new Rect(Screen.width / 2 - 75, Screen.height /2 + 10, 150, 25),"Continue Exploring!")) 
-		{
-			Application.LoadLevel("Dungeon");
+		if (lastStage){
+			if (GUI.Button(new Rect(Screen.width / 2 - 75, Screen.height /2 + 10, 150, 25),"Return Home!")) 
+			{
+				Application.LoadLevel("Main");
+			}
+		}
+		else{
+			if (GUI.Button(new Rect(Screen.width / 2 - 75, Screen.height /2 + 10, 150, 25),"Continue Exploring!")) 
+			{
+				Application.LoadLevel("Dungeon");
+			}
 		}
 	}
 	
