@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum Type
 {
@@ -15,6 +16,11 @@ public abstract class Skill : MonoBehaviour {
 	protected float cdtime;
 	protected int cost;
 	protected string skillbanner;
+	static public Dictionary<string, string> skill_icons = new Dictionary<string, string>{
+		{"HolyBarrier","Sprites/Icons/100008"},
+		{"LightningSlash","Sprites/Icons/100010"},
+		{"GrenadeBarrage","Sprites/Icons/200005"}
+	};
 
 	public abstract void Execute(PartyController friendly, PartyController enemy, StaminaBar stambar);
 

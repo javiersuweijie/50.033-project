@@ -31,7 +31,7 @@ public class Gunner : PlayerUnit
 		critical_chance = 10 + GetLevel() * critical_chance_growth;
 		critical_damage = 50 + GetLevel() * critical_damage_growth;
 
-		icon_name = "GUNNER";
+		icon_name = "Sprites/Icons/22404";
 
 		current_health = max_health;
 	}

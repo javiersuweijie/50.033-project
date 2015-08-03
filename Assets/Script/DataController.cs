@@ -166,8 +166,29 @@ public class DataController : MonoBehaviour {
 				pu.SetOffSkill(unitInfo.offSkill);
 				pu.SetHPtoFraction(dataController.hpRemaining[i]);
 			}
-			Debug.Log(unitInfo.exp);
-			Debug.Log(pu.GetLevel());
+			units.Add(pu);
+		}
+		return units;
+	}
+
+	public List<PlayerUnit> getAllUnits() {
+		List<PlayerUnit> units = new List<PlayerUnit>();
+		foreach (UnitInfo unitInfo in unitInfoList) {
+			PlayerUnit pu = null;
+			if (unitInfo.name == "Paladin"){
+				pu = new Paladin(unitInfo.exp);
+			} 
+			else if (unitInfo.name == "Cleric")	{
+				pu = new Cleric(unitInfo.exp);
+			}
+			else if (unitInfo.name == "Gunner")	{
+				pu = new Gunner(unitInfo.exp);
+			}
+			if (pu != null){
+				pu.SetDefSkill(unitInfo.defSkill);
+				pu.SetOffSkill(unitInfo.offSkill);
+//				pu.SetHPtoFraction(dataController.hpRemaining[i]);
+			}
 			units.Add(pu);
 		}
 		return units;

@@ -32,8 +32,6 @@ public class Paladin : PlayerUnit
 		critical_chance = 10 + GetLevel() * critical_chance_growth;
 		critical_damage = 50 + GetLevel() * critical_damage_growth;
 
-		icon_name = "PALADIN";
-
 		current_health = max_health;
 	}
 

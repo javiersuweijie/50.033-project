@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 
@@ -79,7 +80,8 @@ public class SampleSkill {
 public class HeroInfoController : MonoBehaviour
 {
 
-	private SampleHero selected_hero;
+	private PlayerUnit selected_hero;
+	public List<PlayerUnit> all_units;
 	private int selected_hero_index;
 	private GameObject unit_icon;
 	private GameObject left_skill;
@@ -102,11 +104,12 @@ public class HeroInfoController : MonoBehaviour
 		weapon = window.Find("Weapon").gameObject;
 		unit_stats = window.Find ("UnitStats").gameObject;
 		selected_heroes = window.Find("SelectedHeroes").gameObject;
-
 		data_controller = GameObject.FindWithTag("Data").GetComponent<DataController>();
+		Debug.Log(data_controller.IsLoaded());
+		all_units = data_controller.getAllUnits();
 		// this is called to setup the subject of the controller
-		selected_hero = SampleHero.selected_hero_list[0];
-		selected_hero_index = 0;
+		selected_hero = all_units[data_controller.activeUnitsIndex[0]];
+		selected_hero_index = data_controller.activeUnitsIndex[0];
 		defaultHeroSelection();
 
 		setupButtons();
@@ -116,7 +119,7 @@ public class HeroInfoController : MonoBehaviour
 		RectTransform selection_frame = selected_heroes.transform.Find("Selection").GetComponent<RectTransform>();
 		for (int i = 0; i<3 ; i++) {
 			int index = i;
-			SampleHero hero = SampleHero.selected_hero_list[i];
+			PlayerUnit hero = all_units[data_controller.activeUnitsIndex[i]];
 			Transform hero_button = selected_heroes.transform.GetChild(i);
 			hero_button.GetComponent<Image>().sprite = Resources.Load<Sprite>(hero.icon_name);
 			hero_button.GetComponent<Button>().onClick.RemoveAllListeners();
@@ -133,9 +136,13 @@ public class HeroInfoController : MonoBehaviour
 	public void renderPlayerUnit() {
 		//TODO: Load from data storage
 		unit_icon.GetComponent<Image>().sprite = Resources.Load<Sprite>(selected_hero.getIconName());
-		left_skill.GetComponent<Image>().sprite = Resources.Load<Sprite>(selected_hero.left_skill.skill_icon);
-		right_skill.GetComponent<Image>().sprite = Resources.Load<Sprite>(selected_hero.right_skill.skill_icon);
-		weapon.GetComponent<Image>().sprite = Resources.Load<Sprite>(selected_hero.weapon.weapon_icon);
+		if (selected_hero.left_spell_type != null)
+		left_skill.GetComponent<Image>().sprite = Resources.Load<Sprite>(Skill.skill_icons[selected_hero.left_spell_type.ToString()]);
+		else left_skill.GetComponent<Image>().sprite = null;
+		if (selected_hero.right_spell_type != null)
+		right_skill.GetComponent<Image>().sprite = Resources.Load<Sprite>(Skill.skill_icons[selected_hero.right_spell_type.ToString()]);
+		else right_skill.GetComponent<Image>().sprite = null;
+		weapon.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Icons/3401");
 
 		renderStats();
 		gameObject.SetActive(true);
@@ -143,15 +150,15 @@ public class HeroInfoController : MonoBehaviour
 
 	void renderStats() {
 		unit_stats.SetActive(true);
-		unit_stats.transform.Find("Level").GetComponent<Text>().text = "Lv." + selected_hero.level;
+		unit_stats.transform.Find("Level").GetComponent<Text>().text = "Lv." + selected_hero.GetLevel();
 		unit_stats.transform.Find ("AttPower").GetComponent<Text>().text = selected_hero.attack_power.ToString();
 		unit_stats.transform.Find ("DefPower").GetComponent<Text>().text = selected_hero.defence_power.ToString();
 		unit_stats.transform.Find ("Health").GetComponent<Text>().text = selected_hero.max_health.ToString();
 		unit_stats.transform.Find ("AttackSpeed").GetComponent<Text>().text = selected_hero.attack_speed.ToString();
 		unit_stats.transform.Find ("CriticalChance").GetComponent<Text>().text = selected_hero.critical_chance.ToString();
 		unit_stats.transform.Find ("CriticalDamage").GetComponent<Text>().text = selected_hero.critical_damage.ToString();
-		unit_stats.transform.Find ("Exp").GetComponent<Text>().text = selected_hero.exp.ToString() + " / " + selected_hero.max_exp.ToString();
-		unit_stats.transform.Find ("ExpBar").localScale = new Vector3(selected_hero.exp/(float)(selected_hero.max_exp),1);
+		unit_stats.transform.Find ("Exp").GetComponent<Text>().text = selected_hero.experience.ToString() + " / " + selected_hero.GetTNL().ToString();
+		unit_stats.transform.Find ("ExpBar").localScale = new Vector3(selected_hero.experience/(float)(selected_hero.GetTNL()),1);
 	}
 
 	void defaultHeroSelection() {
@@ -162,7 +169,7 @@ public class HeroInfoController : MonoBehaviour
 		hero_selection.transform.SetParent(window,false);
 		HeroController hero_controller = hero_selection.GetComponent<HeroController>();
 		hero_controller.Init();
-		hero_controller.renderHeroes(changeHero);
+		hero_controller.renderHeroes(changeHero,all_units);
 	}
 
 	void hideDefault() {
@@ -174,34 +181,34 @@ public class HeroInfoController : MonoBehaviour
 	void changeSkill(LeftRight leftright, SampleSkill skill) {
 		Destroy (skill_selection);
 		hero_selection.SetActive(true);
-		if (skill == null) return;
-		if 		(leftright == LeftRight.Left) {
-			selected_hero.left_skill = skill;
-			left_skill.GetComponent<Image>().sprite = Resources.Load<Sprite>(skill.skill_icon);
-			//TODO: Integrate with data storage
-		}
-		else if (leftright == LeftRight.Right) {
-			selected_hero.right_skill = skill;
-			right_skill.GetComponent<Image>().sprite = Resources.Load<Sprite>(skill.skill_icon);
-			//TODO: Integrate with data storage
-		}
+//		if (skill == null) return;
+//		if 		(leftright == LeftRight.Left) {
+//			selected_hero.left_skill = skill;
+//			left_skill.GetComponent<Image>().sprite = Resources.Load<Sprite>(skill.skill_icon);
+//			//TODO: Integrate with data storage
+//		}
+//		else if (leftright == LeftRight.Right) {
+//			selected_hero.right_skill = skill;
+//			right_skill.GetComponent<Image>().sprite = Resources.Load<Sprite>(skill.skill_icon);
+//			//TODO: Integrate with data storage
+//		}
 	}
 
 	void changeWeapon(SampleWeapon _weapon) {
 		Destroy(weapon_selection);
 		hero_selection.SetActive(true);
-		if (_weapon == null) return;
-		selected_hero.weapon = _weapon;
-		weapon.GetComponent<Image>().sprite = Resources.Load<Sprite>(_weapon.weapon_icon);
+//		if (_weapon == null) return;
+//		selected_hero.weapon = _weapon;
+//		weapon.GetComponent<Image>().sprite = Resources.Load<Sprite>(_weapon.weapon_icon);
 	}
 
-	void changeHero(SampleHero hero) {
+	public void changeHero(int hero_index) {
 		//TODO: Cannot select two of the same hero
 
 		Destroy(hero_selection);
 		Debug.Log(selected_hero_index);
-		SampleHero.selected_hero_list[selected_hero_index] = hero;
-		selected_hero = hero;
+		data_controller.activeUnitsIndex[selected_hero_index] = hero_index;
+		selected_hero = all_units[hero_index];
 		renderSelectedHeroes();
 		defaultHeroSelection();
 	}

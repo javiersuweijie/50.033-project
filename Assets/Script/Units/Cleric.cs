@@ -34,7 +34,7 @@ public class Cleric : PlayerUnit
 		critical_damage = 50 + GetLevel() * critical_damage_growth;
 
 		sprite_name = "Sprites/CHR_Priest_Alpha_0";
-		icon_name = "CLERIC";
+		icon_name = "Sprites/Icons/22405";
 
 		current_health = max_health;
 	}

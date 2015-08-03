@@ -12,8 +12,6 @@ public class CharacterController : MonoBehaviour {
 		if (!dataController.IsLoaded()){
 			Application.LoadLevel("Main");
 		}
-		transform.GetChild(0).GetComponent<Button>().onClick.AddListener(()=>{ToMainScreen();});
-		
 	}
 	
 	// Update is called once per frame

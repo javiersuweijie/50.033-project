@@ -23,12 +23,12 @@ public abstract class Unit {
 
 	//base stats
 
-	protected int max_health;
-	protected int attack_power;
-	protected int defence_power;
-	protected int attack_speed;
-	protected int critical_chance;
-	protected int critical_damage;
+	public int max_health;
+	public int attack_power;
+	public int defence_power;
+	public int attack_speed;
+	public int critical_chance;
+	public int critical_damage;
 
 	public BuffManager buffManager;
 
@@ -51,7 +51,7 @@ public abstract class Unit {
 
 	//for rendering
 	public string sprite_name;
-	protected string icon_name;
+	public string icon_name;
 	protected bool ally;
 	public string attack_prefab_name;
 	public string runTimeAnimatorController;
@@ -114,6 +114,10 @@ public abstract class Unit {
 
 	public int GetLevel() {
 		return (int) Mathf.Sqrt(experience/100.0f);
+	}
+
+	public int GetTNL() {
+		return (int) Mathf.Pow(GetLevel()+1,2)*100;
 	}
 
 	public void NeutralMode() {
