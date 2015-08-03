@@ -4,8 +4,8 @@ using System.Collections;
 public class Cleric : PlayerUnit
 {
 
-	public Cleric() {
-		experience = 2500;
+	public Cleric(int _experience) {
+		experience = _experience;
 		//growth stats
 		max_health_growth = 200;
 		attack_power_growth = 10;

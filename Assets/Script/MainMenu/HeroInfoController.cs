@@ -90,6 +90,7 @@ public class HeroInfoController : MonoBehaviour
 	private GameObject weapon_selection;
 	private GameObject hero_selection;
 	private GameObject selected_heroes;
+	private DataController data_controller;
 	private Transform window;
 
 	void Start() {
@@ -102,6 +103,7 @@ public class HeroInfoController : MonoBehaviour
 		unit_stats = window.Find ("UnitStats").gameObject;
 		selected_heroes = window.Find("SelectedHeroes").gameObject;
 
+		data_controller = GameObject.FindWithTag("Data").GetComponent<DataController>();
 		// this is called to setup the subject of the controller
 		selected_hero = SampleHero.selected_hero_list[0];
 		selected_hero_index = 0;
@@ -152,11 +154,6 @@ public class HeroInfoController : MonoBehaviour
 		unit_stats.transform.Find ("ExpBar").localScale = new Vector3(selected_hero.exp/(float)(selected_hero.max_exp),1);
 	}
 
-//	bool UpdatePlayerUnit() {
-//		return false;
-//	}
-
-
 	void defaultHeroSelection() {
 		renderSelectedHeroes();
 		renderPlayerUnit();
@@ -170,6 +167,8 @@ public class HeroInfoController : MonoBehaviour
 
 	void hideDefault() {
 		hero_selection.SetActive(false);
+		Destroy (skill_selection);
+		Destroy (weapon_selection);
 	}
 
 	void changeSkill(LeftRight leftright, SampleSkill skill) {

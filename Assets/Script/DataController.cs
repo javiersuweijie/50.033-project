@@ -70,6 +70,7 @@ public class DataController : MonoBehaviour {
 	}
 	
 	public void Load(){
+		Debug.Log("Data is stored in " + Application.persistentDataPath);
 		if (File.Exists(Application.persistentDataPath + "/saveinfo.dat")){
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream file = File.OpenRead(Application.persistentDataPath + "/saveinfo.dat");
@@ -129,7 +130,7 @@ public class DataController : MonoBehaviour {
 			}
 			//End Testing
 		}
-
+		Save();
 		this.loaded = true;
 	}
 
@@ -143,6 +144,33 @@ public class DataController : MonoBehaviour {
 	
 	public void Modified(){
 		saved = false;
+	}
+
+	public List<PlayerUnit> getActiveUnits() {
+		List<PlayerUnit> units = new List<PlayerUnit>();
+		for (int i = 0; i < 3; i++){
+			UnitInfo unitInfo = unitInfoList[dataController.activeUnitsIndex[i]];
+				
+			PlayerUnit pu = null;
+			if (unitInfo.name == "Paladin"){
+				pu = new Paladin(unitInfo.exp);
+			} 
+			else if (unitInfo.name == "Cleric")	{
+				pu = new Cleric(unitInfo.exp);
+			}
+			else if (unitInfo.name == "Gunner")	{
+				pu = new Gunner(unitInfo.exp);
+			}
+			if (pu != null){
+				pu.SetDefSkill(unitInfo.defSkill);
+				pu.SetOffSkill(unitInfo.offSkill);
+				pu.SetHPtoFraction(dataController.hpRemaining[i]);
+			}
+			Debug.Log(unitInfo.exp);
+			Debug.Log(pu.GetLevel());
+			units.Add(pu);
+		}
+		return units;
 	}
 }
 

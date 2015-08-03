@@ -4,10 +4,9 @@ using System.Collections;
 public class Gunner : PlayerUnit
 {
 
-	public Gunner() {
-		
-		//right_spell_type = typeof(GrenadeBarrage);
-		experience = 2500;
+	public Gunner(int _experience) {
+
+		experience = _experience;
 		//growth stats
 		max_health_growth = 200;
 		attack_power_growth = 10;

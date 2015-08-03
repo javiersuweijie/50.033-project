@@ -34,49 +34,16 @@ class BattleController : MonoBehaviour{
 		stambar = (Instantiate (stambarobj, new Vector3(0, -4, -2), Quaternion.identity) as GameObject).GetComponent<StaminaBar>();
 
 		stambar.Init(1000, dataController.stamRemaining);
+		List<PlayerUnit> active_units = dataController.getActiveUnits();
+		for (int i = 0; i < 3; i++) {
+			playerObjects[i] = Instantiate(player, new Vector3(-(i * 2.0f + 4.0f), -(2.2f), 0), Quaternion.identity) as GameObject;
+			UnitController unit_controller = playerObjects[i].GetComponent<UnitController>();
+			PlayerUnit pu = active_units[i];
+			unit_controller.AttachUnit(pu);
+			playerPartyController.AddUnit(unit_controller);
+			unit_controller.InitializeSAC(skillAnimController);
+			playerObjects[i].AddComponent<FloatingHealthBar>();
 
-		for (int i = 0; i < 3; i++){
-//			if (i == 0){
-//				playerObjects[i].AddComponent<Paladin>();
-//			} else if (i == 1)
-//			{
-//				playerObjects[i].AddComponent<Cleric>();
-//			}else
-//			{
-//				playerObjects[i].AddComponent<Gunner>();
-//			}
-			if (dataController.activeUnitsIndex[i] != -1){
-				UnitInfo unitInfo = dataController.unitInfoList[dataController.activeUnitsIndex[i]];
-				playerObjects[i] = Instantiate(player, new Vector3(-(i * 2.0f + 4.0f), -(2.2f), 0), Quaternion.identity) as GameObject;
-				UnitController unit_controller = playerObjects[i].GetComponent<UnitController>();
-
-				//TEMPORARY
-				PlayerUnit pu = null;
-
-				if (unitInfo.name == "Paladin"){
-					pu = new Paladin();
-				} 
-				else if (unitInfo.name == "Cleric")	{
-					pu = new Cleric();
-				}
-				else if (unitInfo.name == "Gunner")	{
-					pu = new Gunner();
-				}
-				if (pu != null){
-					pu.SetDefSkill(unitInfo.defSkill);
-					pu.SetOffSkill(unitInfo.offSkill);
-					pu.SetHPtoFraction(dataController.hpRemaining[i]);
-					pu.experience = unitInfo.exp;
-				}
-
-				unit_controller.AttachUnit(pu);
-
-				//END
-
-				playerPartyController.AddUnit(unit_controller);
-				unit_controller.InitializeSAC(skillAnimController);
-				playerObjects[i].AddComponent<FloatingHealthBar>();
-			}
 			//playerObjects[i].AddComponent<BuffManager>();
                                                                                                                  			//playerhpbars[i] = Instantiate(hpbarobj,new Vector3(-6,- (2 + i * 1),-2), Quaternion.identity) as GameObject;
 			enemyObjects[i] = Instantiate(enemy, new Vector3(i * 2.0f + 4.0f, -(2.2f), 0), Quaternion.identity) as GameObject;
