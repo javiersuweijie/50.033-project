@@ -159,7 +159,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &681174842
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +245,7 @@ RectTransform:
   m_Children:
   - {fileID: 1028341645}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -257,6 +257,51 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 681174842}
+--- !u!1 &820693162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 127852, guid: 538485ea326f3844fbf8ed79faba41a9, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 820693164}
+  - 114: {fileID: 820693163}
+  m_Layer: 0
+  m_Name: PersistentData
+  m_TagString: Data
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &820693163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11465796, guid: 538485ea326f3844fbf8ed79faba41a9,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 820693162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2664116055a0c4b129c5a2b755e92090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeUnitsIndex: 
+  openDungeons: 0
+  hpRemaining: []
+  stamRemaining: 0
+  lastStage: 0
+--- !u!4 &820693164
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 466540, guid: 538485ea326f3844fbf8ed79faba41a9, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 820693162}
+  m_LocalRotation: {x: .70710659, y: 0, z: 0, w: -.707106948}
+  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalScale: {x: 3, y: 1, z: .5}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!1 &1028341644
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,6 +378,9 @@ MonoBehaviour:
   parent: {fileID: 1028341645}
   buttonPrefab: {fileID: 199264, guid: 07066e4383c4a4670b148243e76a33b4, type: 2}
   trailPrefab: {fileID: 161464, guid: b03c9c73f5cce45a2b85c363763c5a90, type: 2}
+  GraySprite: {fileID: 21300064, guid: c9725c789482e504184f5fb94adac11a, type: 3}
+  GreenSprite: {fileID: 21300082, guid: c9725c789482e504184f5fb94adac11a, type: 3}
+  BlueSprite: {fileID: 21300076, guid: c9725c789482e504184f5fb94adac11a, type: 3}
 --- !u!1 &1714323792
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +434,7 @@ RectTransform:
   m_LocalScale: {x: 3.5, y: 3.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -475,4 +523,4 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1

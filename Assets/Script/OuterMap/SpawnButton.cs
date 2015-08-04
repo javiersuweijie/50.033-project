@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
@@ -9,18 +10,20 @@ public class SpawnButton : MonoBehaviour {
 	public RectTransform parent;
 	public GameObject buttonPrefab;
 	public GameObject trailPrefab;
-	private ArrayList vectors = new ArrayList ();
+	public Sprite GraySprite;
+	public Sprite GreenSprite;
+	public Sprite BlueSprite;
+	private ArrayList nodes = new ArrayList ();
 	private ArrayList trails = new ArrayList ();
-	private ArrayList node0 = new ArrayList ();
-	private ArrayList node1 = new ArrayList ();
-	private ArrayList node2 = new ArrayList ();
-	private ArrayList node3 = new ArrayList ();
 	private int radius = 8;
 	void Start () {
 		Vector2 start = new Vector2 (-180, 0);
 		Vector2 end = new Vector2 (180, 0);
-		vectors.Add (start);
-		vectors.Add (end);
+		Node startNode = new Node (start);
+		Node endNode = new Node (end);
+		startNode.available = true;
+		nodes.Add (startNode);
+		nodes.Add (endNode);
 		Queue level1 = GenerateLevels (-90);
 		Queue level2 = GenerateLevels (0);
 		Queue level3 = GenerateLevels (90);
@@ -35,25 +38,16 @@ public class SpawnButton : MonoBehaviour {
 		Queue b = new Queue (bN);
 		while (b.Count!=0)
 		{
-			Vector2 temp = (Vector2)b.Dequeue();
-			GenerateTrail(temp,a);
-			Node node = new Node();
-			node.parent = a;
-			node.children.Add(temp);
-			node0.Add(node);
+			Node temp = (Node)b.Dequeue();
+			GenerateTrail(a,temp.me);
 		}
 	}
 	public void GenerateTrailEnd(Vector2 a, Queue bN)
 	{
 		Queue b = new Queue (bN);
-		while (b.Count!=0)
-		{
-			Vector2 temp = (Vector2)b.Dequeue();
-			GenerateTrail(temp,a);
-			Node node = new Node();
-			node.parent = temp;
-			node.children.Add (a);
-			node3.Add (node);
+		while (b.Count!=0) {
+			Node temp = (Node)b.Dequeue ();
+			GenerateTrail (temp.me, a);
 		}
 	}
 	public void GenerateTrailBetween(Queue leftN, Queue rightN)
@@ -62,33 +56,33 @@ public class SpawnButton : MonoBehaviour {
 		Queue right = new Queue(rightN);
 		if (left.Count == right.Count) {
 			while (left.Count!=0) {
-				Vector2 l = (Vector2)left.Dequeue ();
-				Vector2 r = (Vector2)right.Dequeue ();
-				GenerateTrail (l, r);
+				Node l = (Node)left.Dequeue ();
+				Node r = (Node)right.Dequeue ();
+				GenerateTrail (l.me, r.me);
 			}
 		} 
 		else if (left.Count > right.Count) {
-			Vector2 last = new Vector2();
+			Node last = new Node(new Vector2(0,0));
 			while (right.Count!=0) {
-				Vector2 l = (Vector2)left.Dequeue ();
-				last = (Vector2)right.Dequeue ();
-				GenerateTrail (l, last);
+				Node l = (Node)left.Dequeue ();
+				last = (Node)right.Dequeue ();
+				GenerateTrail (l.me, last.me);
 			}
 			while (left.Count!=0){
-				Vector2 l = (Vector2)left.Dequeue();
-				GenerateTrail(l,last);
+				Node l = (Node)left.Dequeue();
+				GenerateTrail(l.me,last.me);
 			}
 		} 
 		else {
-			Vector2 last = new Vector2();
+			Node last = new Node(new Vector2(0,0));
 			while (left.Count!=0) {
-				Vector2 r = (Vector2)right.Dequeue ();
-				last = (Vector2)left.Dequeue ();
-				GenerateTrail (r, last);
+				Node r = (Node)right.Dequeue ();
+				last = (Node)left.Dequeue ();
+				GenerateTrail (last.me,r.me);
 			}
 			while (right.Count!=0){
-				Vector2 r = (Vector2)right.Dequeue();
-				GenerateTrail(r,last);
+				Node r = (Node)right.Dequeue();
+				GenerateTrail(last.me,r.me);
 			}
 		}
 	}
@@ -99,8 +93,9 @@ public class SpawnButton : MonoBehaviour {
 		int interval = 180 / numberOfNodes;
 		for (int i = 0; i<numberOfNodes; i++)
 		{
-			Vector2 node = new Vector2(level, Random.Range (90-i*interval,90-i*interval-interval));
-			vectors.Add (node);
+			Vector2 coords = new Vector2(level, Random.Range (90-i*interval,90-i*interval-interval+20));
+			Node node = new Node(coords);
+			nodes.Add (node);
 			levelNodes.Enqueue (node);
 		}
 		return levelNodes;
@@ -162,12 +157,22 @@ public class SpawnButton : MonoBehaviour {
 	}
 	public void Populate()
 	{
-		foreach (Vector2 vector in vectors) 
+		foreach (Node node in nodes) 
 		{
 			GameObject instance = (GameObject)UnityEngine.Object.Instantiate(buttonPrefab);
 			instance.transform.SetParent (parent, false);
-			Vector2 button_position = vector;
+			Vector2 button_position = node.me;
 			instance.GetComponent<RectTransform>().anchoredPosition = button_position;
+			if (node.visited){
+				instance.GetComponent<Image>().sprite = BlueSprite;
+			}
+			else if(node.available){
+				instance.GetComponent<Button>().onClick.AddListener(()=>{ToCombatScreen();});
+				instance.GetComponent<Image>().sprite = GreenSprite;
+			}
+			else if(node.invalid){
+				instance.GetComponent<Image>().sprite = GraySprite;
+			}
 		}
 		foreach (Vector2 trail in trails) 
 		{
@@ -183,7 +188,7 @@ public class SpawnButton : MonoBehaviour {
 		BinaryFormatter bf = new BinaryFormatter ();
 		FileStream file = File.Open (Application.persistentDataPath + "/mapData.dat", FileMode.Open);
 		MapData data = new MapData ();
-		data.vectors = vectors;
+		data.nodes = nodes;
 		data.trails = trails;
 		bf.Serialize (file, data);
 		file.Close ();
@@ -197,27 +202,38 @@ public class SpawnButton : MonoBehaviour {
 			FileStream file = File.Open (Application.persistentDataPath + "/mapData.dat", FileMode.Open);
 			MapData data = (MapData)bf.Deserialize(file);
 			file.Close ();
-			vectors = data.vectors;
+			nodes = data.nodes;
 			trails = data.trails;
 		}
+	}
+
+	private void ToMainScreen(){
+		Application.LoadLevel("Main");
+	}
+	
+	private void ToCombatScreen(){
+		Application.LoadLevel("Combat");
 	}
 }
 
 [System.Serializable]
 class MapData
 {
-	public ArrayList vectors;
+	public ArrayList nodes;
 	public ArrayList trails;
 }
 
 class Node
 {
-	public Vector2 parent = new Vector2();
+	public Vector2 me = new Vector2 ();
 	public ArrayList children = new ArrayList();
-	public Node()
+	public bool visited = false;
+	public bool invalid = false;
+	public bool available = false;
+
+	public Node(Vector2 meC)
 	{
-
-
-
+		me = meC;
 	}
 }
+

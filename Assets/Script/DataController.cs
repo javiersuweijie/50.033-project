@@ -26,6 +26,8 @@ public class DataController : MonoBehaviour {
 	public int stamRemaining;
 
 	public bool lastStage;
+
+	public int stage;
 	
 	//public List<Item> itemDropList;
 

@@ -44,7 +44,8 @@ public class CombatGraphicalFunction {
 			if (GUI.Button(new Rect(Screen.width / 2 - 75, Screen.height /2 + 10, 150, 25),"Continue Exploring!")) 
 			{
 				dc.Save();
-				Application.LoadLevel("Dungeon");
+				dc.stage += 1;
+				Application.LoadLevel("OuterMap");
 			}
 		}
 	}
