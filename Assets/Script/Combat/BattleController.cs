@@ -12,11 +12,14 @@ class BattleController : MonoBehaviour{
 	private PartyController enemyPartyController = new PartyController();
 	private CombatGraphicalFunction cgf;
 	private DataController dataController;
-
+	private AudioSource audios;
 	public GameObject stambarobj = null;
 	private StaminaBar stambar = null;
 	//private GameObject[] playerhpbars = new GameObject[3];
 	//private GameObject[] enemyhpbars = new GameObject[3];
+
+	private AudioClip BGMWin;
+	private AudioClip BGMBoss;
 
 	private SkillAnimController skillAnimController;
 
@@ -32,6 +35,15 @@ class BattleController : MonoBehaviour{
 
 	void Start(){
 
+		audios =  Camera.main.GetComponent<AudioSource> ();
+
+		if (dataController.lastStage) {
+			BGMBoss = (AudioClip) Resources.Load ("BGMBoss",typeof(AudioClip));
+			audios.clip = BGMBoss;
+			audios.Play();
+		}
+
+		BGMWin = (AudioClip)Resources.Load ("BGMWin", typeof (AudioClip));
 		skillAnimController = gameObject.GetComponent<SkillAnimController> ();
 		stambar = (Instantiate (stambarobj, new Vector3(0, -4, -2), Quaternion.identity) as GameObject).GetComponent<StaminaBar>();
 		stambar.Init(1000, dataController.stamRemaining);
@@ -149,6 +161,9 @@ class BattleController : MonoBehaviour{
 
 	private void ShowWinScreen(){
 		//Debug.Log ("Win!");
+
+		audios.clip = BGMWin;
+		audios.Play ();
 		win = true;
 		fighting = false;
 	}
