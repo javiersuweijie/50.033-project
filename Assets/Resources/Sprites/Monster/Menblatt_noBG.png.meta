@@ -1,0 +1,209 @@
+fileFormatVersion: 2
+guid: dc795e94e5b2b2645ba8efa3e6998c37
+timeCreated: 1438692562
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Menblatt_noBG_0
+    21300002: Menblatt_noBG_2
+    21300004: Menblatt_noBG_3
+    21300006: Menblatt_noBG_4
+    21300008: Menblatt_noBG_5
+    21300010: Menblatt_noBG_6
+    21300012: Menblatt_noBG_18
+    21300014: Menblatt_noBG_19
+    21300016: Menblatt_noBG_20
+    21300018: Menblatt_noBG_21
+    21300020: Menblatt_noBG_22
+    21300022: Menblatt_noBG_23
+    21300024: Menblatt_noBG_24
+    21300026: Menblatt_noBG_25
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Menblatt_noBG_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 797
+        width: 70
+        height: 102
+      alignment: 9
+      pivot: {x: .325971216, y: .512571454}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Menblatt_noBG_2
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 802
+        width: 79
+        height: 93
+      alignment: 9
+      pivot: {x: .297101557, y: .575835824}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Menblatt_noBG_3
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 806
+        width: 65
+        height: 84
+      alignment: 9
+      pivot: {x: .361904204, y: .645023882}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Menblatt_noBG_4
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 806
+        width: 61
+        height: 84
+      alignment: 9
+      pivot: {x: .363359302, y: .629757822}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Menblatt_noBG_5
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 809
+        width: 65
+        height: 79
+      alignment: 9
+      pivot: {x: .361903727, y: .65420264}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Menblatt_noBG_6
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 802
+        width: 76
+        height: 92
+      alignment: 9
+      pivot: {x: .272219211, y: .576660156}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Menblatt_noBG_18
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 497
+        width: 70
+        height: 102
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Menblatt_noBG_19
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 496
+        width: 61
+        height: 105
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Menblatt_noBG_20
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 498
+        width: 60
+        height: 101
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Menblatt_noBG_21
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 500
+        width: 91
+        height: 96
+      alignment: 9
+      pivot: {x: .401359797, y: .426534027}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Menblatt_noBG_22
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 499
+        width: 79
+        height: 99
+      alignment: 9
+      pivot: {x: .435072511, y: .344566882}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Menblatt_noBG_23
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 502
+        width: 90
+        height: 92
+      alignment: 9
+      pivot: {x: .421635598, y: .423339844}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Menblatt_noBG_24
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 499
+        width: 75
+        height: 99
+      alignment: 9
+      pivot: {x: .51709801, y: .409330726}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Menblatt_noBG_25
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 502
+        width: 88
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

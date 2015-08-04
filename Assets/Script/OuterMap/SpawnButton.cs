@@ -41,10 +41,10 @@ public class SpawnButton : MonoBehaviour {
 			Queue level1 = GenerateLevels (-90);
 			Queue level2 = GenerateLevels (0);
 			Queue level3 = GenerateLevels (90);
-			GenerateTrailStart (start, level1);
+			GenerateTrailStart (startNode, level1);
 			GenerateTrailBetween (level1, level2);
 			GenerateTrailBetween (level2, level3);
-			GenerateTrailEnd (end, level3);
+			GenerateTrailEnd (endNode,level3);
 			dataController.dungeonMapNodes = nodes;
 			dataController.dungeonMapTrails = trails;
 		}
@@ -57,21 +57,25 @@ public class SpawnButton : MonoBehaviour {
 		}
 		Populate ();
 	}
-	public void GenerateTrailStart(Vector2 a, Queue bN)
+	public void GenerateTrailStart(Node a, Queue bN)
 	{
 		Queue b = new Queue (bN);
 		while (b.Count!=0)
 		{
 			Node temp = (Node)b.Dequeue();
-			GenerateTrail(a,temp.me);
+			GenerateTrail(a.me,temp.me);
+			a.children.Add (temp.me);
 		}
+		nodes.Add (a);
 	}
-	public void GenerateTrailEnd(Vector2 a, Queue bN)
+	public void GenerateTrailEnd(Node a, Queue bN)
 	{
 		Queue b = new Queue (bN);
 		while (b.Count!=0) {
 			Node temp = (Node)b.Dequeue ();
-			GenerateTrail (temp.me, a);
+			GenerateTrail (temp.me, a.me);
+			temp.children.Add (a.me);
+			nodes.Add(temp);
 		}
 	}
 	public void GenerateTrailBetween(Queue leftN, Queue rightN)
@@ -84,6 +88,7 @@ public class SpawnButton : MonoBehaviour {
 				Node r = (Node)right.Dequeue ();
 				GenerateTrail (l.me, r.me);
 				l.children.Add (r.me);
+				nodes.Add (l);
 			}
 		} 
 		else if (left.Count > right.Count) {
@@ -93,11 +98,13 @@ public class SpawnButton : MonoBehaviour {
 				last = (Node)right.Dequeue ();
 				GenerateTrail (l.me, last.me);
 				l.children.Add(last.me);
+				nodes.Add (l);
 			}
 			while (left.Count!=0){
 				Node l = (Node)left.Dequeue();
 				GenerateTrail(l.me,last.me);
 				l.children.Add(last.me);
+				nodes.Add (l);
 			}
 		} 
 		else {
@@ -107,11 +114,13 @@ public class SpawnButton : MonoBehaviour {
 				last = (Node)left.Dequeue ();
 				GenerateTrail (last.me,r.me);
 				last.children.Add(r.me);
+				nodes.Add (last);
 			}
 			while (right.Count!=0){
 				Node r = (Node)right.Dequeue();
 				GenerateTrail(last.me,r.me);
 				last.children.Add(r.me);
+				nodes.Add (last);
 			}
 		}
 	}
@@ -125,7 +134,6 @@ public class SpawnButton : MonoBehaviour {
 			Vector2 coords = new Vector2(level, Random.Range (90-i*interval,90-i*interval-interval+20));
 			Node node = new Node(coords);
 			node.level = (level + 180)/90;
-			nodes.Add (node);
 			levelNodes.Enqueue (node);
 		}
 		return levelNodes;
@@ -269,7 +277,7 @@ class MapData
 	public ArrayList trails;
 }
 
-class Node
+public class Node
 {
 	public Vector2 me = new Vector2 ();
 	public ArrayList children = new ArrayList();
