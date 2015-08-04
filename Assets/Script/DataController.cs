@@ -11,7 +11,7 @@ public class DataController : MonoBehaviour {
 
 	public List<UnitInfo> unitInfoList;
 
-	//public List<ItemInfo> itemInfoList;
+	public List<string> itemInfoList;
 
 	public int[] activeUnitsIndex;
 
@@ -59,7 +59,8 @@ public class DataController : MonoBehaviour {
 		data.expList = new int[data.unitsCount];
 		data.defSkillList = new string[data.unitsCount];
 		data.offSkillList = new string[data.unitsCount];
-		data.equipList = new string[data.unitsCount];
+		data.equipList = new int[data.unitsCount];
+		data.itemList = itemInfoList.ToArray();
 
 		for (int i = 0; i < data.unitsCount; i++){
 			data.unitList[i] = unitInfoList[i].name;
@@ -95,7 +96,7 @@ public class DataController : MonoBehaviour {
 				currentUnit.equip = data.equipList[i];
 				unitInfoList.Add(currentUnit);
 			}
-
+			itemInfoList = new List<string>(data.itemList);
 			activeUnitsIndex = data.activeUnits;
 
 			openDungeons = data.highestDungeonLevel;
@@ -119,19 +120,21 @@ public class DataController : MonoBehaviour {
 					unitInfo.name = "Paladin";
 					unitInfo.defSkill = "HolyBarrier";
 					unitInfo.offSkill = "LightningSlash";
+					unitInfo.equip = 0;
 				}
 				else if (i == 1){
 					unitInfo.name = "Cleric";
 					unitInfo.defSkill = "";
 					unitInfo.offSkill = "";
+					unitInfo.equip = 1;
 				}
-				else{
+				else {
 					unitInfo.name = "Gunner";
 					unitInfo.defSkill = "";
 					unitInfo.offSkill = "GrenadeBarrage";
+					unitInfo.equip = 2;
 				}
 				unitInfo.exp = 2500;
-				unitInfo.equip = "";
 				unitInfoList.Add(unitInfo);
 				activeUnitsIndex[i] = i;
 			}
@@ -141,6 +144,7 @@ public class DataController : MonoBehaviour {
 			new_unit.defSkill = "GrenadeBarrage";
 			new_unit.offSkill = "LightningSlash";
 			unitInfoList.Add(new_unit);
+			itemInfoList = new List<string>{"Hammer","Staff","Sword","RareSword"};
 			//End Testing
 		}
 		Save();
@@ -164,19 +168,8 @@ public class DataController : MonoBehaviour {
 		for (int i = 0; i < 3; i++){
 			UnitInfo unitInfo = unitInfoList[dataController.activeUnitsIndex[i]];
 				
-			PlayerUnit pu = null;
-			if (unitInfo.name == "Paladin"){
-				pu = new Paladin(unitInfo.exp);
-			} 
-			else if (unitInfo.name == "Cleric")	{
-				pu = new Cleric(unitInfo.exp);
-			}
-			else if (unitInfo.name == "Gunner")	{
-				pu = new Gunner(unitInfo.exp);
-			}
+			PlayerUnit pu = MakePlayerUnit(unitInfo);
 			if (pu != null){
-				pu.SetDefSkill(unitInfo.defSkill);
-				pu.SetOffSkill(unitInfo.offSkill);
 				pu.SetHPtoFraction(dataController.hpRemaining[i]);
 			}
 			units.Add(pu);
@@ -187,24 +180,39 @@ public class DataController : MonoBehaviour {
 	public List<PlayerUnit> getAllUnits() {
 		List<PlayerUnit> units = new List<PlayerUnit>();
 		foreach (UnitInfo unitInfo in unitInfoList) {
-			PlayerUnit pu = null;
-			if (unitInfo.name == "Paladin"){
-				pu = new Paladin(unitInfo.exp);
-			} 
-			else if (unitInfo.name == "Cleric")	{
-				pu = new Cleric(unitInfo.exp);
-			}
-			else if (unitInfo.name == "Gunner")	{
-				pu = new Gunner(unitInfo.exp);
-			}
-			if (pu != null){
-				pu.SetDefSkill(unitInfo.defSkill);
-				pu.SetOffSkill(unitInfo.offSkill);
-//				pu.SetHPtoFraction(dataController.hpRemaining[i]);
-			}
+			PlayerUnit pu = MakePlayerUnit(unitInfo);
 			units.Add(pu);
 		}
 		return units;
+	}
+
+	public List<Weapon> getAllWeapons() {
+		List<Weapon> weapons = new List<Weapon>();
+		foreach (string weapon_name in itemInfoList) {
+			LameWeapons weapon = new LameWeapons(weapon_name);
+			weapons.Add(weapon);
+		}
+		return weapons;
+	}
+
+	private PlayerUnit MakePlayerUnit(UnitInfo uf) {
+		PlayerUnit pu = null;
+		if (uf.name == "Paladin"){
+			pu = new Paladin(uf.exp);
+		} 
+		else if (uf.name == "Cleric")	{
+			pu = new Cleric(uf.exp);
+		}
+		else if (uf.name == "Gunner")	{
+			pu = new Gunner(uf.exp);
+		}
+		if (pu != null){
+			pu.SetDefSkill(uf.defSkill);
+			pu.SetOffSkill(uf.offSkill);
+			if (uf.equip != -1)
+			pu.SetWeapon(itemInfoList[uf.equip]);
+		}
+		return pu;
 	}
 }
 
@@ -214,7 +222,7 @@ public class UnitInfo
 	public int exp;
 	public string defSkill;
 	public string offSkill;
-	public string equip;
+	public int equip = -1;
 }
 
 [Serializable]
@@ -222,11 +230,12 @@ class PlayerData
 {
 	public int unitsCount;
 	public int[] activeUnits;
+	public int[] equipList;
 	public string[] unitList;
 	public int[] expList;
 	public string[] defSkillList;
 	public string[] offSkillList;
-	public string[] equipList;
+	public string[] itemList;
 
 	public int highestDungeonLevel;
 }
