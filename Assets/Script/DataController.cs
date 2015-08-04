@@ -28,6 +28,7 @@ public class DataController : MonoBehaviour {
 	public bool lastStage;
 
 	public int stage;
+	public int dungeon;
 
 	public Vector2 pressedStage;
 

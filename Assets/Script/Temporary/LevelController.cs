@@ -37,6 +37,7 @@ public class LevelController : MonoBehaviour {
 		dataController.hpRemaining[2] = 1.0f;
 		dataController.stamRemaining = 1000;
 		dataController.lastStage = false;
+		dataController.dungeon = 0;
 		dataController.stage = 0;
 		Application.LoadLevel("OuterMap");
 	}

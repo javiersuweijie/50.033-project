@@ -1,27 +1,27 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
-public class Poring : Unit
-{
+public class KingPoring : Unit {
+
 	override public bool UseSkill(PartyController allies, PartyController enemy, StaminaBar stambar){ return false;}
-
-
+	
+	
 	override public bool Attack(PartyController allies, PartyController enemies, StaminaBar stambar) {
 		if (this.CanAttack()) {
-//			Debug.Log ("Poporing attack!");
-//			anim.Play("PRN_Attack");
+			//			Debug.Log ("Poporing attack!");
+			//			anim.Play("PRN_Attack");
 			next_attack_time = Time.time + 100f/attack_speed;
 			enemies.GetRandomTarget().TakeDamage(GetATKValue());
 			return true;
 		}
 		else return false;
 	}
-
-
-	public Poring() {
 	
-		name = "Poring";
-		experience = 25;
+	
+	public KingPoring() {
+		
+		name = "King Poring";
+		experience = 200;
 		//growth stats
 		max_health_growth = 200;
 		attack_power_growth = 10;
@@ -32,10 +32,10 @@ public class Poring : Unit
 		
 		//base stats
 		
-		max_health = 160 + GetLevel() * max_health_growth;
-		attack_power = 18 + GetLevel() * attack_power_growth;
-		defence_power = 20 + GetLevel() * defence_power_growth;
-		attack_speed = 80 + GetLevel() * attack_speed_growth;
+		max_health = 1100 + GetLevel() * max_health_growth;
+		attack_power = 44 + GetLevel() * attack_power_growth;
+		defence_power = 35 + GetLevel() * defence_power_growth;
+		attack_speed = 50 + GetLevel() * attack_speed_growth;
 		critical_chance = 10 + GetLevel() * critical_chance_growth;
 		critical_damage = 50 + GetLevel() * critical_damage_growth;
 		
@@ -44,9 +44,8 @@ public class Poring : Unit
 		icon_name = "CREEP";
 		
 		current_health = max_health;
-
-
+		
+		
 		//render
 	}
 }
-
