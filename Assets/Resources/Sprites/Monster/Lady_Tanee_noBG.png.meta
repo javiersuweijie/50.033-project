@@ -1,0 +1,1001 @@
+fileFormatVersion: 2
+guid: c4cb51645c6aeee439a266299ed21770
+timeCreated: 1438694579
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Lady_Tanee_noBG_0
+    21300002: Lady_Tanee_noBG_1
+    21300004: Lady_Tanee_noBG_2
+    21300006: Lady_Tanee_noBG_3
+    21300008: Lady_Tanee_noBG_4
+    21300010: Lady_Tanee_noBG_5
+    21300012: Lady_Tanee_noBG_24
+    21300014: Lady_Tanee_noBG_25
+    21300016: Lady_Tanee_noBG_26
+    21300018: Lady_Tanee_noBG_27
+    21300020: Lady_Tanee_noBG_28
+    21300022: Lady_Tanee_noBG_29
+    21300024: Lady_Tanee_noBG_30
+    21300026: Lady_Tanee_noBG_31
+    21300028: Lady_Tanee_noBG_33
+    21300030: Lady_Tanee_noBG_35
+    21300032: Lady_Tanee_noBG_36
+    21300034: Lady_Tanee_noBG_37
+    21300036: Lady_Tanee_noBG_38
+    21300038: Lady_Tanee_noBG_41
+    21300040: Lady_Tanee_noBG_42
+    21300042: Lady_Tanee_noBG_43
+    21300044: Lady_Tanee_noBG_45
+    21300046: Lady_Tanee_noBG_47
+    21300048: Lady_Tanee_noBG_48
+    21300050: Lady_Tanee_noBG_49
+    21300052: Lady_Tanee_noBG_55
+    21300054: Lady_Tanee_noBG_56
+    21300056: Lady_Tanee_noBG_57
+    21300058: Lady_Tanee_noBG_58
+    21300060: Lady_Tanee_noBG_70
+    21300062: Lady_Tanee_noBG_75
+    21300064: Lady_Tanee_noBG_78
+    21300066: Lady_Tanee_noBG_79
+    21300068: Lady_Tanee_noBG_80
+    21300070: Lady_Tanee_noBG_81
+    21300072: Lady_Tanee_noBG_83
+    21300074: Lady_Tanee_noBG_84
+    21300076: Lady_Tanee_noBG_86
+    21300078: Lady_Tanee_noBG_87
+    21300080: Lady_Tanee_noBG_88
+    21300082: Lady_Tanee_noBG_89
+    21300084: Lady_Tanee_noBG_90
+    21300086: Lady_Tanee_noBG_91
+    21300088: Lady_Tanee_noBG_103
+    21300090: Lady_Tanee_noBG_104
+    21300092: Lady_Tanee_noBG_105
+    21300094: Lady_Tanee_noBG_110
+    21300096: Lady_Tanee_noBG_111
+    21300098: Lady_Tanee_noBG_113
+    21300100: Lady_Tanee_noBG_120
+    21300102: Lady_Tanee_noBG_122
+    21300104: Lady_Tanee_noBG_123
+    21300106: Lady_Tanee_noBG_124
+    21300108: Lady_Tanee_noBG_125
+    21300110: Lady_Tanee_noBG_6
+    21300112: Lady_Tanee_noBG_7
+    21300114: Lady_Tanee_noBG_21
+    21300116: Lady_Tanee_noBG_22
+    21300118: Lady_Tanee_noBG_23
+    21300120: Lady_Tanee_noBG_32
+    21300122: Lady_Tanee_noBG_40
+    21300124: Lady_Tanee_noBG_44
+    21300126: Lady_Tanee_noBG_46
+    21300128: Lady_Tanee_noBG_54
+    21300130: Lady_Tanee_noBG_59
+    21300132: Lady_Tanee_noBG_60
+    21300134: Lady_Tanee_noBG_61
+    21300136: Lady_Tanee_noBG_68
+    21300138: Lady_Tanee_noBG_69
+    21300140: Lady_Tanee_noBG_71
+    21300142: Lady_Tanee_noBG_72
+    21300144: Lady_Tanee_noBG_73
+    21300146: Lady_Tanee_noBG_74
+    21300148: Lady_Tanee_noBG_76
+    21300150: Lady_Tanee_noBG_77
+    21300152: Lady_Tanee_noBG_82
+    21300154: Lady_Tanee_noBG_85
+    21300156: Lady_Tanee_noBG_92
+    21300158: Lady_Tanee_noBG_93
+    21300160: Lady_Tanee_noBG_109
+    21300162: Lady_Tanee_noBG_112
+    21300164: Lady_Tanee_noBG_114
+    21300166: Lady_Tanee_noBG_117
+    21300168: Lady_Tanee_noBG_118
+    21300170: Lady_Tanee_noBG_121
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Lady_Tanee_noBG_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1618
+        width: 144
+        height: 142
+      alignment: 9
+      pivot: {x: .569936991, y: .38179639}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_1
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 1614
+        width: 135
+        height: 143
+      alignment: 9
+      pivot: {x: .610084116, y: .374183923}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_2
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 1614
+        width: 129
+        height: 143
+      alignment: 9
+      pivot: {x: .65233928, y: .376625329}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_3
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 1615
+        width: 126
+        height: 141
+      alignment: 9
+      pivot: {x: .64361769, y: .377482951}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_4
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 1611
+        width: 160
+        height: 148
+      alignment: 9
+      pivot: {x: .583591104, y: .348695487}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_5
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 1605
+        width: 160
+        height: 151
+      alignment: 9
+      pivot: {x: .583159626, y: .348239124}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_24
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 1327
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_25
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 1311
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_26
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 1311
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_27
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1311
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_28
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 1308
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_29
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 1311
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_30
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 1311
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_31
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 1311
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_33
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 1311
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_35
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 1311
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_36
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 1311
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_37
+      rect:
+        serializedVersion: 2
+        x: 991
+        y: 1311
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_38
+      rect:
+        serializedVersion: 2
+        x: 998
+        y: 1311
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_41
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 1295
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_42
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 1281
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_43
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 1295
+        width: 4
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_45
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 1295
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_47
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 1311
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_48
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 1295
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_49
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 1295
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_55
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 1281
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_56
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 1278
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_57
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 1281
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_58
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 1278
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_70
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 1263
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_75
+      rect:
+        serializedVersion: 2
+        x: 905
+        y: 1260
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_78
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 1247
+        width: 29
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_79
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 1244
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_80
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 1247
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_81
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 1247
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_83
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 1247
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_84
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 1247
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_86
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1057
+        width: 144
+        height: 142
+      alignment: 9
+      pivot: {x: .57277894, y: .385939896}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_87
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 1043
+        width: 119
+        height: 170
+      alignment: 9
+      pivot: {x: .684143305, y: .331868976}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_88
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 1042
+        width: 119
+        height: 172
+      alignment: 9
+      pivot: {x: .687980831, y: .31897682}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_89
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 1044
+        width: 125
+        height: 169
+      alignment: 9
+      pivot: {x: .644500971, y: .337412447}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_90
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 1043
+        width: 130
+        height: 170
+      alignment: 9
+      pivot: {x: .613140881, y: .327159941}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_91
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 1049
+        width: 132
+        height: 169
+      alignment: 9
+      pivot: {x: .60104835, y: .327939361}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_103
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 786
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_104
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 786
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_105
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 786
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_110
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 681
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_111
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 681
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_113
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 681
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_120
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 445
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_122
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 445
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_123
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 442
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_124
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 445
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_125
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 442
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_6
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1439
+        width: 154
+        height: 147
+      alignment: 9
+      pivot: {x: .559945941, y: .368689716}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_7
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 1438
+        width: 144
+        height: 142
+      alignment: 9
+      pivot: {x: .575764954, y: .387706488}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_21
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 1327
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_22
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 1327
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_23
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 1327
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_32
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 1308
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_40
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 1295
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_44
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 1295
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_46
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 1292
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_54
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 1281
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_59
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 1281
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_60
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 1281
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_61
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 1281
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_68
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 1263
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_69
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 1260
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_71
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 1263
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_72
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 1263
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_73
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 1263
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_74
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 1260
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_76
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 1263
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_77
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 1260
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_82
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 1244
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_85
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 1247
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_92
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 829
+        width: 110
+        height: 163
+      alignment: 9
+      pivot: {x: .710638762, y: .327345401}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_93
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 835
+        width: 116
+        height: 164
+      alignment: 9
+      pivot: {x: .695466638, y: .339898825}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_109
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 681
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_112
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 681
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_114
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 678
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_117
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 445
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_118
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 445
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lady_Tanee_noBG_121
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 445
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

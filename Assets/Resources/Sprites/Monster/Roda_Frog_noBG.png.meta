@@ -1,0 +1,308 @@
+fileFormatVersion: 2
+guid: 9ba3d3dd398d30f4b801e1ca6391a670
+timeCreated: 1438693079
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Roda_Frog_noBG_0
+    21300002: Roda_Frog_noBG_1
+    21300004: Roda_Frog_noBG_2
+    21300006: Roda_Frog_noBG_10
+    21300008: Roda_Frog_noBG_11
+    21300010: Roda_Frog_noBG_12
+    21300012: Roda_Frog_noBG_13
+    21300014: Roda_Frog_noBG_14
+    21300016: Roda_Frog_noBG_15
+    21300018: Roda_Frog_noBG_18
+    21300020: Roda_Frog_noBG_28
+    21300022: Roda_Frog_noBG_43
+    21300024: Roda_Frog_noBG_108
+    21300026: Roda_Frog_noBG_115
+    21300028: Roda_Frog_noBG_133
+    21300030: Roda_Frog_noBG_134
+    21300032: Roda_Frog_noBG_135
+    21300034: Roda_Frog_noBG_136
+    21300036: Roda_Frog_noBG_144
+    21300038: Roda_Frog_noBG_145
+    21300040: Roda_Frog_noBG_146
+    21300042: Roda_Frog_noBG_147
+    21300044: Roda_Frog_noBG_154
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Roda_Frog_noBG_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 312
+        width: 44
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_1
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 314
+        width: 43
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_2
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 312
+        width: 44
+        height: 53
+      alignment: 9
+      pivot: {x: .5, y: .449999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_10
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 205
+        width: 44
+        height: 61
+      alignment: 9
+      pivot: {x: .5, y: .400000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_11
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 199
+        width: 46
+        height: 72
+      alignment: 9
+      pivot: {x: .5, y: .329284042}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_12
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 198
+        width: 46
+        height: 75
+      alignment: 9
+      pivot: {x: .461827159, y: .336112678}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_13
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 198
+        width: 50
+        height: 75
+      alignment: 9
+      pivot: {x: .453175664, y: .336112678}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_14
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 202
+        width: 62
+        height: 67
+      alignment: 9
+      pivot: {x: .603845894, y: .403904021}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_15
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 204
+        width: 62
+        height: 63
+      alignment: 9
+      pivot: {x: .550000012, y: .416384012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_18
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 208
+        width: 51
+        height: 54
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_28
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 231
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_43
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 203
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_108
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 87
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_115
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 87
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_133
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 44
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_134
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 44
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_135
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 44
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_136
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 44
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_144
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 30
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_145
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 28
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_146
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 30
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_147
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 28
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Roda_Frog_noBG_154
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 35
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

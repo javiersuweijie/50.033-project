@@ -1,0 +1,187 @@
+fileFormatVersion: 2
+guid: 0c379c578d02e3b4792d7458ebc543f9
+timeCreated: 1438691230
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Poring_noBG_1
+    21300002: Poring_noBG_2
+    21300004: Poring_noBG_0
+    21300006: Poring_noBG_15
+    21300008: Poring_noBG_16
+    21300010: Poring_noBG_17
+    21300012: Poring_noBG_18
+    21300014: Poring_noBG_19
+    21300016: Poring_noBG_20
+    21300018: Poring_noBG_21
+    21300020: Poring_noBG_22
+    21300022: Poring_noBG_10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Poring_noBG_1
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 511
+        width: 39
+        height: 37
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Poring_noBG_2
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 511
+        width: 40
+        height: 39
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Poring_noBG_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 511
+        width: 39
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Poring_noBG_15
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 454
+        width: 37
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Poring_noBG_16
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 454
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Poring_noBG_17
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 454
+        width: 41
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Poring_noBG_18
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 453
+        width: 35
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Poring_noBG_19
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 454
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Poring_noBG_20
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 454
+        width: 36
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Poring_noBG_21
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 453
+        width: 37
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Poring_noBG_22
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 453
+        width: 35
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Poring_noBG_10
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 511
+        width: 38
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
