@@ -7,6 +7,7 @@ public class Paladin : PlayerUnit
 
 	public Paladin(int _experience) {
 
+		name = "Paladin";
 		experience = _experience;
 		//growth stats
 		max_health_growth = 200;

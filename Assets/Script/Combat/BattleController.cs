@@ -22,13 +22,15 @@ class BattleController : MonoBehaviour{
 
 	private bool fighting, win, lose, expAdded;
 
-
-	void Start(){
+	void Awake(){
 		dataController = GameObject.FindWithTag("Data").GetComponent<DataController>();
-
+		
 		if (!dataController.IsLoaded()){
 			Application.LoadLevel("Main");
 		}
+	}
+
+	void Start(){
 
 		skillAnimController = gameObject.GetComponent<SkillAnimController> ();
 		stambar = (Instantiate (stambarobj, new Vector3(0, -4, -2), Quaternion.identity) as GameObject).GetComponent<StaminaBar>();

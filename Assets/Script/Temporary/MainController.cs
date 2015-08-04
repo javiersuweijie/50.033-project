@@ -5,12 +5,16 @@ using UnityEngine.UI;
 public class MainController : MonoBehaviour {
 
 	private DataController dataController;
-
-	void Start () {
+	
+	void Awake(){
 		dataController = GameObject.FindWithTag("Data").GetComponent<DataController>();
+		
 		if (!dataController.IsLoaded()){
 			dataController.Load();
 		}
+	}
+
+	void Start () {
 		transform.GetChild(1).GetComponent<Button>().onClick.AddListener(()=>{ToCharacterScreen();});
 		transform.GetChild(2).GetComponent<Button>().onClick.AddListener(()=>{ToLevelScreen();});
 

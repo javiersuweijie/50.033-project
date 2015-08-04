@@ -5,6 +5,8 @@ public class Cleric : PlayerUnit
 {
 
 	public Cleric(int _experience) {
+		
+		name = "Cleric";
 		experience = _experience;
 		//growth stats
 		max_health_growth = 200;

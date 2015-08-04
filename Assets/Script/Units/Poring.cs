@@ -20,7 +20,7 @@ public class Poring : Unit
 
 	public Poring() {
 	
-
+		name = "Poring";
 		experience = 25;
 		//growth stats
 		max_health_growth = 200;
