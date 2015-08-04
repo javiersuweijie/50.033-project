@@ -5,15 +5,6 @@ public enum FightingMode {
 	Neutral,Offensive,Defensive
 }
 
-//placeholders
-public interface Equipment {
-	int GetAttackBonus(Unit unit);
-	int GetCriticalChanceBonus(Unit unit);
-	int GetDefenceBonus(Unit unit);
-	int GetCriticalDamageBonus(Unit unit);
-	int GetHealthBonus(Unit unit);
-}
-
 public abstract class Unit {
 
 //	protected Transform uitxt = (Transform)Resources.Load ("Prefabs/FloatDmgText", typeof(Transform));

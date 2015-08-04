@@ -3,5 +3,6 @@ using System.Collections;
 
 public class Item {
 	public string name;
-	public Sprite sprite;
+	public Sprite icon;
+	public string icon_name;
 }

@@ -4,7 +4,7 @@ using System.Collections;
 public abstract class PlayerUnit : Unit
 {
 	//Equipables
-	protected Equipment weapon = null;
+	protected Weapon weapon = null;
 
 	//Unit states
 	//current_health
@@ -69,7 +69,9 @@ public abstract class PlayerUnit : Unit
 	}
 	
 	
-	
+	public void SetWeapon(string weapon_name) {
+		weapon = new LameWeapons("weapon_name");
+	}
 	
 	public void SetDefSkill(string skillName) {
 		if (skillName == "HolyBarrier"){

@@ -8,54 +8,6 @@ public enum LeftRight {
 	Left, Right
 }
 
-public class SampleHero {
-	static public SampleHero[] hero_list = {
-		new SampleHero("Sprites/Icons/22305"),
-		new SampleHero("Sprites/Icons/22404"),
-		new SampleHero("Sprites/Icons/22405"),
-		new SampleHero("Sprites/Icons/22407")
-	};
-	static public SampleHero[] selected_hero_list = {
-		new SampleHero("Sprites/Icons/41118"),
-		new SampleHero("Sprites/Icons/51325"),
-		new SampleHero("Sprites/Icons/51325")
-	};
-	public string icon_name = "Sprites/Icons/51325";
-	public SampleSkill left_skill = new SampleSkill("Sprites/Icons/100006");
-	public SampleSkill right_skill = new SampleSkill("Sprites/Icons/100092");
-	public SampleWeapon weapon = new SampleWeapon("Sprites/Icons/2401");
-	public int exp = 1543;
-	public int max_exp = 2000;
-	public int max_health = 1000;
-	public int attack_power = 200;
-	public int defence_power = 300;
-	public int attack_speed = 12;
-	public int critical_chance = 24;
-	public int critical_damage = 56;
-	public int level = 10;
-
-	public string getIconName() {
-		return icon_name;
-	}
-	public SampleHero(string icon) {
-		icon_name = icon;
-		exp = (int) Random.Range(0,2000);
-		max_health = (int)Random.Range(1000,1500);
-	}
-}
-
-public class SampleWeapon {
-	static public SampleWeapon[] weapons_list = {
-		new SampleWeapon("Sprites/Icons/3401"),
-		new SampleWeapon("Sprites/Icons/3402"),
-		new SampleWeapon("Sprites/Icons/3403")
-	};
-	public string weapon_icon;
-	public SampleWeapon(string icon) {
-		weapon_icon = icon;
-	}
-}
-
 public class SampleSkill {
 	static public SampleSkill[] skill_list = {
 		new SampleSkill("Sprites/Icons/100008"),
@@ -82,6 +34,7 @@ public class HeroInfoController : MonoBehaviour
 
 	private PlayerUnit selected_hero;
 	public List<PlayerUnit> all_units;
+	public List<Weapon> all_weapons;
 	private int selected_hero_index;
 	private GameObject unit_icon;
 	private GameObject left_skill;
@@ -118,6 +71,9 @@ public class HeroInfoController : MonoBehaviour
 		// this is called to setup the subject of the controller
 		selected_hero = all_units[data_controller.activeUnitsIndex[0]];
 		selected_hero_index = data_controller.activeUnitsIndex[0];
+
+		all_weapons = data_controller.getAllWeapons();
+
 		defaultHeroSelection();
 
 		setupButtons();
@@ -150,7 +106,7 @@ public class HeroInfoController : MonoBehaviour
 		if (selected_hero.right_spell_type != null)
 		right_skill.GetComponent<Image>().sprite = Resources.Load<Sprite>(Skill.skill_icons[selected_hero.right_spell_type.ToString()]);
 		else right_skill.GetComponent<Image>().sprite = null;
-		weapon.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Icons/3401");
+		weapon.GetComponent<Image>().sprite = Resources.Load<Sprite>(all_weapons[data_controller.unitInfoList[selected_hero_index].equip].icon_name);
 
 		renderStats();
 		gameObject.SetActive(true);
@@ -177,7 +133,7 @@ public class HeroInfoController : MonoBehaviour
 		hero_selection.transform.SetParent(window,false);
 		HeroController hero_controller = hero_selection.GetComponent<HeroController>();
 		hero_controller.Init();
-		hero_controller.renderHeroes(changeHero,all_units);
+		hero_controller.renderHeroes(changeHero,all_units,data_controller.activeUnitsIndex);
 	}
 
 	void hideDefault() {
@@ -202,19 +158,18 @@ public class HeroInfoController : MonoBehaviour
 //		}
 	}
 
-	void changeWeapon(SampleWeapon _weapon) {
+	void changeWeapon(int _weapon_index) {
 		Destroy(weapon_selection);
 		hero_selection.SetActive(true);
-//		if (_weapon == null) return;
-//		selected_hero.weapon = _weapon;
-//		weapon.GetComponent<Image>().sprite = Resources.Load<Sprite>(_weapon.weapon_icon);
+		if (_weapon_index == -1) return;
+		data_controller.unitInfoList[selected_hero_index].equip = _weapon_index;
+		weapon.GetComponent<Image>().sprite = Resources.Load<Sprite>(all_weapons[data_controller.unitInfoList[selected_hero_index].equip].icon_name);
 	}
 
 	public void changeHero(int hero_index) {
 		//TODO: Cannot select two of the same hero
 
 		Destroy(hero_selection);
-		Debug.Log(selected_hero_index);
 		data_controller.activeUnitsIndex[selected_hero_index] = hero_index;
 		selected_hero = all_units[hero_index];
 		renderSelectedHeroes();
@@ -248,7 +203,7 @@ public class HeroInfoController : MonoBehaviour
 			weapon_selection.SetActive(true);
 			WeaponController controller = weapon_selection.GetComponent<WeaponController>();
 			controller.Init();
-			controller.renderWeapons(changeWeapon);
+			controller.renderWeapons(changeWeapon,all_weapons);
 			weapon_selection.transform.SetParent(window,false);
 		});
 	}
