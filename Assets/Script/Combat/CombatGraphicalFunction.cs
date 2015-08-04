@@ -30,7 +30,7 @@ public class CombatGraphicalFunction {
 			int level = playerPartyController.GetUnit(i).GetUnit().GetLevel();
 			int exp = playerPartyController.GetUnit(i).GetUnit().experience;
 			int exptnl = (level + 1) * (level + 1) * 100 - exp;
-			displayText += playerPartyController.GetUnit(i).GetUnit().getIconName() + " (LVL" + level + ") EXP : " + exptnl + "TNL\n";
+			displayText += playerPartyController.GetUnit(i).GetUnit().name + " (LVL" + level + ") EXP : " + exptnl + "TNL\n";
 		}
 		GUI.Box(new Rect(Screen.width/2 - 150, Screen.height/2 - 100, 300, 100), displayText, currentStyle);
 		if (dc.lastStage){
@@ -44,7 +44,8 @@ public class CombatGraphicalFunction {
 			if (GUI.Button(new Rect(Screen.width / 2 - 75, Screen.height /2 + 10, 150, 25),"Continue Exploring!")) 
 			{
 				dc.Save();
-				Application.LoadLevel("Dungeon");
+				dc.stage += 1;
+				Application.LoadLevel("OuterMap");
 			}
 		}
 	}

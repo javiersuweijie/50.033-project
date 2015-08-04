@@ -6,12 +6,16 @@ public class LevelController : MonoBehaviour {
 
 	private DataController dataController;
 	
-	void Start () {
+	
+	void Awake(){
 		dataController = GameObject.FindWithTag("Data").GetComponent<DataController>();
-
+		
 		if (!dataController.IsLoaded()){
 			Application.LoadLevel("Main");
 		}
+	}
+
+	void Start () {
 		transform.GetChild(1).GetComponent<Button>().onClick.AddListener(()=>{ToMainScreen();});
 		transform.GetChild(2).GetComponent<Button>().onClick.AddListener(()=>{ToDungeonScreen();});
 		
@@ -33,6 +37,8 @@ public class LevelController : MonoBehaviour {
 		dataController.hpRemaining[2] = 1.0f;
 		dataController.stamRemaining = 1000;
 		dataController.lastStage = false;
-		Application.LoadLevel("Dungeon");
+		dataController.dungeon = 0;
+		dataController.stage = 0;
+		Application.LoadLevel("OuterMap");
 	}
 }

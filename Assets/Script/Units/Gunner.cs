@@ -5,7 +5,8 @@ public class Gunner : PlayerUnit
 {
 
 	public Gunner(int _experience) {
-
+		
+		name = "Gunner";
 		experience = _experience;
 		//growth stats
 		max_health_growth = 200;

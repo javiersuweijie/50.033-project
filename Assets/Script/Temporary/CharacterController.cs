@@ -14,16 +14,7 @@ public class CharacterController : MonoBehaviour {
 		}
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-	
 	private void ToMainScreen(){
 		Application.LoadLevel("Main");
-	}
-
-	private void DisplayCharacters(){
-
 	}
 }

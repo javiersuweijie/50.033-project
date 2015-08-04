@@ -7,7 +7,7 @@ class BattleController : MonoBehaviour{
 	public GameObject enemy = null;
 
 	private GameObject[] playerObjects = new GameObject[3];
-	private GameObject[] enemyObjects = new GameObject[3];
+	private List<GameObject> enemyObjects = new List<GameObject>();
 	private PartyController playerPartyController = new PartyController();
 	private PartyController enemyPartyController = new PartyController();
 	private CombatGraphicalFunction cgf;
@@ -22,18 +22,20 @@ class BattleController : MonoBehaviour{
 
 	private bool fighting, win, lose, expAdded;
 
-
-	void Start(){
+	void Awake(){
 		dataController = GameObject.FindWithTag("Data").GetComponent<DataController>();
-
+		
 		if (!dataController.IsLoaded()){
 			Application.LoadLevel("Main");
 		}
+	}
+
+	void Start(){
 
 		skillAnimController = gameObject.GetComponent<SkillAnimController> ();
 		stambar = (Instantiate (stambarobj, new Vector3(0, -4, -2), Quaternion.identity) as GameObject).GetComponent<StaminaBar>();
-
 		stambar.Init(1000, dataController.stamRemaining);
+
 		List<PlayerUnit> active_units = dataController.getActiveUnits();
 		for (int i = 0; i < 3; i++) {
 			playerObjects[i] = Instantiate(player, new Vector3(-(i * 2.0f + 4.0f), -(2.2f), 0), Quaternion.identity) as GameObject;
@@ -45,10 +47,15 @@ class BattleController : MonoBehaviour{
 			playerObjects[i].AddComponent<FloatingHealthBar>();
 
 			//playerObjects[i].AddComponent<BuffManager>();
-                                                                                                                 			//playerhpbars[i] = Instantiate(hpbarobj,new Vector3(-6,- (2 + i * 1),-2), Quaternion.identity) as GameObject;
-			enemyObjects[i] = Instantiate(enemy, new Vector3(i * 2.0f + 4.0f, -(2.2f), 0), Quaternion.identity) as GameObject;
+                                                                                                                                                                                                                                                                                                                                                   			//playerhpbars[i] = Instantiate(hpbarobj,new Vector3(-6,- (2 + i * 1),-2), Quaternion.identity) as GameObject;
+		}
+	
+		List<Unit> enemy_units = EnemyGenerator.GenerateEnemies(dataController.dungeon, dataController.stage);
+		Debug.Log (enemy_units.Count);
+		for (int i = 0; i < enemy_units.Count; i++) {
+			enemyObjects.Add(Instantiate(enemy, new Vector3(i * 2.0f + 6.0f - enemy_units.Count, -(2.2f), 0), Quaternion.identity) as GameObject);
 			UnitController enemy_controller = enemyObjects[i].GetComponent<UnitController>();
-			enemy_controller.AttachUnit(new Poring());
+			enemy_controller.AttachUnit(enemy_units[i]);
 			enemyPartyController.AddUnit(enemy_controller);
 		}
 		cgf = new CombatGraphicalFunction();
@@ -76,7 +83,9 @@ class BattleController : MonoBehaviour{
 				else if (enemyPartyController.AllDead()){
 					ShowWinScreen();
 				}
+			}
 
+			for (int i = 0; i < enemyPartyController.Count(); i++) {
 				if (!enemyPartyController.IsDead(i) && !playerPartyController.AllDead()){
 					//Attack is handled by the units class attack function
 					UnitController enemy = enemyPartyController.GetUnit(i);
@@ -113,7 +122,7 @@ class BattleController : MonoBehaviour{
 			int[] itemsList = new int[3];
 
 			int totalExp = 0;
-			for (int i = 0; i < 3; i ++){
+			for (int i = 0; i < enemyPartyController.Count(); i ++){
 				if (enemyPartyController.IsDead(i)){
 					totalExp += enemyPartyController.GetUnit(i).GetUnit().experience;
 				}

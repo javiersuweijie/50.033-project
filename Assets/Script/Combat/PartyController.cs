@@ -105,4 +105,8 @@ public class PartyController {
 		}
 		return true;
 	}
+
+	public int Count(){
+		return unitList.Count;
+	}
 }

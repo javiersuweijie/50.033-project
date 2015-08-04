@@ -26,6 +26,14 @@ public class DataController : MonoBehaviour {
 	public int stamRemaining;
 
 	public bool lastStage;
+
+	public int stage;
+	public int dungeon;
+
+	public Vector2 pressedStage;
+
+	public ArrayList dungeonMapNodes;
+	public ArrayList dungeonMapTrails;
 	
 	//public List<Item> itemDropList;
 

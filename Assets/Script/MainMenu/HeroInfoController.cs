@@ -95,7 +95,16 @@ public class HeroInfoController : MonoBehaviour
 	private DataController data_controller;
 	private Transform window;
 
+	void Awake(){
+		data_controller = GameObject.FindWithTag("Data").GetComponent<DataController>();
+		
+		if (!data_controller.IsLoaded()){
+			Application.LoadLevel("Main");
+		}
+	}
+
 	void Start() {
+
 		gameObject.SetActive(false);
 		window = transform.Find("Window");
 		unit_icon = window.Find("UnitIcon").gameObject;
@@ -104,7 +113,6 @@ public class HeroInfoController : MonoBehaviour
 		weapon = window.Find("Weapon").gameObject;
 		unit_stats = window.Find ("UnitStats").gameObject;
 		selected_heroes = window.Find("SelectedHeroes").gameObject;
-		data_controller = GameObject.FindWithTag("Data").GetComponent<DataController>();
 		Debug.Log(data_controller.IsLoaded());
 		all_units = data_controller.getAllUnits();
 		// this is called to setup the subject of the controller
@@ -243,6 +251,11 @@ public class HeroInfoController : MonoBehaviour
 			controller.renderWeapons(changeWeapon);
 			weapon_selection.transform.SetParent(window,false);
 		});
+	}
+
+	
+	public void ToMainScreen(){
+		Application.LoadLevel("Main");
 	}
 }
 

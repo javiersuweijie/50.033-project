@@ -133,6 +133,7 @@ MonoBehaviour:
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
+  m_RepeatDelay: .5
   m_AllowActivationOnMobileDevice: 0
 --- !u!114 &140281783
 MonoBehaviour:
@@ -489,6 +490,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+  m_StereoMirrorMode: 0
 --- !u!4 &1583897228
 Transform:
   m_ObjectHideFlags: 0
@@ -534,6 +536,7 @@ MonoBehaviour:
   hpRemaining: []
   stamRemaining: 0
   lastStage: 0
+  stage: 0
 --- !u!4 &1877613874
 Transform:
   m_ObjectHideFlags: 0

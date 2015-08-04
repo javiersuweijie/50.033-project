@@ -20,9 +20,10 @@ public abstract class Unit {
 //	protected Transform uitxto = (Transform)Resources.Load ("Prefabs/FloatDmgTextOutline", typeof(Transform));
 //	public Transform skillflashO = (Transform)Resources.Load ("GFXAnim/SkillGlow/skill1", typeof(Transform));
 //	protected Transform attackprefab;
+	
+	public string name;
 
 	//base stats
-
 	public int max_health;
 	public int attack_power;
 	public int defence_power;
