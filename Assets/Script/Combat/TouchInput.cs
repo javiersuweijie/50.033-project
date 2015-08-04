@@ -32,7 +32,16 @@ public class TouchInput : MonoBehaviour {
 	void Update () {
 		
 		Vector2 touchPos = new Vector2();
-		
+		if (!battleController.fighting){
+			if (offenseEdge != null){
+				Destroy(offenseEdge);
+				offenseEdge = null;
+			}
+			if (defenseEdge != null){
+				Destroy(defenseEdge);
+				defenseEdge = null;
+			}
+		}
 		#if UNITY_EDITOR
 		if (Input.GetMouseButton(0)){
 			if (drain == false){
@@ -53,7 +62,9 @@ public class TouchInput : MonoBehaviour {
 				if (defenseEdge == null)
 				{
 					Vector3 spLocation = new Vector3(3.9f, 3.06f);
-					defenseEdge = (GameObject)Instantiate(dePrefab, spLocation, Quaternion.identity);
+					if (battleController.fighting){
+						defenseEdge = (GameObject)Instantiate(dePrefab, spLocation, Quaternion.identity);
+					}
 				}
 
 				battleController.ChangePlayerModeTo(-1);
@@ -73,7 +84,9 @@ public class TouchInput : MonoBehaviour {
 				if (offenseEdge == null)
 				{
 					Vector3 spLocation = new Vector3(3.9f, 3.06f);
-					offenseEdge = (GameObject)Instantiate(oePrefab, spLocation, Quaternion.identity);
+					if (battleController.fighting){
+						offenseEdge = (GameObject)Instantiate(oePrefab, spLocation, Quaternion.identity);
+					}
 				}
 				battleController.ChangePlayerModeTo(1);
 			}

@@ -20,7 +20,8 @@ class BattleController : MonoBehaviour{
 
 	private SkillAnimController skillAnimController;
 
-	private bool fighting, win, lose, expAdded;
+	private bool win, lose, expAdded;
+	public bool fighting;
 
 	void Awake(){
 		dataController = GameObject.FindWithTag("Data").GetComponent<DataController>();
