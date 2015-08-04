@@ -10,7 +10,7 @@ public class LightningSlash : Skill {
 	private UnitController baseUnit;
 
 	void Start(){
-		potency = 3.0f;
+		potency = 1.5f;
 		probability = 0.5f;
 		name = "Lightning Slash";
 		cdtime = 2.5f;

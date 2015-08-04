@@ -53,7 +53,9 @@ class BattleController : MonoBehaviour{
 		List<Unit> enemy_units = EnemyGenerator.GenerateEnemies(dataController.dungeon, dataController.stage);
 		Debug.Log (enemy_units.Count);
 		for (int i = 0; i < enemy_units.Count; i++) {
-			enemyObjects.Add(Instantiate(enemy, new Vector3(i * 2.0f + 6.0f - enemy_units.Count, -(2.2f), 0), Quaternion.identity) as GameObject);
+			GameObject enemyObj = Instantiate(enemy, new Vector3(i * 2.0f + 6.0f - enemy_units.Count, -(2.2f), 0), Quaternion.identity) as GameObject;
+			enemyObj.transform.localScale = enemy_units[i].scale * enemyObj.transform.localScale;
+			enemyObjects.Add(enemyObj);
 			UnitController enemy_controller = enemyObjects[i].GetComponent<UnitController>();
 			enemy_controller.AttachUnit(enemy_units[i]);
 			enemyPartyController.AddUnit(enemy_controller);
@@ -170,15 +172,15 @@ class BattleController : MonoBehaviour{
 		}
 	}
 
-	public void drainStam(){
+	public void drainStam(int val){
 		if (!win && !lose){
-			stambar.UseStamina (1);
+			stambar.UseStamina (val);
 		}
 	}
 
-	public void incStam(){
+	public void incStam(int val){
 		if (!win && !lose){
-			stambar.RecoverStamina (1);
+			stambar.RecoverStamina (val);
 		}
 	}
 

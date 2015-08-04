@@ -10,7 +10,7 @@ public class Poring : Unit
 		if (this.CanAttack()) {
 //			Debug.Log ("Poporing attack!");
 //			anim.Play("PRN_Attack");
-			next_attack_time = Time.time + 100f/attack_speed;
+			next_attack_time = Time.time + 150f/attack_speed;
 			enemies.GetRandomTarget().TakeDamage(GetATKValue());
 			return true;
 		}
@@ -19,9 +19,9 @@ public class Poring : Unit
 
 
 	public Poring() {
-	
+		scale = 1.0f;
 		name = "Poring";
-		experience = 25;
+		experience = 10;
 		//growth stats
 		max_health_growth = 200;
 		attack_power_growth = 10;
@@ -39,8 +39,8 @@ public class Poring : Unit
 		critical_chance = 10 + GetLevel() * critical_chance_growth;
 		critical_damage = 50 + GetLevel() * critical_damage_growth;
 		
-		sprite_name = "Sprites/Monster/Poporing_noBG";
-		runTimeAnimatorController = "Sprites/MOnster/Poporing_noBG_1";
+		sprite_name = "Sprites/Monster/Poring_noBG";
+		runTimeAnimatorController = "Sprites/MOnster/Poring_noBG_1";
 		icon_name = "CREEP";
 		
 		current_health = max_health;

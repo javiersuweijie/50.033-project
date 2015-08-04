@@ -12,7 +12,7 @@ public class TouchInput : MonoBehaviour {
 	public GameObject oePrefab;
 	public GameObject dePrefab;
 
-	bool drain;
+	bool drain, firstClick;
 
 	void Start () {
 		GameObject controller = GameObject.FindWithTag("Controller");
@@ -24,6 +24,7 @@ public class TouchInput : MonoBehaviour {
 		}
 		//Debug.Log ("Screen Width: " + Screen.width);
 		//Debug.Log ("Screen Height: " + Screen.height);
+		firstClick = false;
 		drain = false;
 	}
 	
@@ -34,8 +35,10 @@ public class TouchInput : MonoBehaviour {
 		
 		#if UNITY_EDITOR
 		if (Input.GetMouseButton(0)){
-
-			drain = true;
+			if (drain == false){
+				firstClick = true;
+				drain = true;
+			}
 			touchPos = Input.mousePosition;
 			if (touchPos.x < Screen.width/2.0){
 				//Do Defense
@@ -76,7 +79,7 @@ public class TouchInput : MonoBehaviour {
 			}
 		}
 		else{
-
+			firstClick = false;
 			drain = false;
 			if (offenseEdge != null)
 			{
@@ -94,13 +97,16 @@ public class TouchInput : MonoBehaviour {
 
 
 		}
-		
+		if (firstClick){
+			battleController.drainStam (20);
+			firstClick = false;
+		}
 		if (drain){
-			battleController.drainStam ();
+			battleController.drainStam (1);
 		} 
 		else
 		{ 
-			battleController.incStam();
+			battleController.incStam(1);
 		}
 		#endif
 		

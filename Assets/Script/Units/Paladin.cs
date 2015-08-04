@@ -44,7 +44,7 @@ public class Paladin : PlayerUnit
 			UnitController enemy = enemies.GetFrontTarget();
 			enemy.TakeDamage((int)(this.GetATKValue()*UnityEngine.Random.Range (0.85f,1.15f)));
 			//Debug.Log(enemy.GetCurrentHealth());
-			next_attack_time = Time.time + 100f/this.GetAGIValue();
+			next_attack_time = Time.time + 150f/this.GetAGIValue();
 			return true;
 //			StartCoroutine (UseSkill(allies, enemies, stambar));
 		}

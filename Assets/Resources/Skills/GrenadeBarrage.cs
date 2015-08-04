@@ -8,7 +8,7 @@ public class GrenadeBarrage : Skill {
 	private UnitController baseUnit;
 
 	void Start(){
-		potency = 4.5f;
+		potency = 0.7f;
 		probability = 0.3f;
 		name = "Grenade Barrage";
 		cdtime = 4.5f;
@@ -24,7 +24,7 @@ public class GrenadeBarrage : Skill {
 	override public void Execute(PartyController friendly, PartyController enemy, StaminaBar stambar){
 
 		float chance = Random.Range (0.0f, 1.0f);
-		Debug.Log ("grenade out!");
+		//Debug.Log ("grenade out!");
 		if (cooldown == true && chance < probability && stambar.UseStamina(cost)) {
 			Vector3 skillflashLoc = gameObject.transform.position;
 			Instantiate (baseUnit.skillflashO, skillflashLoc, Quaternion.identity);

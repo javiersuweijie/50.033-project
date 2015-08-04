@@ -89,6 +89,9 @@ public class UnitController : MonoBehaviour {
 
 		if (unit.Attack(allies,enemies,stambar)) {
 			anim.SetInteger("animController", 1);
+			if (unit.name == "RodaFrog"){
+				Debug.Log("HIII");
+			}
 			StartCoroutine (UseSkill(allies, enemies, stambar));
 		}
 

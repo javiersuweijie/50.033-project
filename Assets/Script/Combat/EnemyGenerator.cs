@@ -100,7 +100,7 @@ public static class EnemyGenerator {
 				case 0:
 				case 1:
 				case 2:
-					outputList.Add(new KingPoring());
+					outputList.Add(new LadyTanee());
 					break;
 				default:
 					break;
