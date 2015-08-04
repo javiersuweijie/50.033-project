@@ -135,7 +135,7 @@ public class DataController : MonoBehaviour {
 					unitInfo.offSkill = "GrenadeBarrage";
 					unitInfo.equip = 2;
 				}
-				unitInfo.exp = 2500;
+				unitInfo.exp = 0;
 				unitInfoList.Add(unitInfo);
 				activeUnitsIndex[i] = i;
 			}

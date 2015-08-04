@@ -47,6 +47,7 @@ public class SpawnButton : MonoBehaviour {
 			GenerateTrailEnd (endNode,level3);
 			dataController.dungeonMapNodes = nodes;
 			dataController.dungeonMapTrails = trails;
+
 		}
 		else{
 			nodes = dataController.dungeonMapNodes;
@@ -56,6 +57,7 @@ public class SpawnButton : MonoBehaviour {
 			dataController.dungeonMapTrails = trails;
 		}
 		Populate ();
+
 	}
 	public void GenerateTrailStart(Node a, Queue bN)
 	{
@@ -260,12 +262,15 @@ public class SpawnButton : MonoBehaviour {
 		}
 	}
 
-	private void ToMainScreen(){
+	public void ToMainScreen(){
 		Application.LoadLevel("Main");
 	}
 	
 	private void ToCombatScreen(Vector2 me){
 		dataController.pressedStage = me;
+		if (dataController.stage == 4){
+			dataController.lastStage = true;
+		}
 		Application.LoadLevel("Combat");
 	}
 }

@@ -44,7 +44,7 @@ public class Gunner : PlayerUnit
 			UnitController enemy = enemies.GetRandomTarget();
 			enemy.TakeDamage((int)(this.GetATKValue()*Random.Range (0.85f,1.15f)));
 			//Debug.Log(enemy.GetCurrentHealth());
-			next_attack_time = Time.time + 100f/this.GetAGIValue();
+			next_attack_time = Time.time + 150f/this.GetAGIValue();
 			return true;
 		}
 		else return false;

@@ -418,6 +418,8 @@ MonoBehaviour:
   stamRemaining: 0
   lastStage: 0
   stage: 0
+  dungeon: 0
+  pressedStage: {x: 0, y: 0}
 --- !u!4 &422425628
 Transform:
   m_ObjectHideFlags: 0
@@ -692,7 +694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: f628bfa86049e4216a114414cc171f50, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 21fb42d5a5af24ec3a9a048f1a281b9e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

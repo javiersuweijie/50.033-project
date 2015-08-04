@@ -12,7 +12,7 @@ public class TouchInput : MonoBehaviour {
 	public GameObject oePrefab;
 	public GameObject dePrefab;
 
-	bool drain;
+	bool drain, firstClick;
 
 	void Start () {
 		GameObject controller = GameObject.FindWithTag("Controller");
@@ -24,6 +24,7 @@ public class TouchInput : MonoBehaviour {
 		}
 		//Debug.Log ("Screen Width: " + Screen.width);
 		//Debug.Log ("Screen Height: " + Screen.height);
+		firstClick = false;
 		drain = false;
 	}
 	
@@ -31,11 +32,22 @@ public class TouchInput : MonoBehaviour {
 	void Update () {
 		
 		Vector2 touchPos = new Vector2();
-		
+		if (!battleController.fighting){
+			if (offenseEdge != null){
+				Destroy(offenseEdge);
+				offenseEdge = null;
+			}
+			if (defenseEdge != null){
+				Destroy(defenseEdge);
+				defenseEdge = null;
+			}
+		}
 		#if UNITY_EDITOR
 		if (Input.GetMouseButton(0)){
-
-			drain = true;
+			if (drain == false){
+				firstClick = true;
+				drain = true;
+			}
 			touchPos = Input.mousePosition;
 			if (touchPos.x < Screen.width/2.0){
 				//Do Defense
@@ -50,7 +62,9 @@ public class TouchInput : MonoBehaviour {
 				if (defenseEdge == null)
 				{
 					Vector3 spLocation = new Vector3(3.9f, 3.06f);
-					defenseEdge = (GameObject)Instantiate(dePrefab, spLocation, Quaternion.identity);
+					if (battleController.fighting){
+						defenseEdge = (GameObject)Instantiate(dePrefab, spLocation, Quaternion.identity);
+					}
 				}
 
 				battleController.ChangePlayerModeTo(-1);
@@ -70,13 +84,15 @@ public class TouchInput : MonoBehaviour {
 				if (offenseEdge == null)
 				{
 					Vector3 spLocation = new Vector3(3.9f, 3.06f);
-					offenseEdge = (GameObject)Instantiate(oePrefab, spLocation, Quaternion.identity);
+					if (battleController.fighting){
+						offenseEdge = (GameObject)Instantiate(oePrefab, spLocation, Quaternion.identity);
+					}
 				}
 				battleController.ChangePlayerModeTo(1);
 			}
 		}
 		else{
-
+			firstClick = false;
 			drain = false;
 			if (offenseEdge != null)
 			{
@@ -94,13 +110,16 @@ public class TouchInput : MonoBehaviour {
 
 
 		}
-		
+		if (firstClick){
+			battleController.drainStam (20);
+			firstClick = false;
+		}
 		if (drain){
-			battleController.drainStam ();
+			battleController.drainStam (1);
 		} 
 		else
 		{ 
-			battleController.incStam();
+			battleController.incStam(1);
 		}
 		#endif
 		

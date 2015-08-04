@@ -42,6 +42,7 @@ public abstract class Unit {
 	protected float DEMod = 1.0f;
 
 	//for rendering
+	public float scale;
 	public string sprite_name;
 	public string icon_name;
 	protected bool ally;
@@ -74,8 +75,8 @@ public abstract class Unit {
 
 	public int TakeDamage(int value) {
 
-		int dmg = (int)(value - Mathf.Pow (this.GetDEFValue(), 0.7f)); 
-		current_health -= (int)(dmg); // Assuming defence from 0 - 1000 where 1000 = takes no damage
+		int dmg = (int)(value / (1.0 + this.GetDEFValue()/100.0)); // Every 100 armour reduces damage by an extent
+		current_health -= (int)(dmg); 
 		if (current_health < 0) current_health = 0;
 		return dmg;
 
@@ -120,12 +121,12 @@ public abstract class Unit {
 	public void OffensiveMode() {
 		mode = FightingMode.Offensive;
 		OEMod = 1.25f;
-		DEMod = 0.9f;
+		DEMod = 0.8f;
 	}
 	public void DefensiveMode() {
 		mode = FightingMode.Defensive;
-		DEMod = 1.25f;
-		OEMod = 0.9f;
+		DEMod = 1.5f;
+		OEMod = 0.75f;
 	}
 
 	public bool CanAttack() {

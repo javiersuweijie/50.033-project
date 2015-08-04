@@ -10,7 +10,7 @@ public class Poporing : Unit {
 		if (this.CanAttack()) {
 			//			Debug.Log ("Poporing attack!");
 			//			anim.Play("PRN_Attack");
-			next_attack_time = Time.time + 100f/attack_speed;
+			next_attack_time = Time.time + 150f/attack_speed;
 			enemies.GetRandomTarget().TakeDamage(GetATKValue());
 			return true;
 		}
@@ -20,8 +20,9 @@ public class Poporing : Unit {
 	
 	public Poporing() {
 		
+		scale = 1.0f;
 		name = "Poporing";
-		experience = 35;
+		experience = 15;
 		//growth stats
 		max_health_growth = 200;
 		attack_power_growth = 10;
