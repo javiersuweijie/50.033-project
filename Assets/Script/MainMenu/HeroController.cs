@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
 
 public class HeroController : MonoBehaviour {
 
 	const int ListWidth = 3;
-	SampleHero selected_hero = null;
+	PlayerUnit selected_hero = null;
+	int selected_hero_index = -1;
 	Transform selection_frame;
 	Transform hero_list;
 	Button confirm;
@@ -36,16 +38,17 @@ public class HeroController : MonoBehaviour {
 	}
 	
 	// NOTE: Action class refers to a callback function
-	public void renderHeroes(Action<SampleHero> onClose) {
+	public void renderHeroes(Action<int> onClose, List<PlayerUnit> all_units) {
 
-		confirm.onClick.AddListener(()=>{onClose(selected_hero);});
+		confirm.onClick.AddListener(()=>{onClose(selected_hero_index);});
 		
 		//		NOTE: we cannot use foreach here as the variable in foreach is shared and the scope in the delegate function (onClick listener) below will 
 		//		share the same handle to hero
 		
 		//TODO: Link to real database
-		for (int i = 0; i<SampleHero.hero_list.Length; i++) {
-			SampleHero hero = SampleHero.hero_list[i];
+		for (int i = 0; i<all_units.Count; i++) {
+			int index = i;
+			PlayerUnit hero = all_units[i];
 			GameObject hero_button = Instantiate<GameObject>(hero_template);
 			hero_button.transform.SetParent(hero_list,false);
 			int row = i / ListWidth;
@@ -53,19 +56,21 @@ public class HeroController : MonoBehaviour {
 			Vector2 button_position = new Vector2(49 + 74 * (col) ,-49 - 74 * row);
 			// You need to use RectTransform for canvas positions
 			hero_button.GetComponent<RectTransform>().anchoredPosition = button_position;
+			Debug.Log(hero.getIconName());
 			hero_button.GetComponent<Image>().sprite = Resources.Load<Sprite>(hero.icon_name);
 			hero_button.GetComponent<Button>().onClick.AddListener(()=>{
-				selectHero(hero,button_position);
+				selectHero(hero,index,button_position);
 			});
-			if (i==0) selectHero(hero,button_position);
+			if (i==0) selectHero(hero,index,button_position);
 			hero_button.SetActive(true);
 			
 		}
 	}
 	
-	void selectHero(SampleHero hero, Vector2 position) {
+	void selectHero(PlayerUnit hero, int hero_index, Vector2 position) {
 		selection_frame.GetComponent<RectTransform>().anchoredPosition = position;
 		selected_hero = hero;
+		selected_hero_index = hero_index;
 //		changeInfo(hero);
 	}
 	

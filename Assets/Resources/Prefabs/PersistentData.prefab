@@ -36,11 +36,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 127852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62bb9bea851011141817756138867786, type: 3}
+  m_Script: {fileID: 11500000, guid: b6af6ee1aba73411ea0c38ed56ab9933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeUnitsIndex: 000000000100000002000000
+  activeUnitsIndex: 
   openDungeons: 0
+  hpRemaining: []
+  stamRemaining: 0
+  lastStage: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
