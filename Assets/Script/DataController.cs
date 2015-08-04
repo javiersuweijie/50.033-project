@@ -135,6 +135,12 @@ public class DataController : MonoBehaviour {
 				unitInfoList.Add(unitInfo);
 				activeUnitsIndex[i] = i;
 			}
+
+			UnitInfo new_unit = new UnitInfo();
+			new_unit.name = "Paladin";
+			new_unit.defSkill = "GrenadeBarrage";
+			new_unit.offSkill = "LightningSlash";
+			unitInfoList.Add(new_unit);
 			//End Testing
 		}
 		Save();

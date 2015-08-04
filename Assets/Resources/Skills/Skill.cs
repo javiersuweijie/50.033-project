@@ -19,7 +19,7 @@ public abstract class Skill : MonoBehaviour {
 	static public Dictionary<string, string> skill_icons = new Dictionary<string, string>{
 		{"HolyBarrier","Sprites/Icons/100008"},
 		{"LightningSlash","Sprites/Icons/100010"},
-		{"GrenadeBarrage","Sprites/Icons/200005"}
+		{"GrenadeBarrage","Sprites/Icons/200000"}
 	};
 
 	public abstract void Execute(PartyController friendly, PartyController enemy, StaminaBar stambar);

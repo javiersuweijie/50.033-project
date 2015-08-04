@@ -177,7 +177,7 @@ public class HeroInfoController : MonoBehaviour
 		hero_selection.transform.SetParent(window,false);
 		HeroController hero_controller = hero_selection.GetComponent<HeroController>();
 		hero_controller.Init();
-		hero_controller.renderHeroes(changeHero,all_units);
+		hero_controller.renderHeroes(changeHero,all_units,data_controller.activeUnitsIndex);
 	}
 
 	void hideDefault() {
@@ -214,7 +214,6 @@ public class HeroInfoController : MonoBehaviour
 		//TODO: Cannot select two of the same hero
 
 		Destroy(hero_selection);
-		Debug.Log(selected_hero_index);
 		data_controller.activeUnitsIndex[selected_hero_index] = hero_index;
 		selected_hero = all_units[hero_index];
 		renderSelectedHeroes();
