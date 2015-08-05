@@ -9,10 +9,10 @@ public class Cleric : PlayerUnit
 		name = "Cleric";
 		experience = _experience;
 		//growth stats
-		max_health_growth = 12;
-		attack_power_growth = 3;
-		defence_power_growth = 5;
-		attack_speed_growth = 4;
+		max_health_growth = 10;
+		attack_power_growth = 2;
+		defence_power_growth = 3;
+		attack_speed_growth = 3;
 		critical_chance_growth = 1;
 		critical_damage_growth = 0;
 		attack_prefab_name = "GFXAnim/Priest_Heal/Priest_Heal";
@@ -28,10 +28,10 @@ public class Cleric : PlayerUnit
 
 		//base stats
 
-		max_health = 150 + GetLevel() * max_health_growth;
-		attack_power = 15 + GetLevel() * attack_power_growth;
-		defence_power = 28 + GetLevel() * defence_power_growth;
-		attack_speed = 60 + GetLevel() * attack_speed_growth;
+		max_health = 175 + GetLevel() * max_health_growth;
+		attack_power = 20 + GetLevel() * attack_power_growth;
+		defence_power = 32 + GetLevel() * defence_power_growth;
+		attack_speed = 70 + GetLevel() * attack_speed_growth;
 		critical_chance = 10 + GetLevel() * critical_chance_growth;
 		critical_damage = 50 + GetLevel() * critical_damage_growth;
 

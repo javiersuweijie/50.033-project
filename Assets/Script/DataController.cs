@@ -125,7 +125,7 @@ public class DataController : MonoBehaviour {
 				}
 				else if (i == 1){
 					unitInfo.name = "Cleric";
-					unitInfo.defSkill = "";
+					unitInfo.defSkill = "HolyInfusion";
 					unitInfo.offSkill = "";
 					unitInfo.equip = 1;
 				}

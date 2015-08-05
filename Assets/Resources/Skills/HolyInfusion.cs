@@ -2,23 +2,23 @@ using UnityEngine;
 using System.Collections;
 
 
-public class HolyBarrier : Skill {
+public class HolyInfusion : Skill {
 
 	private Transform anim;
 
 	private UnitController baseUnit;
 
 	void Start(){
-		potency = 1.25f;
-		probability = 0.40f;
-		name = "Holy Barrier";
-		cdtime = 6.5f;
+		potency = 4.0f;
+		probability = 0.9f;
+		name = "Holy Infusion";
+		cdtime = 7.0f;
 		cooldown = true;
-		cost = 100;
+		cost = 75;
 		baseUnit = gameObject.GetComponent<UnitController> ();
 
-		anim = (Transform)Resources.Load ("GFXAnim/HolyDef/HS6", typeof(Transform));
-		skillbanner = "GFXAnim/HolyDef/HGBannerPrefab";
+		anim = (Transform)Resources.Load ("GFXAnim/Infusion/Infusion", typeof(Transform));
+		skillbanner = "GFXAnim/Infusion/HIBannerPrefab";
 
 	}
 
@@ -40,11 +40,13 @@ public class HolyBarrier : Skill {
 	IEnumerator skillAnim(PartyController friendly)
 	{
 		baseUnit.GetComponent<Animator> ().Play (baseUnit.skillanim);
-		yield return new WaitForSeconds(0.45f);
+		yield return new WaitForSeconds(0.35f);
 	
-		foreach (UnitController targets in friendly.GetAllTargets()) {
-			targets.GetComponent<BuffManager>().ApplyBuff(1,potency);
-			Instantiate (anim, targets.transform.position, Quaternion.identity);
+		UnitController healtarget = friendly.GetMostHurtUnit();
+		if (healtarget != null){
+			healtarget.ReceiveHeal((int)(baseUnit.unit.GetATKValueHeal()* Random.Range (0.9f,1.1f) * potency));
+			Transform skillAnim = (Transform)Instantiate (anim, healtarget.transform.position, Quaternion.identity);
 		}
+
 	}
 }

@@ -12,6 +12,7 @@ public class Miming : Unit {
 			//			anim.Play("PRN_Attack");
 			next_attack_time = Time.time + 150f/attack_speed;
 			enemies.GetRandomTarget().TakeDamage(GetATKValue());
+
 			return true;
 		}
 		else return false;
@@ -33,10 +34,10 @@ public class Miming : Unit {
 		
 		//base stats
 		
-		max_health = 170 + GetLevel() * max_health_growth;
-		attack_power = 17 + GetLevel() * attack_power_growth;
+		max_health = 240 + GetLevel() * max_health_growth;
+		attack_power = 21 + GetLevel() * attack_power_growth;
 		defence_power = 28 + GetLevel() * defence_power_growth;
-		attack_speed = 100 + GetLevel() * attack_speed_growth;
+		attack_speed = 140 + GetLevel() * attack_speed_growth;
 		critical_chance = 10 + GetLevel() * critical_chance_growth;
 		critical_damage = 50 + GetLevel() * critical_damage_growth;
 		

@@ -74,8 +74,10 @@ public abstract class PlayerUnit : Unit
 	}
 	
 	public void SetDefSkill(string skillName) {
-		if (skillName == "HolyBarrier"){
+		if (skillName == "HolyBarrier") {
 			left_spell_type = typeof(HolyBarrier);
+		} else if (skillName == "HolyInfusion") {
+			left_spell_type = typeof(HolyInfusion);
 		}
 	}
 	

@@ -32,8 +32,8 @@ public class Poring : Unit
 		
 		//base stats
 		
-		max_health = 160 + GetLevel() * max_health_growth;
-		attack_power = 18 + GetLevel() * attack_power_growth;
+		max_health = 220 + GetLevel() * max_health_growth;
+		attack_power = 22 + GetLevel() * attack_power_growth;
 		defence_power = 20 + GetLevel() * defence_power_growth;
 		attack_speed = 80 + GetLevel() * attack_speed_growth;
 		critical_chance = 10 + GetLevel() * critical_chance_growth;

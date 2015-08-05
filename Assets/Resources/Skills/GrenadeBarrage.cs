@@ -9,7 +9,7 @@ public class GrenadeBarrage : Skill {
 
 	void Start(){
 		potency = 0.7f;
-		probability = 0.3f;
+		probability = 0.42f;
 		name = "Grenade Barrage";
 		cdtime = 4.5f;
 		cooldown = true;
