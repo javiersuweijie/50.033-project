@@ -18,6 +18,14 @@ public class UnitController : MonoBehaviour {
 	protected int yoffsetr = 0;
 
 	public bool setup_ready = false;
+	
+	// Use this for initialization
+	void Start () {
+		uitxt = (Transform)Resources.Load ("Prefabs/FloatDmgText", typeof(Transform));
+		uitxto = (Transform)Resources.Load ("Prefabs/FloatDmgTextOutline", typeof(Transform));
+		skillflashO = (Transform)Resources.Load ("GFXAnim/SkillGlow/skill1", typeof(Transform));
+		
+	}
 
 	public void InitializeSAC(SkillAnimController in_sac){
 		sac = in_sac;
@@ -147,13 +155,6 @@ public class UnitController : MonoBehaviour {
 		return unit;
 	}
 
-	// Use this for initialization
-	void Start () {
-		uitxt = (Transform)Resources.Load ("Prefabs/FloatDmgText", typeof(Transform));
-		uitxto = (Transform)Resources.Load ("Prefabs/FloatDmgTextOutline", typeof(Transform));
-		skillflashO = (Transform)Resources.Load ("GFXAnim/SkillGlow/skill1", typeof(Transform));
-
-	}
 	
 	// Update is called once per frame
 	void Update () {

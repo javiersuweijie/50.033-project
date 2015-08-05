@@ -78,11 +78,19 @@ class BattleController : MonoBehaviour{
 			enemyPartyController.AddUnit(enemy_controller);
 		}
 		//cgf = new CombatGraphicalFunction();
-		fighting = true;
+		fighting = false;
 		win = false;
 		lose = false;
 		expAdded = false;
+		StartCoroutine(startFight());
 		//Debug.Log(enemyPartyController.GetAllTargets().Count);
+
+	}
+
+	IEnumerator startFight()
+	{
+		yield return new WaitForSeconds(1.0f);
+		fighting = true;
 	}
 
 	void Update(){
