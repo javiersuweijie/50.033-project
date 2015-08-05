@@ -9,12 +9,12 @@ using System.Collections.Generic;
 
 public class BuffManager : MonoBehaviour {
 
-	protected GameObject atkU = (GameObject)Resources.Load ("Sprites/ATK_UpFab", typeof(GameObject));
-	protected  GameObject atkD =  (GameObject)Resources.Load ("Sprites/ATK_DownFab", typeof(GameObject));
-	protected GameObject defU = (GameObject)Resources.Load ("Sprites/DEF_UpFab", typeof(GameObject));
-	protected GameObject defD = (GameObject)Resources.Load ("Sprites/DEF_DownFab", typeof(GameObject));
-	protected GameObject agiU = (GameObject)Resources.Load ("Sprites/AGI_UpFab", typeof(GameObject));
-	protected GameObject agiD = (GameObject)Resources.Load ("Sprites/AGI_DownFab", typeof(GameObject));
+	protected GameObject atkU;//= (GameObject)Resources.Load ("Sprites/ATK_UpFab", typeof(GameObject));
+	protected  GameObject atkD;// =  (GameObject)Resources.Load ("Sprites/ATK_DownFab", typeof(GameObject));
+	protected GameObject defU;// = (GameObject)Resources.Load ("Sprites/DEF_UpFab", typeof(GameObject));
+	protected GameObject defD;// = (GameObject)Resources.Load ("Sprites/DEF_DownFab", typeof(GameObject));
+	protected GameObject agiU;// = (GameObject)Resources.Load ("Sprites/AGI_UpFab", typeof(GameObject));
+	protected GameObject agiD;// = (GameObject)Resources.Load ("Sprites/AGI_DownFab", typeof(GameObject));
 	public Dictionary<int,GameObject> dict;
 
 	private List<int> ActivePBuffs = new List<int>();
@@ -22,6 +22,13 @@ public class BuffManager : MonoBehaviour {
 	private List<GameObject> icons = new List<GameObject>();
 
 	void Start(){
+		atkU = (GameObject)Resources.Load ("Sprites/ATK_UpFab", typeof(GameObject));
+		atkD = (GameObject)Resources.Load ("Sprites/ATK_DownFab", typeof(GameObject));
+		defU = (GameObject)Resources.Load ("Sprites/DEF_UpFab", typeof(GameObject));
+		defD = (GameObject)Resources.Load ("Sprites/DEF_DownFab", typeof(GameObject));
+		agiU = (GameObject)Resources.Load ("Sprites/AGI_UpFab", typeof(GameObject));
+		agiD = (GameObject)Resources.Load ("Sprites/AGI_DownFab", typeof(GameObject));
+
 		dict = new Dictionary<int,GameObject>();
 		dict.Add (1, atkU);
 		dict.Add (2, defU);

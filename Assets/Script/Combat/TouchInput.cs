@@ -110,20 +110,13 @@ public class TouchInput : MonoBehaviour {
 
 
 		}
-		if (firstClick){
-			battleController.drainStam (20);
-			firstClick = false;
-		}
-		if (drain){
-			battleController.drainStam (1);
-		} 
-		else
-		{ 
-			battleController.incStam(1);
-		}
 		#endif
 		
 		if (Input.touchCount > 0){
+			if (drain == false){
+				firstClick = true;
+				drain = true;
+			}
 			touchPos = Input.GetTouch(0).position;
 			if (touchPos.x < Screen.width/2.0){
 				//Do Defense
@@ -134,6 +127,18 @@ public class TouchInput : MonoBehaviour {
 		}
 		else{
 			//Do Normal
+		}
+		
+		if (firstClick){
+			battleController.drainStam (20);
+			firstClick = false;
+		}
+		if (drain){
+			battleController.drainStam (1);
+		} 
+		else
+		{ 
+			battleController.incStam(1);
 		}
 	}
 

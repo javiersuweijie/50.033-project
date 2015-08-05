@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FloatingHealthBar : MonoBehaviour {
 
-	public GameObject hpbarobj = (GameObject)Resources.Load ("Prefabs/FloatingHPBar", typeof(GameObject));
+	public GameObject hpbarobj;// = (GameObject)Resources.Load ("Prefabs/FloatingHPBar", typeof(GameObject));
 	public float shiftSpd = 1;
 
 	private GameObject hpbarinstance;
@@ -15,6 +15,8 @@ public class FloatingHealthBar : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		hpbarobj = (GameObject)Resources.Load ("Prefabs/FloatingHPBar", typeof(GameObject));
+
 		hpbarinstance = Instantiate(hpbarobj);
 		hpbar = hpbarinstance.GetComponent<Transform>();
 		hpfill = (RectTransform) hpbar.GetChild(0).GetChild(0).GetChild(0).GetChild(0);
