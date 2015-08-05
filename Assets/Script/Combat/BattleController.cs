@@ -5,12 +5,15 @@ using System.Collections.Generic;
 class BattleController : MonoBehaviour{
 	public GameObject player = null;
 	public GameObject enemy = null;
-
+	public GameObject victorySplashObj = null;
+	public GameObject defeatSplashObj = null;
 	private GameObject[] playerObjects = new GameObject[3];
 	private List<GameObject> enemyObjects = new List<GameObject>();
 	private PartyController playerPartyController = new PartyController();
 	private PartyController enemyPartyController = new PartyController();
-	private CombatGraphicalFunction cgf;
+	//private CombatGraphicalFunction cgf;
+	private GameObject victorySplash = null;
+	private GameObject defeatSplash = null;
 	private DataController dataController;
 	private AudioSource audios;
 	public GameObject stambarobj = null;
@@ -73,7 +76,7 @@ class BattleController : MonoBehaviour{
 			enemy_controller.AttachUnit(enemy_units[i]);
 			enemyPartyController.AddUnit(enemy_controller);
 		}
-		cgf = new CombatGraphicalFunction();
+		//cgf = new CombatGraphicalFunction();
 		fighting = true;
 		win = false;
 		lose = false;
@@ -149,12 +152,17 @@ class BattleController : MonoBehaviour{
 				}
 				expAdded = true;
 			}
-
-			cgf.ShowWin(itemsList, playerPartyController, totalExp, dataController);
+			if (victorySplash == null){
+				victorySplash = Instantiate (victorySplashObj) as GameObject;
+				victorySplash.GetComponent<VictorySplash>().ShowWin(itemsList, playerPartyController, totalExp, dataController);
+			}
+			//cgf.ShowWin(itemsList, playerPartyController, totalExp, dataController);
 		}
-
 		if (lose){
-			cgf.ShowLose(dataController);
+			if (defeatSplash == null){
+				defeatSplash = Instantiate (defeatSplashObj) as GameObject;
+				defeatSplash.GetComponent<DefeatSplash>().ShowLose(dataController);
+			}
 		}
 	}
 

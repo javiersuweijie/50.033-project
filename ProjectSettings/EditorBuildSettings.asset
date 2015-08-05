@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/OuterMap.unity
   - enabled: 1
-    path: Assets/Scene/Dungeon.unity
+    path: Assets/Script/Dungeon.unity
   - enabled: 1
     path: Assets/Scene/Level.unity
   - enabled: 1

@@ -291,7 +291,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 136954, guid: 468bc24a869be4106b73a2a31431482e, type: 2}
   enemy: {fileID: 121518, guid: 6c49e98d2a06e47ddb3b18f39710089e, type: 2}
+  victorySplashObj: {fileID: 110760, guid: a303eb4a7db0d11498e5c29f6f0d7cd4, type: 2}
+  defeatSplashObj: {fileID: 121840, guid: acb298acf1d6e7e429cc69e8b76c74da, type: 2}
   stambarobj: {fileID: 173768, guid: 1d585677db2a7504194a95275d916e57, type: 2}
+  fighting: 0
 --- !u!4 &810569298
 Transform:
   m_ObjectHideFlags: 0
@@ -430,6 +433,7 @@ GameObject:
   - 92: {fileID: 1583897226}
   - 124: {fileID: 1583897225}
   - 81: {fileID: 1583897224}
+  - 82: {fileID: 1583897229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -503,6 +507,75 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!82 &1583897229
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1583897223}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1877613872
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,12 +604,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6af6ee1aba73411ea0c38ed56ab9933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemInfoList: []
   activeUnitsIndex: 
   openDungeons: 0
   hpRemaining: []
   stamRemaining: 0
   lastStage: 0
   stage: 0
+  dungeon: 0
+  pressedStage: {x: 0, y: 0}
 --- !u!4 &1877613874
 Transform:
   m_ObjectHideFlags: 0

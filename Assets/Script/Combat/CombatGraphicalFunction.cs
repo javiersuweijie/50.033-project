@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CombatGraphicalFunction {
+public class CombatGraphicalFunction:MonoBehaviour {
 
 	private GUIStyle currentStyle;
 
@@ -23,31 +23,40 @@ public class CombatGraphicalFunction {
 	}
 
 	public void ShowWin(int[] itemsList, PartyController playerPartyController, int expGain, DataController dc){
-		SetOverlayStyle();
-		string displayText = "You Win!\nEXP Gain : " + expGain + "\n";
+//		SetOverlayStyle();
+//		string displayText = "You Win!\nEXP Gain : " + expGain + "\n";
+//
+//		for (int i = 0; i < 3; i++){
+//			int level = playerPartyController.GetUnit(i).GetUnit().GetLevel();
+//			int exp = playerPartyController.GetUnit(i).GetUnit().experience;
+//			int exptnl = (level + 1) * (level + 1) * 100 - exp;
+//			displayText += playerPartyController.GetUnit(i).GetUnit().name + " (LVL" + level + ") EXP : " + exptnl + "TNL\n";
+//		}
+//		GUI.Box(new Rect(Screen.width/2 - 150, Screen.height/2 - 100, 300, 100), displayText, currentStyle);
+//		if (dc.lastStage){
+//			if (GUI.Button(new Rect(Screen.width / 2 - 75, Screen.height /2 + 10, 150, 25),"Return Home!")) 
+//			{
+//				dc.Save();
+//				Application.LoadLevel("Main");
+//			}
+//		}
+//		else{
+//			if (GUI.Button(new Rect(Screen.width / 2 - 75, Screen.height /2 + 10, 150, 25),"Continue Exploring!")) 
+//			{
+//				dc.Save();
+//				dc.stage += 1;
+//				Application.LoadLevel("OuterMap");
+//			}
+//		}
 
+		string displayText = "EXP Gain : " + expGain + "\n";		
 		for (int i = 0; i < 3; i++){
 			int level = playerPartyController.GetUnit(i).GetUnit().GetLevel();
 			int exp = playerPartyController.GetUnit(i).GetUnit().experience;
 			int exptnl = (level + 1) * (level + 1) * 100 - exp;
 			displayText += playerPartyController.GetUnit(i).GetUnit().name + " (LVL" + level + ") EXP : " + exptnl + "TNL\n";
 		}
-		GUI.Box(new Rect(Screen.width/2 - 150, Screen.height/2 - 100, 300, 100), displayText, currentStyle);
-		if (dc.lastStage){
-			if (GUI.Button(new Rect(Screen.width / 2 - 75, Screen.height /2 + 10, 150, 25),"Return Home!")) 
-			{
-				dc.Save();
-				Application.LoadLevel("Main");
-			}
-		}
-		else{
-			if (GUI.Button(new Rect(Screen.width / 2 - 75, Screen.height /2 + 10, 150, 25),"Continue Exploring!")) 
-			{
-				dc.Save();
-				dc.stage += 1;
-				Application.LoadLevel("OuterMap");
-			}
-		}
+
 	}
 	
 	public void ShowLose(DataController dc){
