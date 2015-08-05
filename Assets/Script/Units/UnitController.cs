@@ -3,10 +3,9 @@ using System.Collections;
 
 public class UnitController : MonoBehaviour {
 
-
-	protected Transform uitxt;// = (Transform)Resources.Load ("Prefabs/FloatDmgText", typeof(Transform));
-	protected Transform uitxto;// = (Transform)Resources.Load ("Prefabs/FloatDmgTextOutline", typeof(Transform));
-	public Transform skillflashO;// = (Transform)Resources.Load ("GFXAnim/SkillGlow/skill1", typeof(Transform));
+	protected Transform uitxt;
+	protected Transform uitxto;
+	public Transform skillflashO;
 	protected GameObject attackprefab;
 	public Unit unit;
 	protected Animator anim;
@@ -153,6 +152,7 @@ public class UnitController : MonoBehaviour {
 		uitxt = (Transform)Resources.Load ("Prefabs/FloatDmgText", typeof(Transform));
 		uitxto = (Transform)Resources.Load ("Prefabs/FloatDmgTextOutline", typeof(Transform));
 		skillflashO = (Transform)Resources.Load ("GFXAnim/SkillGlow/skill1", typeof(Transform));
+
 	}
 	
 	// Update is called once per frame
