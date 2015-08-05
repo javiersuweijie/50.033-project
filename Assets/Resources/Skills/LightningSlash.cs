@@ -11,7 +11,7 @@ public class LightningSlash : Skill {
 
 	void Start(){
 		potency = 1.5f;
-		probability = 0.5f;
+		probability = 0.6f;
 		name = "Lightning Slash";
 		cdtime = 2.5f;
 		cooldown = true;

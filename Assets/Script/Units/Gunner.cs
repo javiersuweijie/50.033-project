@@ -9,10 +9,10 @@ public class Gunner : PlayerUnit
 		name = "Gunner";
 		experience = _experience;
 		//growth stats
-		max_health_growth = 10;
-		attack_power_growth = 10;
-		defence_power_growth = 6;
-		attack_speed_growth = 6;
+		max_health_growth = 9;
+		attack_power_growth = 5;
+		defence_power_growth = 4;
+		attack_speed_growth = 4;
 		critical_chance_growth = 1;
 		critical_damage_growth = 0;
 
@@ -25,10 +25,10 @@ public class Gunner : PlayerUnit
 
 		//base stats
 
-		max_health = 130 + GetLevel() * max_health_growth;
+		max_health = 145 + GetLevel() * max_health_growth;
 		attack_power = 38 + GetLevel() * attack_power_growth;
-		defence_power = 32 + GetLevel() * defence_power_growth;
-		attack_speed = 100 + GetLevel() * attack_speed_growth;
+		defence_power = 35 + GetLevel() * defence_power_growth;
+		attack_speed = 93 + GetLevel() * attack_speed_growth;
 		critical_chance = 10 + GetLevel() * critical_chance_growth;
 		critical_damage = 50 + GetLevel() * critical_damage_growth;
 

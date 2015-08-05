@@ -10,10 +10,10 @@ public class Paladin : PlayerUnit
 		name = "Paladin";
 		experience = _experience;
 		//growth stats
-		max_health_growth = 14;
-		attack_power_growth = 8;
-		defence_power_growth = 8;
-		attack_speed_growth = 5;
+		max_health_growth = 12;
+		attack_power_growth = 4;
+		defence_power_growth = 5;
+		attack_speed_growth = 3;
 		critical_chance_growth = 1;
 		critical_damage_growth = 0;
 		icon_name = "Sprites/Icons/51325";
@@ -26,9 +26,9 @@ public class Paladin : PlayerUnit
 
 		//base stats
 
-		max_health = 200 + GetLevel() * max_health_growth;
-		attack_power = 30 + GetLevel() * attack_power_growth;
-		defence_power = 40 + GetLevel() * defence_power_growth;
+		max_health = 230 + GetLevel() * max_health_growth;
+		attack_power = 35 + GetLevel() * attack_power_growth;
+		defence_power = 44 + GetLevel() * defence_power_growth;
 		attack_speed = 90 + GetLevel() * attack_speed_growth;
 		critical_chance = 10 + GetLevel() * critical_chance_growth;
 		critical_damage = 50 + GetLevel() * critical_damage_growth;

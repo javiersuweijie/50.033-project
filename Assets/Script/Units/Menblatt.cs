@@ -33,9 +33,9 @@ public class Menblatt : Unit {
 		
 		//base stats
 		
-		max_health = 430 + GetLevel() * max_health_growth;
-		attack_power = 35 + GetLevel() * attack_power_growth;
-		defence_power = 22 + GetLevel() * defence_power_growth;
+		max_health = 640 + GetLevel() * max_health_growth;
+		attack_power = 38 + GetLevel() * attack_power_growth;
+		defence_power = 26 + GetLevel() * defence_power_growth;
 		attack_speed = 75 + GetLevel() * attack_speed_growth;
 		critical_chance = 10 + GetLevel() * critical_chance_growth;
 		critical_damage = 50 + GetLevel() * critical_damage_growth;

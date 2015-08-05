@@ -33,8 +33,8 @@ public class RodaFrog : Unit {
 		
 		//base stats
 		
-		max_health = 500 + GetLevel() * max_health_growth;
-		attack_power = 40 + GetLevel() * attack_power_growth;
+		max_health = 720 + GetLevel() * max_health_growth;
+		attack_power = 52 + GetLevel() * attack_power_growth;
 		defence_power = 18 + GetLevel() * defence_power_growth;
 		attack_speed = 65 + GetLevel() * attack_speed_growth;
 		critical_chance = 10 + GetLevel() * critical_chance_growth;

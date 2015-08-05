@@ -33,9 +33,9 @@ public class Poporing : Unit {
 		
 		//base stats
 		
-		max_health = 175 + GetLevel() * max_health_growth;
-		attack_power = 20 + GetLevel() * attack_power_growth;
-		defence_power = 25 + GetLevel() * defence_power_growth;
+		max_health = 280 + GetLevel() * max_health_growth;
+		attack_power = 21 + GetLevel() * attack_power_growth;
+		defence_power = 35 + GetLevel() * defence_power_growth;
 		attack_speed = 85 + GetLevel() * attack_speed_growth;
 		critical_chance = 10 + GetLevel() * critical_chance_growth;
 		critical_damage = 50 + GetLevel() * critical_damage_growth;

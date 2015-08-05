@@ -41,8 +41,9 @@ class BattleController : MonoBehaviour{
 		if (dataController.lastStage) {
 			BGMBoss = (AudioClip) Resources.Load ("BGMBoss",typeof(AudioClip));
 			audios.clip = BGMBoss;
-			audios.Play();
 		}
+
+		audios.Play();
 
 		BGMWin = (AudioClip)Resources.Load ("BGMWin", typeof (AudioClip));
 		skillAnimController = gameObject.GetComponent<SkillAnimController> ();
